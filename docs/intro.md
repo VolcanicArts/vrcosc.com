@@ -2,9 +2,8 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
-
-Let's discover **Docusaurus in less than 5 minutes**.
+# VRCOSC Docs
+Welcome to VRCOSC's Docs. Here you can find the documentation on how to use the app, official modules, and making your own modules to distribute in the app.
 
 ## Getting Started
 
