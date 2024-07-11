@@ -5,8 +5,11 @@ description: Create and build a module project
 
 # Getting Started
 
-### Prerequisites
+:::info
+
 This guide is written with Visual Studio 2022 in mind. Please have an up-to-date copy of Visual Studio 2022 with the `.NET desktop development` module installed, and .NET 8.0's SDK installed which can be found [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+
+:::
 
 ### 1 - Creating a project
 First, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
@@ -37,6 +40,12 @@ public class TestModule : Module
 
 Now that this is done, a barebones module with no functionality has been created which can now be exported and tested.
 
+:::danger
+
+The module's name is used as its ID. Internally `TestModule` gets turned into `testmodule`. Do not change the class name else it will break anything that the user has saved.
+
+:::
+
 ### 4 - Exporting to VRCOSC
 First, build your project. Then go to your project's folder and into `bin/Debug/net8.0-windows10.0.22621.0`. You should find there's a DLL file in there called `MyTestModules.dll`. Copy this file and put it into the `%appdata%/vrcosc-v2/packages/local` folder. This local packages folder is a special folder for testing local modules so as not to interfere with the same module when they're in another package.
 
@@ -53,14 +62,19 @@ Next, add a file called `vrcosc.json` to the root of your main branch with this 
     "cover_image_url": "https://some.image/url"
 }
 ```
+- `package_id` is usually something along the lines of `yourname.modulepackagename`. For example, the official modules are `volcanicarts.vrcosc.officialmodules`.
+- `display_name` is what will be shown to the user instead of your repository's name.
+- `cover_image_url` is a cover image for the information overlay.
+
+:::danger
+
+`package_id` cannot ever change otherwise it will break all the installs and updates of anyone that has installed your package.
+
+:::
 
 Any releases made on your repo will now be listed automatically on the package screen and available for anyone using V2 to install.
 
-:::note
-
 It can take up to 24 hours for the package list to refresh for all users. Users can manually refresh the package list at any time using the refresh button.
-
-:::
 
 The files that V2 downloads are any DLL files from the release that the user has picked, so if you need dependencies that aren't packaged with V2, or need specific versions of dependencies that are, you can add those to the release as well and V2 will handle creating an isolated environment for the whole package to load into.
 
@@ -81,7 +95,7 @@ This will automatically copy the built DLL into the local packages folder for V2
 
 If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automaticaly handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.
 
-:::note
+:::warning
 
 The V2 install folder, `vrcosc-v2`, will change when V2 is released to just be `vrcosc`. Keep this in mind when creating any automations for your module projects.
 
