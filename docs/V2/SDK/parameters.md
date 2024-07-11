@@ -1,15 +1,13 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: Create and use module parameters
 ---
 
 # Parameters
-In VRCOSC there are 2 types of parameters, registered and unregistered.
+Parameters are the main way VRCOSC and VRChat communicate. For all intents and purposes, the parameters you register and use in a module are the avatar parameters on your avatar.
 
 ## Registering Parameters
 Registered parameters are parameters that have a defined lookup (usually denoted by an Enum), so that the user can change the name of the parameter and your module still works fine as the lookup is controlled by you. Any parameter that your module is going to be using on each run should be registered, as this allows the user to customise their setup.
-
-As mentioned above, `OnPreLoad` is where parameters should be registered. I'm going to use an example from the Media module to demonstrate what this looks like.
 
 ```csharp
 RegisterParameter<bool>(MediaParameter.Play, "VRCOSC/Media/Play", ParameterMode.ReadWrite, "Play/Pause", "True for playing. False for paused");
@@ -23,7 +21,7 @@ First, I'm calling `RegisterParameter<T>`, where T is the type of parameter I wa
 
 For the first argument, I have an Enum named `MediaParameter`. This contains all the lookups for each of the parameters. As mentioned before, this is a nicer way of organising parameters so you don't have to worry about spelling the lookup correctly.
 
-Next is the name of the parameter. This name is the exact name it would be on the avatar (Note: VRChat sends out parameters using the `/avatar/parameters/` prefix but VRCOSC handles this for you).
+Next is the name of the parameter. This name is the exact name it would be on the avatar.
 
 After that is the parameter mode. This is just used for safety to tell VRCOSC if a parameter can read from VRChat, write to VRChat, or both.
 
@@ -31,6 +29,12 @@ Finally, the rest of the method call is metadata, which is the display name and 
 
 There is also an optional bool at the end to mark a parameter as legacy, meaning it's still available to use but might be removed in the future, so this lets users know to change over to newer parameters else their prefabs might break.
 Note: This may be superceeded by a feature in the works called parameter sets. Keep an eye on V2 updates and the docs for news.
+
+:::info
+
+VRChat sends out parameters using the `/avatar/parameters/` prefix but VRCOSC handles this for you.
+
+:::
 
 ## Sending Parameters
 To send a parameter, there are 2 methods you can use:
