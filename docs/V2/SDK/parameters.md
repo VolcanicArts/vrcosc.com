@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+description: Create and use module parameters
 ---
 
 # Parameters
@@ -10,15 +11,10 @@ Registered parameters are parameters that have a defined lookup (usually denoted
 
 As mentioned above, `OnPreLoad` is where parameters should be registered. I'm going to use an example from the Media module to demonstrate what this looks like.
 
-```c#
+```csharp
 RegisterParameter<bool>(MediaParameter.Play, "VRCOSC/Media/Play", ParameterMode.ReadWrite, "Play/Pause", "True for playing. False for paused");
 RegisterParameter<float>(MediaParameter.Volume, "VRCOSC/Media/Volume", ParameterMode.ReadWrite, "Volume", "The volume of the process that is controlling the media");
 RegisterParameter<int>(MediaParameter.Repeat, "VRCOSC/Media/Repeat", ParameterMode.ReadWrite, "Repeat", "0 - Disabled\n1 - Single\n2 - List");
-RegisterParameter<bool>(MediaParameter.Shuffle, "VRCOSC/Media/Shuffle", ParameterMode.ReadWrite, "Shuffle", "True for enabled. False for disabled");
-RegisterParameter<bool>(MediaParameter.Next, "VRCOSC/Media/Next", ParameterMode.Read, "Next", "Becoming true causes the next track to play");
-RegisterParameter<bool>(MediaParameter.Previous, "VRCOSC/Media/Previous", ParameterMode.Read, "Previous", "Becoming true causes the previous track to play");
-RegisterParameter<bool>(MediaParameter.Seeking, "VRCOSC/Media/Seeking", ParameterMode.Read, "Seeking", "Whether the user is currently seeking");
-RegisterParameter<float>(MediaParameter.Position, "VRCOSC/Media/Position", ParameterMode.ReadWrite, "Position", "The position of the song as a percentage");
 ```
 
 Let's go over each of the parts of the method.
@@ -39,7 +35,7 @@ Note: This may be superceeded by a feature in the works called parameter sets. K
 ## Sending Parameters
 To send a parameter, there are 2 methods you can use:
 
-```c#
+```csharp
 SendParameter(MediaParameter.Play, true);
 SendParameter(MediaParameter.Shuffle, false);
 SendParameter(MediaParameter.Repeat, 0);
@@ -47,7 +43,7 @@ SendParameter(MediaParameter.Repeat, 0);
 
 This uses the `MediaParameter` Enum to send to a registered parameter. Behind the scenes, VRCOSC is taking the parameter name that the user has set this registered parameter to and sending the data there, which abstracts your module from having to deal with different parameter names.
 
-```c#
+```csharp
 SendParameter("MyNormalParameter", false);
 ```
 
@@ -56,7 +52,7 @@ For the above, you can send directly to a parameter using its name. This is not 
 ## Receiving Parameters
 To receive a parameter, there are 2 methods to override:
 
-```c#
+```csharp
 protected override void OnRegisteredParameterReceived(RegisteredParameter parameter)
 {
     switch (parameter.Lookup)
@@ -71,7 +67,7 @@ protected override void OnRegisteredParameterReceived(RegisteredParameter parame
 This listens for registered parameters. Registered parameters, once again, have the benefit of being abstracted from your module, so you can listen for whenever the lookup arrives and the user can change the parameter name to whatever they need it to be. Registered parameters can give you access to the parameter value using `GetValue<T>()`, where T is the type of the parameter's value. Note: This type must match the type that it's expecting else an error will be thrown. Registered parameters also have access to a function called wildcards, which will be spoken about in a different advanced section.
 
 
-```c#
+```csharp
 protected override void OnAnyParameterReceived(ReceivedParameter parameter)
 {
     if (parameter.Name == "MyNormalParameter")
@@ -86,13 +82,13 @@ You can also listen for any parameter. Unregistered *and* registered parameters 
 ## OSCQuery
 OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in game.
 
-```c#
+```csharp
 FindParameterType(MyParameters.SomeParameter);
 FindParameterValue(MyParameters.SomeParameter);
 ```
 Finding a parameter by using the methods with lookups will attempt to find the type or value using the parameter name that the user may have edited.
 
-```c#
+```csharp
 FindParameterType("SomeParameterName");
 FindParameterValue("SomeParameterName");
 ```

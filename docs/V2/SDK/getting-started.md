@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+description: Create and build a module project
 ---
 
 # Getting Started
@@ -27,7 +28,7 @@ Any time the beta SDK updates you can now drop the new NuGet file in the `localp
 In your project, create a new CS file and call it `TestModule`. We'll use this name for now, but it can be whatever you like. Just keep in mind that this name should be unique and I recommend ending the class name in `Module` just for cleanliness, but as V2 works using packages this is less of an issue now.
 
 At the very least you need the 3 attributes listed below. They indicate the display title, display description, and type of module you're making. You also need the class to extend the `Module` class from the SDK.
-```c#
+```csharp
 [ModuleTitle("My Test Module")]
 [ModuleDescription("This is my test module")]
 [ModuleType(ModuleType.Generic)]
@@ -41,7 +42,35 @@ First, build your project. Then go to your project's folder and into `bin/Debug/
 
 If VRCOSC is already open you can reload the modules to load your test module by going into the app's settings, Debug, and turning on Debug Mode. You'll now see a new debug tab has appeared which has a button to reload the modules. Clicking this should result in your module appearing on the module listing page.
 
-### 5 - Advanced Development
+### 5 - Publishing a module
+To publish a V2 module and have it appear in the app's package list, tag your repo with `vrcosc-package`.
+
+Next, add a file called `vrcosc.json` to the root of your main branch with this template:
+```json
+{
+    "package_id": "my.package.name",
+    "display_name": "My Modules",
+    "cover_image_url": "https://some.image/url"
+}
+```
+
+Any releases made on your repo will now be listed automatically on the package screen and available for anyone using V2 to install.
+
+:::note
+
+It can take up to 24 hours for the package list to refresh for all users. Users can manually refresh the package list at any time using the refresh button.
+
+:::
+
+The files that V2 downloads are any DLL files from the release that the user has picked, so if you need dependencies that aren't packaged with V2, or need specific versions of dependencies that are, you can add those to the release as well and V2 will handle creating an isolated environment for the whole package to load into.
+
+:::warning
+
+This may change in the future to be a vrcosc.zip file for better security. Please keep up to date with V2 releases and this section of the documentation
+
+:::
+
+### 6 - Advanced Development
 If you want to be able to rapidly test your modules, you can add the following to your csproj file:
 ```xml
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
@@ -51,3 +80,9 @@ If you want to be able to rapidly test your modules, you can add the following t
 This will automatically copy the built DLL into the local packages folder for V2. This allows you to build your modules and then reload them using the Debug page in the app without having to manually move any DLLs.
 
 If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automaticaly handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.
+
+:::note
+
+The V2 install folder, `vrcosc-v2`, will change when V2 is released to just be `vrcosc`. Keep this in mind when creating any automations for your module projects.
+
+:::
