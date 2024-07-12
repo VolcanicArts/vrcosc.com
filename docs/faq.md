@@ -10,12 +10,22 @@ Anything that isn't listed here or that doesn't solve your issue can be posted i
 
 ## Useful Locations
 
-These can be pasted into file explorer.
+:::info
+
+To open these locations, press `win+R` and paste the address in.
+
+:::
 
 ### VRCOSC
-Logs: `%appdata%\VRCOSC\logs`
+Install: `%localappdata%\vrcosc`
 
-Install: `%localappdata%\VRCOSC`
+Logs: `%appdata%\vrcosc\logs`
+
+:::info
+
+In V1, the log files get deleted when the app starts again. If you experience an error or crash, please take a copy of the logs before opening the app again!
+
+:::
 
 ### VRChat
 Common Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
@@ -25,12 +35,18 @@ Data: `%appdata%\..\LocalLow\VRChat\VRChat`
 ## Things to try first
 1) Ensuring that OSC is enabled through your action menu: Options -> OSC -> Enable
 2) Ensuring that your OSC config has been reset: Options -> OSC -> Reset Config
-3) Deleting the `OSC` folder located in here: `%appdata%\..\LocalLow\VRChat\VRChat`
+3) Deleting the `OSC` folder located in VRChat's data folder
 4) Changing worlds
 5) Restarting VRCOSC
 6) Restarting VRChat
 7) If you use a VPN, ensuring it is disabled
 8) Restarting your PC
+
+:::warning
+
+Sometimes VRChat's Reset Config button in the action menu doesn't work and requires deleting the OSC folder anyway!
+
+:::
 
 ## Specific Issues
 
@@ -38,7 +54,7 @@ Data: `%appdata%\..\LocalLow\VRChat\VRChat`
 It's possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/wifi connection
 
 ### Parameters are being received by VRChat in the OSC debug menu, but won't update on my avatar {#received-but-no-update}
-Go to VRChat's [data](https://github.com/VolcanicArts/VRCOSC/wiki/FAQ/#vrchat) and delete the `OSC` folder, then disable and enable OSC. This will force VRChat to regenerate the OSC config for your avatar.
+Go to VRChat's data folder and delete the `OSC` folder, then disable and enable OSC. This will force VRChat to regenerate the OSC config for your avatar.
 
 ### My quick menu says I've been timed out for spam {#timed-out-for-spam}
 This is due to your VRChat client lagging and VRChat not taking that into account between when VRCOSC sends ChatBox values. You can increase the `ChatBox Time Span` value in the settings tab by 100-200 milliseconds to compensate for this. VRChat has a default minimum of 1500 milliseconds. If it still occurs, keep increasing the value.
