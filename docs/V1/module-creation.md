@@ -14,7 +14,11 @@ V2 of the app is currently in development and has a new SDK for module creation 
 ## Notes
 Every module class is instantiated when VRCOSC is started. So if you have a module that has class-wide variables that control states, make sure to reset them in the `OnModuleStart` event.
 
-I also recommend to never instantiate anything in the constructor of the module, rather make the objects you want to instantiate nullable and if they're null in `OnModuleStart` then instantiate them. This will make sure that if a user doesn't run the module but the objects you instantiate throw any exception, the app can still update and module updates can still be received.
+:::warning
+
+Due to the way V1 handles module instanciation, never do anything inside the constructor of your module, only `CreateAttributes` and `OnModuleStart`. This is fixed and better in V2
+
+:::
 
 ## Templates
 
@@ -25,6 +29,12 @@ Templates are available through the use of NuGet. Running the following in a com
 Next you can create a new project for your module where the project name is the module name.
 
 `dotnet new VRCOSCModuleDefault -n MODULENAME`
+
+:::warning
+
+The templates may not be updated with the latest SDK. Make sure to check for SDK updates in your NuGet package manager.
+
+:::
 
 ## Assembly
 
@@ -40,8 +50,6 @@ The custom template already moves your built assembly to the correct folder on b
 The class name when creating a module must explicitly be the title of the module plus `Module`. This is to differentiate the class from anything else that may be inside the framework.
 
 This class name is used when saving data, so if this class name is changed at any point, user data will not be read from storage and they will need to redefine all the settings they may have customised. It is vital this does not get changed, so choose a name that best fits the module's purpose.
-
-If, however, you *reaaaaaally* need to change a module's name, you can use the `[ModuleLegacy("legacymodule")]` tag to allow for migration to occur.
 
 # Metadata
 All modules are provided with a set of C# attributes to place on your module class to define the metadata of the module.
@@ -67,14 +75,18 @@ Defined using `[ModuleInfo(string description, string? url = null)]`. This is al
 ### Legacy
 Defined using `[ModuleLegacy(string? legacySerialisedName = null]`. This allows you to migrate from a legacy serialised name if you want to change the class name of a module. This is a last resort as you should *never* need to change the name of a module, but in the event that you do the serialised name of a module is `classnamemodule`. For example, `MediaModule` becomes `mediamodule`. Once you're satisfied that all the users of your module have had their module migrated you can take this attribute off, but it's fine to leave on as VRCOSC will only do a single migration.
 
-A `legacySerialisedName` of `null` will tell VRCOSC that you don't want to do any legacy migration, which is equivalent to not having the attribute present at all.
+:::danger
+
+If you *really* need to change a module's name you can use this attribute. However, this may confuse users or cause issues with migration if this is abused. Changing the class name is not possible in V2 to ensure compatibility.
+
+:::
 
 # Attributes
 Attributes of a module are the settings and parameters. Settings allow the user to customise any settings you require for your module, and parameters are what get sent to and received from VRChat. Parameters specifically get registered to ensure that only the parameters you want enter and leave your module to let you not have to worry about filtering, however you can allow any parameter into your module using `OnAnyParameterReceived(ReceivedParameter parameter)` (explained later).
 
 To create attributes, you must call `CreateSetting()` and `CreateParameter()` inside the overridden `CreateAttributes()` method. Below is an example taken from the Heartrate module.
 
-```c#
+```csharp
 public override void CreateAttributes()
 {
     CreateParameter<bool>(HeartrateParameter.Enabled, ParameterMode.Write, "VRCOSC/Heartrate/Enabled", "Enabled", "Whether this module is attempting to emit values");
@@ -107,7 +119,7 @@ This can be done in any of the events (defined below), and it will return the la
 ## Parameters
 A parameter requires an Enum as a key. It's recommended you create an Enum along the lines of `[ModuleName]Parameter`. Next is the parameter mode; This doesn't affect how the data is sent, but is a contingency to make sure your code works as expected. Next is the parameter's name, and then finally a description.
 
-```c#
+```csharp
     CreateParameter<bool>(MediaParameter.Play, ParameterMode.ReadWrite, @"VRCOSC/Media/Play", "Play/Pause", @"True for playing. False for paused");
     CreateParameter<float>(MediaParameter.Volume, ParameterMode.ReadWrite, @"VRCOSC/Media/Volume", "Volume", @"The volume of the process that is controlling the media");
     CreateParameter<bool>(MediaParameter.Muted, ParameterMode.ReadWrite, @"VRCOSC/Media/Muted", "Muted", @"True to mute. False to unmute");
@@ -119,12 +131,12 @@ A parameter requires an Enum as a key. It's recommended you create an Enum along
 
 To handle incoming parameters, methods can be overridden:
 
-```c#
+```csharp
     protected virtual void OnAnyParameterReceived(ReceivedParameter parameter) { }
     // AvatarModule only
-    protected virtual void OnAvatarModuleReceived(AvatarParameter parameter) { }
+    protected virtual void OnAvatarParameterReceived(AvatarParameter parameter) { }
     // WorldModule only
-    protected virtual void OnWorldModuleReceived(WorldParameter parameter) { }
+    protected virtual void OnWorldParameterReceived(WorldParameter parameter) { }
 ```
 
 `OnAnyParameterReceived` should not be used unless you absolutely have to as this allows any avatar parameter to enter your module, not just the registered parameters. If you'd like an example, a viable use case is the Counter module.
@@ -153,7 +165,11 @@ The avatar change event occurs whenever a user enters a new avatar or when a use
 This is called whenever anything about the player is updated, for example, their AFK parameter. This can be used to trigger module code that only needs to be ran when something happens to the player's client.
 
 ## World Specific
-World modules are currently not in use
+:::info
+
+The split of Avatar module and World module was in anticipation of VRChat adding world OSC. This is not happening for the forseeable future so you should only ever need to use AvatarModule.
+
+:::
 
 # Persistence
 Modules have a thing called persistence, where you can save the state of your module so that a user can have persistent data. An example use-case of this is the `CounterModule`

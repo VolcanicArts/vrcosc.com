@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-description: Module logging
+description: Module runtime
 ---
 
 # Runtime
