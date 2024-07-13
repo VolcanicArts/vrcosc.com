@@ -11,14 +11,20 @@ This guide is written with Visual Studio 2022 in mind. Please have an up-to-date
 
 :::
 
-### 1 - Creating a project
+### 1 - Creating a project {#creating-a-project}
 First, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
 
 Right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page.
 
 Next, right click on your project's csproj file and click edit. Where there is the line `<TargetFramework>` you need to change `net8.0` to `net8.0-windows.10.0.22621.0`. The specific windows build of .NET 8.0 is required for VRCOSC's SDK due to certain Windows integrations.
 
-### 2 - Installing the SDK
+:::info
+
+A single project can contain multiple modules. You'll see this referred to as module packages
+
+:::
+
+### 2 - Installing the SDK {#installing-the-sdk}
 During the beta, the SDK's NuGet package is distributed locally. This will eventually be distributed on NuGet again when V2 is released. For now, you can tell Visual Studio to look at a local folder to install packages from.
 
 To make a local folder, make a folder somewhere called `localpackages` and put the SDK's NuGet file in there. Then in Visual Studio go to Tools -> NuGet Package Manager -> Package Manager Settings. In the options window select NuGet Package Manager -> Package Sources. Add a new source and select the `localpackages` folder you previously selected. Click Update, then click OK.
@@ -27,7 +33,7 @@ To install the SDK in your project, right click on your project and go to Manage
 
 Any time the beta SDK updates you can now drop the new NuGet file in the `localpackages` folder and Visual Studio will let you update.
 
-### 3 - Making a Test Module
+### 3 - Making a Test Module {#making-a-test-module}
 In your project, create a new CS file and call it `TestModule`. We'll use this name for now, but it can be whatever you like. Just keep in mind that this name should be unique and I recommend ending the class name in `Module` just for cleanliness, but as V2 works using packages this is less of an issue now.
 
 At the very least you need the 3 attributes listed below. They indicate the display title, display description, and type of module you're making. You also need the class to extend the `Module` class from the SDK.
@@ -46,12 +52,12 @@ The module's name is used as its ID. Internally `TestModule` gets turned into `t
 
 :::
 
-### 4 - Exporting to VRCOSC
+### 4 - Exporting your module package {#exporting-your-module-package}
 First, build your project. Then go to your project's folder and into `bin/Debug/net8.0-windows10.0.22621.0`. You should find there's a DLL file in there called `MyTestModules.dll`. Copy this file and put it into the `%appdata%/vrcosc-v2/packages/local` folder. This local packages folder is a special folder for testing local modules so as not to interfere with the same module when they're in another package.
 
 If VRCOSC is already open you can reload the modules to load your test module by going into the app's settings, Debug, and turning on Debug Mode. You'll now see a new debug tab has appeared which has a button to reload the modules. Clicking this should result in your module appearing on the module listing page.
 
-### 5 - Publishing a module
+### 5 - Publishing your module package {#publishing-your-module-package}
 To publish a V2 module and have it appear in the app's package list, tag your repo with `vrcosc-package`.
 
 Next, add a file called `vrcosc.json` to the root of your main branch with this template:
@@ -84,7 +90,7 @@ This may change in the future to be a vrcosc.zip file for better security. Pleas
 
 :::
 
-### 6 - Advanced Development
+### 6 - Advanced Development {#advanced-development}
 If you want to be able to rapidly test your modules, you can add the following to your csproj file:
 ```xml
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
