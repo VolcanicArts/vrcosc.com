@@ -45,13 +45,18 @@ Dropdowns take the setting lookup, display title, display description, and the d
 Backing type: `SomeEnum`
 
 ### DateTime
-Note: DateTime automatically handles timezone conversion, meaning users can share their configs and it will convert to their local time allow things like countdowns to sync up.
 ```csharp
 CreateDateTime(MyModule.DateTimeSetting, "DateTime Title", "DateTime Description", DateTimeOffset.Now);
 ```
 DateTimes take the setting lookup, display title, display description, and default value.
 
 Backing type: `DateTimeOffset`
+
+:::info
+
+DateTime automatically handles timezone conversion, meaning users can share their configs and it will convert to their local time allow things like countdowns to sync up.
+
+:::
 
 ### TextBox List
 ```csharp
@@ -78,7 +83,7 @@ CreateGroup("My New Group", MyModule.ToggleSetting, MyModule.SliderIntSetting);
 ```
 These are only visual and allow for organisation.
 
-## Retreiving Settings
+## Retrieving Settings
 There are 2 methods you can use to get a setting. One to get the setting, and one to get the setting value. Getting the setting value is a shorthand for getting the setting. You mostly won't need to access the setting directly, but it's useful for when you're making custom settings and need to access anything inside it.
 
 ```csharp

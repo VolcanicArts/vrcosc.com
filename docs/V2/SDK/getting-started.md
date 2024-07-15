@@ -11,18 +11,34 @@ This guide is written with Visual Studio 2022 in mind. Please have an up-to-date
 
 :::
 
+:::warning
+
+The V2 install folder, `vrcosc-v2`, will change when V2 is released to just be `vrcosc`. Keep this in mind when creating any automations for your projects.
+
+:::
+
+### 0 - Terminology {#terminology}
+There are 3 parts to making and publishing VRCOSC modules:
+
+- Module Package
+  - This is what your repository on GitHub is and what appears inside the package listing in the app
+- Module Assemblies
+  - These are the DLL files built by each project that go into a module package
+- Modules
+  - These are the individual modules that make up an assembly
+
+As such, multiple modules can go into an assembly, and multiple assemblies can go into a package. However, usually there will only be 1 assembly per package, though multiple is supported.
+
 ### 1 - Creating a project {#creating-a-project}
 First, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
 
 Right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page.
 
-Next, right click on your project's csproj file and click edit. Where there is the line `<TargetFramework>` you need to change `net8.0` to `net8.0-windows.10.0.22621.0`. The specific windows build of .NET 8.0 is required for VRCOSC's SDK due to certain Windows integrations.
-
-:::info
-
-A single project can contain multiple modules. You'll see this referred to as module packages
-
-:::
+Next, right click on your project's csproj file and click edit. Replace the target framework with:
+```xml
+<TargetFramework>net8.0-windows.10.0.22621.0</TargetFramework>
+```
+The specific windows build of .NET 8.0 is required for VRCOSC's SDK due to certain Windows integrations.
 
 ### 2 - Installing the SDK {#installing-the-sdk}
 During the beta, the SDK's NuGet package is distributed locally. This will eventually be distributed on NuGet again when V2 is released. For now, you can tell Visual Studio to look at a local folder to install packages from.
@@ -42,6 +58,8 @@ At the very least you need the 3 attributes listed below. They indicate the disp
 [ModuleDescription("This is my test module")]
 [ModuleType(ModuleType.Generic)]
 public class TestModule : Module
+{
+}
 ```
 
 Now that this is done, a barebones module with no functionality has been created which can now be exported and tested.
@@ -86,7 +104,7 @@ The files that V2 downloads are any DLL files from the release that the user has
 
 :::warning
 
-This may change in the future to be a vrcosc.zip file for better security. Please keep up to date with V2 releases and this section of the documentation
+This may change in the future to be a vrcosc.zip file for better security. Please keep up to date with V2 releases and this section of the documentation.
 
 :::
 
@@ -100,9 +118,3 @@ If you want to be able to rapidly test your modules, you can add the following t
 This will automatically copy the built DLL into the local packages folder for V2. This allows you to build your modules and then reload them using the Debug page in the app without having to manually move any DLLs.
 
 If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automaticaly handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.
-
-:::warning
-
-The V2 install folder, `vrcosc-v2`, will change when V2 is released to just be `vrcosc`. Keep this in mind when creating any automations for your module projects.
-
-:::

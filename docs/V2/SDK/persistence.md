@@ -14,8 +14,8 @@ Persistence loads before `OnModuleStart` and saves after `OnModuleStop` to let y
 
 :::
 
-:::info
+:::warning
 
-The property instance is changed when written to, meaning any references will be out of date by the time `OnModuleStart` is called. Ensure you only take references in or after your module has started.`
+The property instance is changed when written to, meaning any references will be out of date by the time `OnModuleStart` is called. Ensure you only take references in or after your module has started
 
 :::
