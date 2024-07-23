@@ -6,12 +6,10 @@ sidebar_position: 1
 Welcome to VRCOSC's Docs. Here you can find the documentation on how to use the app, official modules, and making your own modules to distribute in the app.
 Feel free to reach out on the Discord server if you need anymore guidance, or feel that parts of these docs aren't as well-written as they could be.
 
-These docs are currently under construction, so some information may be wrong or missing.
-
-Most of the documentation is written with V2 in mind. V2 is the next major version of VRCOSC and is currently accessible with the V2 Beta role in the Discord server.
+If you'd like to make changes to these docs yourself, you can fork the repo [here](https://github.com/VolcanicArts/vrcosc.com).
 
 :::info
 
-This documentation is currently written for V2 version 2024.711.0. If the version is unreleased, the docs are being updated first.
+Most of the docs from the wiki have been transfered to the V1 section. V2 is the next version of the app and is in beta. You can test it out by downloading the zip file inside the v2-releases channel on the Discord server by getting the V2 Beta role.
 
 :::

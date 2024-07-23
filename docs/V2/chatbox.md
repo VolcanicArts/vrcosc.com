@@ -22,15 +22,9 @@ On the run page in the ChatBox tab, you can popout a preview of the ChatBox so y
 
 The top left of ChatBox page contains buttons for importing and exporting a config, as well as clearing the timeline.
 
-:::info
-
-If you push the clear button by accident, there is a warning to make sure you meant to click it.
-
-:::
-
 :::warning
 
-Always take frequent backups of your chatbox configs if you have complicated setups just in case!
+Always take frequent backups of your chatbox configs if you have complicated setups!
 
 :::
 
@@ -49,11 +43,11 @@ The Timeline lasts 60 seconds by default, whereby every 60 seconds the Timeline 
 ## Clips
 Clips are a way of managing the text of the ChatBox at a certain point in time, based on the evaluation of linked modules' states and events. For example, if I create a Clip on the top layer and tick the Media module, the Clip is now registered as following the states and events for the Media module.
 
-### Defaults
+### Built-In
 With no modules linked, a Clip will have a default state that lets you write text so you don't have to link a random module anymore.
 
 There are also some built-in variables that are always available to use:
-- Text - This is just for writing custom text that allows you to also use the functionality of variables
+- Custom Text - This is for writing custom text that allows you to also use the functionality of variables
 - Focused Window - This is the window you're currently focused on
 
 If you have any ideas for more built-in variables, please let me know in the [Discord Server](https://discord.gg/vj4brHyvT5)
@@ -83,7 +77,7 @@ For example, if we tick the Media and Clock module, the only states that will oc
 - Media (Playing) & Clock
 - Media (Paused) & Clock
 
-This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you definitely need.
+This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you need.
 
 If any module you have ticked in the "Select Modules" is disabled on the module listing page, the states and events that contain that module will be filtered out by the `Show Relevant Elements Only` button. Unticking this will show you all the generated states and events, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
 
@@ -96,3 +90,9 @@ Clips are evaluated for their validity at the Timeline's current time. The follo
 If a Clip is deemed invalid then the ChatBox will check the next layer down for a valid Clip. If no valid Clips are found, the ChatBox will be cleared.
 
 This evaluation step is done based on the ChatBox Time Span setting in the settings screen. VRChat's default is every 1.5 seconds.
+
+
+### Testing
+Run the modules and the ChatBox system will start. In the ChatBox tab on the run page you can see a preview of the ChatBox. The preview won't respect some of the options due to technical limitations, and some of the Unicode icon sizes will be incorrect if many are used at once, but it's a good starting point if you don't want to have VRChat open. The preview is also able to be popped out into its own window so you can see it while making changes to the timeline.
+
+The timeline's chosen clip will have a yellow border, and inside that clip the chosen state/event will also have a yellow border. This is to help with debugging which clips and which states/events are being chosen.

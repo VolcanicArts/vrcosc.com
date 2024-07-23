@@ -8,17 +8,23 @@ description: Module flow
 ## Loading
 There are 2 essential methods for defining your settings and parameters. `OnPreLoad` and `OnPostLoad`. As the names suggest, `OnPreLoad` happens before the module loads the user's data from disk and begins the loading process to get itself ready to be run. `OnPostLoad` happens after all this.
 
-`OnPreLoad` is where you should define all the static things for the module. E.G, creating the settings, registering the parameters, and setting up any unchanging states, events, and variables for the ChatBox
+`OnPreLoad` is where you should define all the static things for the module. E.G, creating the settings, registering the parameters, and setting up any unchanging states, events, and variables for the ChatBox.
 
 `OnPostLoad` is generally only used for setting up dynamic things for the module. E.G, creating states, events, and variables for the ChatBox that depend on settings. These must be created each time the module is loaded up, as after all this is complete the ChatBox then loads which first validates that all the data it needs is present, else it will refuse to load.
 
 For a good example of this, you can check the Counter module's code. Since there is a setting to define the counters, `OnPostLoad` is used to create a `Changed` event and `Value` variable for each defined counter.
 
+:::tip
+
+The recommened way is to setup settings and parameters in `OnPreLoad` and anything to do with the ChatBox in `OnPostLoad` to keep things clean.
+
+:::
+
 ## Start
 The `OnModuleStart` method is called whenever a user runs the modules. This can include the modules being automatically started. This is only called once on start so is the perfect place to do initial setup of anything your module may need to function, but which is dynamic at runtime. This method returns a `Task<bool>` to allow you to do an asynchronous start. Return false if your module has failed to start, true otherwise.
 
 ## Stop
-The `OnModuleStop` methid is called when all modules are stopped due to VRChat closing or a user manually stopping the modules. This is only called once on stop so can be used to clear any OSC parameters on a user's avatar and reset local module settings (if they aren't already set to a default in Start). This method returns a `Task` to allow you to do an asychronous stop. This will block the user from starting the modules again until all the running modules have stopped meaning you don't have to worry about race conditions with `OnModuleStart` being called while your module is still stopping.
+The `OnModuleStop` method is called when all modules are stopped due to VRChat closing or a user manually stopping the modules. This is only called once on stop so can be used to clear any OSC parameters on a user's avatar and reset local module settings (if they aren't already set to a default in Start). This method returns a `Task` to allow you to do an asychronous stop. This will block the user from starting the modules again until all the running modules have stopped meaning you don't have to worry about race conditions with `OnModuleStart` being called while your module is still stopping.
 
 ## Update
 To allow your module to have update methods, you define the `[ModuleUpdate(ModuleUpdateMode mode, bool updateImmediately, double deltaMilliseconds)]` attribute on any method you'd like to be called at a regular interval.
@@ -29,7 +35,7 @@ The `updateImmediately` field will call the method once directly after `OnModule
 
 The `deltaMilliseconds` field defines how long the time is between the update method being called is.
 
-:::info
+:::tip
 
 It's recommended to set variable values in an update method marked with `ChatBox`.
 

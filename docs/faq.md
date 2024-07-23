@@ -16,31 +16,30 @@ To open these locations, press `win+R` and paste the address in.
 
 :::
 
-### VRCOSC
+### VRCOSC {#locations-vrcosc}
 Install: `%localappdata%\vrcosc`
 
 Logs: `%appdata%\vrcosc\logs`
 
-:::info
+:::warning
 
 In V1, the log files get deleted when the app starts again. If you experience an error or crash, please take a copy of the logs before opening the app again!
 
 :::
 
-### VRChat
+### VRChat {#locations-vrchat}
 Common Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
 
-Data: `%appdata%\..\LocalLow\VRChat\VRChat`
+Data: `%localappdata%Low\VRChat\VRChat`
 
 ## Things to try first
-1) Ensuring that OSC is enabled through your action menu: Options -> OSC -> Enable
-2) Ensuring that your OSC config has been reset: Options -> OSC -> Reset Config
+1) Ensuring OSC is enabled through your action menu: Options -> OSC -> Enable
+2) Ensuring your OSC config has been reset: Options -> OSC -> Reset Config
 3) Deleting the `OSC` folder located in VRChat's data folder
-4) Changing worlds
-5) Restarting VRCOSC
-6) Restarting VRChat
-7) If you use a VPN, ensuring it is disabled
-8) Restarting your PC
+4) Restarting VRCOSC
+5) Restarting VRChat
+6) Turning off your VPN
+7) Restarting your PC
 
 :::warning
 
