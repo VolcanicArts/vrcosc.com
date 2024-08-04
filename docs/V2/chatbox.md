@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Understand how to use the ChatBox system
 ---
 
