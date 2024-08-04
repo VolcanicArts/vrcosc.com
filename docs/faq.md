@@ -49,8 +49,10 @@ Sometimes VRChat's Reset Config button in the action menu doesn't work and requi
 
 ## Specific Issues
 
-### I've done everything above and VRChat still won't receive data {#network-adapter}
-It's possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/wifi connection
+### I've done everything above and VRChat still won't receive data {#last-resorts}
+You may be experiencing the install.exe bug. Restart your computer, go to VRChat's install folder, delete `install.exe`. Sometimes this program doesn't shutdown properly which causes port 9000 to be held onto.
+
+It's also possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/wifi connection.
 
 ### Parameters are being received by VRChat in the OSC debug menu, but won't update on my avatar {#received-but-no-update}
 Go to VRChat's data folder and delete the `OSC` folder, then disable and enable OSC. This will force VRChat to regenerate the OSC config for your avatar.
