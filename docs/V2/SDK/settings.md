@@ -70,11 +70,17 @@ Backing type: `List<string>`/`List<int>`/`List<float>` (depending on which value
 
 ### Custom
 ```csharp
-CreateCustom(MyModule.CustomSetting, new CustomModuleSetting(new ModuleSettingMetadata("My Custom Setting", "Custom setting description", typeof(CustomModuleSettingPage))));
+CreateCustom(MyModule.CustomSetting, new CustomModuleSetting("My Custom Setting", "Custom setting description", typeof(CustomModuleSettingUserControl), "Some Value"));
 ```
-Custom settings takes the setting lookup, the custom setting which requires, at least, the metadata of the display title, display description, and the type of the custom page to render the setting.
+Custom settings takes the setting lookup, the custom setting which requires, at least, the display title, display description, and the type of the custom `UserControl` to render the setting.
 
-Creating custom settings requires knowledge of WPF so that you can create the custom page, and is generally not needed unless you're doing very custom modules. Feel free to reach out on Discord as if I can do a more general implementation of a setting and add it to the SDK that would benefit more.
+Creating custom settings requires knowledge of WPF so that you can create the custom `UserControl`, and is generally not needed unless you're doing very custom modules. Feel free to reach out on Discord as if I can do a more general implementation of a setting and add it to the SDK that would benefit more.
+
+:::info
+
+Your custom setting's `UserControl` *must* have a constructor that takes in the Module and CustomModuleSetting
+
+:::
 
 ## Groups
 Setting groups can be made by providing setting lookups:

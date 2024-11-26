@@ -50,7 +50,7 @@ CreateEvent(string lookup, string displayName, string defaultFormat = "", IEnume
 - defaultFormat - The default format of the event
 - defaultVariables - A list of clip variable references that can be obtained from calling `CreateVariable`
 - defaultShowTyping - Whether the typing indicator should be shown by default
-- defaultLength - The default length that the event lasts for in secods
+- defaultLength - The default length that the event lasts for in seconds
 - defaultBehaviour - The behaviour of how the event should be handled when it occurs. Override will override the current event. Queue will queue the event to occur after the current event if there's a current event. Ignore will ignore the event if there's a current event
 
 ### Variables

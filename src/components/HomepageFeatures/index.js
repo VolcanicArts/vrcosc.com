@@ -7,8 +7,8 @@ const FeatureList = [
     title: 'Easy to Use',
     description: (
       <>
-        VRCOSC was designed from the ground to be user-friendly and
-        easily understable. Reach out if you can't figure something out
+        VRCOSC was designed from the ground up to be user-friendly and
+        easily understandable. Reach out if you can't figure something out
         and we'll be happy to help!
       </>
     )
@@ -19,7 +19,7 @@ const FeatureList = [
       <>
         The SDK is made with developers in mind to allow them to focus on
         creating their module for distribution and less on the boilerplate
-        of desktop apps.
+        of desktop apps and interfacing with VRChat.
       </>
     )
   },

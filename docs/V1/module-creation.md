@@ -16,7 +16,7 @@ Every module class is instantiated when VRCOSC is started. So if you have a modu
 
 :::warning
 
-Due to the way V1 handles module instanciation, never do anything inside the constructor of your module, only `CreateAttributes` and `OnModuleStart`. This is fixed and better in V2
+Due to the way V1 handles module instantiation, never do anything inside the constructor of your module, only `CreateAttributes` and `OnModuleStart`. This is fixed and better in V2
 
 :::
 
@@ -55,7 +55,7 @@ This class name is used when saving data, so if this class name is changed at an
 All modules are provided with a set of C# attributes to place on your module class to define the metadata of the module.
 
 ### Title
-Defined using `[ModuleTitle(string title)]`. The title of the module is what's shown to the user. This can be different from the class name explained before, but in practise it should match as to not cause confusion.
+Defined using `[ModuleTitle(string title)]`. The title of the module is what's shown to the user. This can be different from the class name explained before, but in practice it should match as to not cause confusion.
 
 ### Description
 Defined using `[ModuleDescription(string shortDescription, string? longDescription = null)]`. A short description of your module and an optional longer description.
@@ -167,7 +167,7 @@ This is called whenever anything about the player is updated, for example, their
 ## World Specific
 :::info
 
-The split of Avatar module and World module was in anticipation of VRChat adding world OSC. This is not happening for the forseeable future so you should only ever need to use AvatarModule.
+The split of Avatar module and World module was in anticipation of VRChat adding world OSC. This is not happening for the foreseeable future so you should only ever need to use AvatarModule.
 
 :::
 

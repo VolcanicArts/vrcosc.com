@@ -100,7 +100,7 @@ This evaluation step is done based on the ChatBox Time Span setting in the setti
 
 ### Media - Now Playing Event
 In this example, you can see that the "Media - Now Playing" format will only be put into the ChatBox if the "Media - Now Playing" event occurs, and will be shown for 5 seconds. The "Media" Clip covers the entire Timeline to allow this event to be triggered any time.
-![image](https://github.com/VolcanicArts/VRCOSC/assets/29819296/3256063c-73ef-4301-8947-cdc6be9e82c7)
+![Media Example](/img/v1/chatbox_media_example.png)
 
 
 ### Multiple Clips
@@ -111,4 +111,4 @@ As the AFK state only occurs when VRC's AFK animator parameter is set to true, t
 This then goes down the priority list into the "Media" Clip (see above for how that's setup). If the "Media - Now Playing" event isn't occurring, the "Media" Clip is also marked as invalid.
 
 That means that the "Clock" and "Weather" Clips are the only ones left and will show for 9 seconds each one after the other before the ChatBox is then cleared for the remaining 42 seconds (Remembering that if either the "Media - Now Playing" event occurs or I go AFK then the ChatBox shows them as they are higher priorities and their respective Clips become valid)
-![image](https://github.com/VolcanicArts/VRCOSC/assets/29819296/304324a2-6e52-4350-a22f-5c6692491784)
+![Multimodule Example](/img/v1/chatbox_multimodule_example.png)

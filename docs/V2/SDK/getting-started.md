@@ -20,14 +20,12 @@ The V2 install folder, `vrcosc-v2`, will change when V2 is released to just be `
 ### 0 - Terminology {#terminology}
 There are 3 parts to making and publishing VRCOSC modules:
 
-- Module Package
-  - This is what your repository on GitHub is and what appears inside the package listing in the app
-- Module Assemblies
-  - These are the DLL files built by each project that go into a module package
-- Modules
-  - These are the individual modules that make up an assembly
+- Module Package - This is what your repository on GitHub is and what appears inside the package listing in the app
+- Module Assembly - Assemblies contain multiple modules, and multiple can make up a module package
+- Module - Individual modules make up a module assembly
 
-As such, multiple modules can go into an assembly, and multiple assemblies can go into a package. However, usually there will only be 1 assembly per package, though multiple is supported.
+As such, multiple modules can go into an assembly, and multiple assemblies can go into a package. However, usually there will only be 1 assembly per package.
+It's recommended to make multiple packages if you want to truly separate assemblies into different installs for users.
 
 ### 1 - Creating a project {#creating-a-project}
 First, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
@@ -38,7 +36,14 @@ Next, right click on your project's csproj file and click edit. Replace the targ
 ```xml
 <TargetFramework>net8.0-windows.10.0.22621.0</TargetFramework>
 ```
-The specific windows build of .NET 8.0 is required for VRCOSC's SDK due to certain Windows integrations.
+
+You'll also need to set the specific windows SDK version:
+```xml
+<WindowsSdkPackageVersion>10.0.22621.52</WindowsSdkPackageVersion>
+```
+
+The specific windows build of .NET 8.0 and the SDK is required for VRCOSC's SDK due to certain Windows integrations, and for people building on slightly different versions of Windows.
+Any changes to these requirements will be pinged about, so make sure if you're making a module to be in the Discord server with any developer roles.
 
 ### 2 - Installing the SDK {#installing-the-sdk}
 During the beta, the SDK's NuGet package is distributed locally. This will eventually be distributed on NuGet again when V2 is released. For now, you can tell Visual Studio to look at a local folder to install packages from.
@@ -62,7 +67,7 @@ public class TestModule : Module
 }
 ```
 
-Now that this is done, a barebones module with no functionality has been created which can now be exported and tested.
+Now that this is done, a module with no functionality has been created which can now be exported and tested.
 
 :::danger
 
@@ -73,7 +78,7 @@ The module's name is used as its ID. Internally `TestModule` gets turned into `t
 ### 4 - Exporting your module package {#exporting-your-module-package}
 First, build your project. Then go to your project's folder and into `bin/Debug/net8.0-windows10.0.22621.0`. You should find there's a DLL file in there called `MyTestModules.dll`. Copy this file and put it into the `%appdata%/vrcosc-v2/packages/local` folder. This local packages folder is a special folder for testing local modules so as not to interfere with the same module when they're in another package.
 
-If VRCOSC is already open you can reload the modules to load your test module by going into the app's settings, Debug, and turning on Debug Mode. You'll now see a new debug tab has appeared which has a button to reload the modules. Clicking this should result in your module appearing on the module listing page.
+If VRCOSC is already open you can reload the modules to load your test module by going into the app's settings, Advanced, and turning on Debug Mode. You'll now see a new debug tab has appeared which has a button to reload the modules. Clicking this should result in your module appearing on the module listing page.
 
 ### 5 - Publishing your module package {#publishing-your-module-package}
 To publish a V2 module and have it appear in the app's package list, tag your repo with `vrcosc-package`.
@@ -100,13 +105,7 @@ Any releases made on your repo will now be listed automatically on the package s
 
 It can take up to 24 hours for the package list to refresh for all users. Users can manually refresh the package list at any time using the refresh button.
 
-The files that V2 downloads are any DLL files from the release that the user has picked, so if you need dependencies that aren't packaged with V2, or need specific versions of dependencies that are, you can add those to the release as well and V2 will handle creating an isolated environment for the whole package to load into.
-
-:::warning
-
-This may change in the future to be a vrcosc.zip file for better security. Please keep up to date with V2 releases and this section of the documentation.
-
-:::
+The files that V2 downloads are *any* DLL files OR *any* ZIP files from the release that the user has picked, so if you need dependencies that aren't packaged with V2, or need specific versions of dependencies that are, you can add those to the release as well and V2 will handle creating an isolated environment for the whole package to load into. Using a ZIP allows you to package any runtime resources your modules might need.
 
 ### 6 - Advanced Development {#advanced-development}
 If you want to be able to rapidly test your modules, you can add the following to your csproj file:
@@ -117,4 +116,4 @@ If you want to be able to rapidly test your modules, you can add the following t
 ```
 This will automatically copy the built DLL into the local packages folder for V2. This allows you to build your modules and then reload them using the Debug page in the app without having to manually move any DLLs.
 
-If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automaticaly handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.
+If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automatically handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.

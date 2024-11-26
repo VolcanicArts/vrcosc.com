@@ -28,7 +28,6 @@ After that is the parameter mode. This is just used for safety to tell VRCOSC if
 Finally, the rest of the method call is metadata, which is the display name and display description of the parameter.
 
 There is also an optional bool at the end to mark a parameter as legacy, meaning it's still available to use but might be removed in the future, so this lets users know to change over to newer parameters else their prefabs might break.
-Note: This may be superceeded by a feature in the works called parameter sets. Keep an eye on V2 updates and the docs for news.
 
 :::info
 
@@ -51,7 +50,7 @@ This uses the `MediaParameter` Enum to send to a registered parameter. Behind th
 SendParameter("MyNormalParameter", false);
 ```
 
-For the above, you can send directly to a parameter using its name. This is not customisable by the user and should be used spareingly when you want to drive a parameter you know will never change.
+For the above, you can send directly to a parameter using its name. This is not customisable by the user and should be used sparingly when you want to drive a parameter you know will never change.
 
 ## Receiving Parameters
 To receive a parameter, there are 2 methods to override:

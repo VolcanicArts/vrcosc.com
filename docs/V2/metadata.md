@@ -1,10 +1,16 @@
 ---
 sidebar_position: 1
+title: Metadata
+description: Metadata parameters
 ---
 
-# Controls
+## Metadata Parameters
 
-V2 contains more granular OSC global controls than V1. These allow you to control the state of the app at runtime from your avatar.
+| Name | Type | Description |
+| :--- | :--: | :-- |
+| VRCOSC/Metadata/Modules/\{moduleid\} | Bool | Whether a module is currently running |
+
+## Control Parameters
 
 | Name | Type | Description |
 | :--- | :--: | :-- |

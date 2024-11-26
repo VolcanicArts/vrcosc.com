@@ -16,7 +16,7 @@ For a good example of this, you can check the Counter module's code. Since there
 
 :::tip
 
-The recommened way is to setup settings and parameters in `OnPreLoad` and anything to do with the ChatBox in `OnPostLoad` to keep things clean.
+The recommended way is to setup settings and parameters in `OnPreLoad` and anything to do with the ChatBox in `OnPostLoad` to keep things clean.
 
 :::
 
@@ -24,7 +24,7 @@ The recommened way is to setup settings and parameters in `OnPreLoad` and anythi
 The `OnModuleStart` method is called whenever a user runs the modules. This can include the modules being automatically started. This is only called once on start so is the perfect place to do initial setup of anything your module may need to function, but which is dynamic at runtime. This method returns a `Task<bool>` to allow you to do an asynchronous start. Return false if your module has failed to start, true otherwise.
 
 ## Stop
-The `OnModuleStop` method is called when all modules are stopped due to VRChat closing or a user manually stopping the modules. This is only called once on stop so can be used to clear any OSC parameters on a user's avatar and reset local module settings (if they aren't already set to a default in Start). This method returns a `Task` to allow you to do an asychronous stop. This will block the user from starting the modules again until all the running modules have stopped meaning you don't have to worry about race conditions with `OnModuleStart` being called while your module is still stopping.
+The `OnModuleStop` method is called when all modules are stopped due to VRChat closing or a user manually stopping the modules. This is only called once on stop so can be used to clear any OSC parameters on a user's avatar and reset local module settings (if they aren't already set to a default in Start). This method returns a `Task` to allow you to do an asynchronous stop. This will block the user from starting the modules again until all the running modules have stopped meaning you don't have to worry about race conditions with `OnModuleStart` being called while your module is still stopping.
 
 ## Update
 To allow your module to have update methods, you define the `[ModuleUpdate(ModuleUpdateMode mode, bool updateImmediately, double deltaMilliseconds)]` attribute on any method you'd like to be called at a regular interval.

@@ -34,28 +34,23 @@ Data: `%localappdata%Low\VRChat\VRChat`
 
 ## Things to try first
 1) Ensuring OSC is enabled through your action menu: Options -> OSC -> Enable
-2) Ensuring your OSC config has been reset: Options -> OSC -> Reset Config
-3) Deleting the `OSC` folder located in VRChat's data folder
-4) Restarting VRCOSC
-5) Restarting VRChat
-6) Turning off your VPN
-7) Restarting your PC
-
-:::warning
-
-Sometimes VRChat's Reset Config button in the action menu doesn't work and requires deleting the OSC folder anyway!
-
-:::
+2) Deleting the `OSC` folder located in VRChat's data folder
+3) Restarting VRCOSC
+4) Restarting VRChat
+5) Turning off your VPN
+6) Restarting your PC
 
 ## Specific Issues
+
+### VRCOSC won't install no matter what {#cant-install}
+V1: Reinstall .NET6 (https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+V2: Reinstall .NET8 (https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ### I've done everything above and VRChat still won't receive data {#last-resorts}
 You may be experiencing the install.exe bug. Restart your computer, go to VRChat's install folder, delete `install.exe`. Sometimes this program doesn't shutdown properly which causes port 9000 to be held onto.
 
-It's also possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/wifi connection.
-
-### Parameters are being received by VRChat in the OSC debug menu, but won't update on my avatar {#received-but-no-update}
-Go to VRChat's data folder and delete the `OSC` folder, then disable and enable OSC. This will force VRChat to regenerate the OSC config for your avatar.
+It's also possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/WiFi connection.
 
 ### My quick menu says I've been timed out for spam {#timed-out-for-spam}
 This is due to your VRChat client lagging and VRChat not taking that into account between when VRCOSC sends ChatBox values. You can increase the `ChatBox Time Span` value in the settings tab by 100-200 milliseconds to compensate for this. VRChat has a default minimum of 1500 milliseconds. If it still occurs, keep increasing the value.
@@ -69,8 +64,8 @@ If this timeout is only happening for you during loading in or out of worlds tha
 ### Media is refusing to connect to Spotify {#spotify}
 Ensure you have the [Desktop](https://www.spotify.com/uk/download/windows) version and not the Windows Store version.
 
-Also ensure that you have the following setting enabled:
-![image](https://user-images.githubusercontent.com/29819296/211019070-d74e70c6-55d2-4000-ad9f-34f4054c4108.png)
+Also ensure that you have the `Show desktop overlay when using media keys` setting enabled in Spotify:
+![Spotify Display Settings](/img/spotify_display_settings.png)
 
 If both are true, try reinstalling Spotify.
 

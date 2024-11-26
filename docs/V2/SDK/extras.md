@@ -10,6 +10,6 @@ VRCOSC will automatically handle VRCFury prefixes for registered parameters. If 
 
 :::warning
 
-This feature is a failsafe. It's still recommended to set the parameters that VRCOSC is using to global. You can mark the parameters as global in a Full Controller by adding a `*` in the first instance of a global parameters list.
+This feature is a fail-safe. It's still recommended to set the parameters that VRCOSC is using to global. You can mark the parameters as global in a Full Controller by adding a `*` in the first instance of a global parameters list in the advanced settings of the Full Controller.
 
 :::
