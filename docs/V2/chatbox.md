@@ -87,7 +87,8 @@ For example, if we tick the Media and Clock module, the only states that will oc
 
 This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you need.
 
-If any module you have ticked in the "Select Modules" is disabled on the module listing page, the states and events that contain that module will be filtered out by the `Show Relevant Elements Only` button. Unticking this will show you all the generated states and events, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
+### Show Relevant Elements Only
+If any module you have ticked in the `Select Modules` section is disabled on the module listing view, the states and events that contain that module will be filtered out by the `Show Relevant Elements Only` button. Unticking this will show you all the generated states and events, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
 
 ### Validation
 Clips are evaluated for their validity at the Timeline's current time. The following steps are done to evaluate a clip:
@@ -100,6 +101,6 @@ If a Clip is deemed invalid then the ChatBox will check the next layer down for 
 This evaluation step is done based on the ChatBox Time Span setting in the settings screen. VRChat's default is every 1.5 seconds.
 
 ### Testing
-Run the modules and the ChatBox system will start. In the ChatBox tab on the run page you can see a preview of the ChatBox. The preview won't respect some of the options due to technical limitations, and some of the Unicode icon sizes will be incorrect if many are used at once, but it's a good starting point if you don't want to have VRChat open. The preview is also able to be popped out into its own window so you can see it while making changes to the timeline.
+Run the modules and the ChatBox system will start. In the ChatBox tab on the run view you can see a preview of the ChatBox. The preview won't respect some of the options due to technical limitations, and some of the Unicode icon sizes will be incorrect if many are used at once, but it's a good starting point if you don't want to have VRChat open. The preview is also able to be popped out into its own window so you can see it while making changes to the timeline.
 
 The timeline's chosen clip will have a yellow border, and inside that clip the chosen state/event will also have a yellow border. This is to help with debugging which clips and which states/events are being chosen.

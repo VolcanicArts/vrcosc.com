@@ -32,18 +32,21 @@ First, create a new class library and select .NET 8.0 as the framework. If you d
 
 Right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page.
 
-Next, right click on your project's csproj file and click edit. Replace the target framework with:
+Next, right click on your project's csproj file and click edit. Replace the property group with:
 ```xml
-<TargetFramework>net8.0-windows.10.0.22621.0</TargetFramework>
-```
-
-You'll also need to set the specific windows SDK version:
-```xml
-<WindowsSdkPackageVersion>10.0.22621.52</WindowsSdkPackageVersion>
+<PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latestmajor</LangVersion>
+    <WindowsSdkPackageVersion>10.0.22621.52</WindowsSdkPackageVersion>
+</PropertyGroup>
 ```
 
 The specific windows build of .NET 8.0 and the SDK is required for VRCOSC's SDK due to certain Windows integrations, and for people building on slightly different versions of Windows.
-Any changes to these requirements will be pinged about, so make sure if you're making a module to be in the Discord server with any developer roles.
+Any changes to these requirements will be pinged about, so make sure if you're making a module to be in the Discord server.
 
 ### 2 - Installing the SDK {#installing-the-sdk}
 During the beta, the SDK's NuGet package is distributed locally. This will eventually be distributed on NuGet again when V2 is released. For now, you can tell Visual Studio to look at a local folder to install packages from.

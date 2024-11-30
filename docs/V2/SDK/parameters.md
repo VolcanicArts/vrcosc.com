@@ -67,7 +67,7 @@ protected override void OnRegisteredParameterReceived(RegisteredParameter parame
 }
 ```
 
-This listens for registered parameters. Registered parameters, once again, have the benefit of being abstracted from your module, so you can listen for whenever the lookup arrives and the user can change the parameter name to whatever they need it to be. Registered parameters can give you access to the parameter value using `GetValue<T>()`, where T is the type of the parameter's value. Note: This type must match the type that it's expecting else an error will be thrown. Registered parameters also have access to a function called wildcards, which will be spoken about in a different advanced section.
+This listens for registered parameters. Registered parameters, once again, have the benefit of being abstracted from your module, so you can listen for whenever the lookup arrives and the user can change the parameter name to whatever they need it to be. Registered parameters can give you access to the parameter value using `GetValue<T>()`, where T is the type of the parameter's value. Note: This type must match the type that it's expecting else an error will be thrown.
 
 
 ```csharp
@@ -75,12 +75,26 @@ protected override void OnAnyParameterReceived(ReceivedParameter parameter)
 {
     if (parameter.Name == "MyNormalParameter")
     {
-        Console.WriteLine($"MyNormalParameter's value is {parameter.GetValue<bool>()}`)
+        Console.WriteLine($"MyNormalParameter's value is {parameter.GetValue<bool>()}")
     }
 }
 ```
 
 You can also listen for any parameter. Unregistered *and* registered parameters will call this method, and registered parameters will call this before calling `OnRegisteredParameterReceived`, so only use if it you need to. An example of a good use of this is the Counter module, as it listens for any parameter that arrives and if it finds a match for a parameter that a counter needs it can then use the parameter's data to increase the counter's value.
+
+## Wildcards
+Wildcards are available to registered parameters. When you put a `*` in a parameter, for example, `MyParameter/*`, the `*` can be changed to anything on the user's avatar.
+In your module, `OnRegisteredParameterReceived` will be triggered for any parameter that matches `MyParameter/*`. You can have as many wildcards as you want in your parameter.
+
+To check if the wildcard exists, you can call `parameter.IsWildcardType<T>(position)`, where `T` is checking if the wildcard can be changed into that type, and `position` is the position of the wildcard.
+
+To extract the wildcard, you can call `parameter.GetWildcard<T>(position)`.
+
+:::info
+
+To keep consistency, wildcards only support the string, int, and float types
+
+:::
 
 ## OSCQuery
 OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in game.
