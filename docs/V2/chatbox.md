@@ -38,7 +38,7 @@ The top left of ChatBox page contains buttons for importing and exporting a conf
 
 ## Live Text
 When the modules are running, and you want to type something in the ChatBox, you cannot do it from in-game. VRCOSC takes control of the ChatBox.
-Instead, use the `Type Text:` area above the timeline.
+Instead, use the `Live Text:` area in the ChatBox tab of the run view.
 
 ## Controls
 Right clicking any layer will give you the option to add a clip to it. Right clicking any clip will give you the option to delete it. You can resize a clip by dragging either end, and can move a clip by dragging anywhere in the middle. You can move a clip between layers by dragging from the middle of a clip into any empty space in a layer. This clip will resize if needed.

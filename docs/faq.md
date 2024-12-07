@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # FAQ
@@ -12,23 +12,17 @@ Anything that isn't listed here or that doesn't solve your issue can be posted i
 
 :::info
 
-To open these locations, press `win+R` and paste the address in.
+To open these locations, press `Win + R` and paste the address in.
 
 :::
 
 ### VRCOSC {#locations-vrcosc}
 Install: `%localappdata%\vrcosc`
 
-Logs: `%appdata%\vrcosc\logs`
-
-:::warning
-
-In V1, the log files get deleted when the app starts again. If you experience an error or crash, please take a copy of the logs before opening the app again!
-
-:::
+Logs: `%appdata%\vrcosc\logs` (runtime.log is the main log file)
 
 ### VRChat {#locations-vrchat}
-Common Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
+Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
 
 Data: `%localappdata%Low\VRChat\VRChat`
 
@@ -42,24 +36,19 @@ Data: `%localappdata%Low\VRChat\VRChat`
 
 ## Specific Issues
 
-### VRCOSC won't install no matter what {#cant-install}
-V1: Reinstall .NET6 (https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-
-V2: Reinstall .NET8 (https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
 ### I've done everything above and VRChat still won't receive data {#last-resorts}
 You may be experiencing the install.exe bug. Restart your computer, go to VRChat's install folder, delete `install.exe`. Sometimes this program doesn't shutdown properly which causes port 9000 to be held onto.
 
 It's also possible Windows has assigned an extra network adapter. Go into your network settings and disable any adapters you're not using to leave just your ethernet/WiFi connection.
 
+### VRCOSC won't install no matter what {#cant-install}
+Reinstall .NET8 (https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+
+### My ChatBox still won't show for me {#no-chatbox-for-self}
+Make sure `Show Own ChatBox` is enabled in VRChat's settings.
+
 ### My quick menu says I've been timed out for spam {#timed-out-for-spam}
-This is due to your VRChat client lagging and VRChat not taking that into account between when VRCOSC sends ChatBox values. You can increase the `ChatBox Time Span` value in the settings tab by 100-200 milliseconds to compensate for this. VRChat has a default minimum of 1500 milliseconds. If it still occurs, keep increasing the value.
-
-:::info
-
-If this timeout is only happening for you during loading in or out of worlds that's normal behaviour, since VRChat will commonly lag during those times
-
-:::
+This is due to your VRChat client lagging and VRChat not taking that into account between when VRCOSC sends ChatBox values. You can increase the `ChatBox Time Span` value in the settings tab by 100-200 milliseconds to compensate for this. VRChat has a default minimum of 1500 milliseconds. If it still occurs, keep increasing the value by 100 until the timeout stops.
 
 ### Media is refusing to connect to Spotify {#spotify}
 Ensure you have the [Desktop](https://www.spotify.com/uk/download/windows) version and not the Windows Store version.

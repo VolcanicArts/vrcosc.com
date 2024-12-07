@@ -6,7 +6,7 @@ description: Upgrading from V1
 # Upgrading From V1
 When V2 is released, V1 will automatically update. All your V1 files will be placed in a backup folder, and first time setup will run for V2.
 
-None of your V1 files are compatible with V2 due to major architecture changes. However this is a good thing as learning how the new systems work is preferable.
+None of your V1 files are compatible with V2 due to major architecture changes. However, this is a good thing as learning how the new systems work is preferable.
 
 All modules have had a facelift and should make setting up more complex modules easier. For example, the Counter module now has separate windows for each counter, with more customisation options.
 
