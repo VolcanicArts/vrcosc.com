@@ -6,11 +6,15 @@ description: Metadata parameters
 
 ## Metadata Parameters
 
+These are send only.
+
 | Name | Type | Description |
 | :--- | :--: | :-- |
 | VRCOSC/Metadata/Modules/\{moduleid\} | Bool | Whether a module is currently running |
 
 ## Control Parameters
+
+These are send and receive. They send once when the modules are ran.
 
 | Name | Type | Description |
 | :--- | :--: | :-- |

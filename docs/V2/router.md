@@ -5,6 +5,13 @@ description: Using the router
 
 # Router
 
+:::warning
+
+The router should mostly be useless now, but has been left in for backwards compatibility. VRCOSC, VRCFT, and OGB, are all compatible with OSCQuery.
+The router should only be used when you have 2 or more non-OSCQuery apps that are receiving from VRChat.
+
+:::
+
 The router allows you to route apps that don't use OSCQuery through VRCOSC to stop port binding issues.
 
 To use the router, you need to choose an new receiving/listening port for the app you'd like to route. Any number above 9001 is a good bet so start with 9002 and increment.

@@ -39,10 +39,15 @@ Backing type: `int`/`float` (depending on which slider you enter)
 Note: Dropdowns only accept enums as settings are required to be static. If you need to populate a dynamic list, look at the runtime page.
 ```csharp
 CreateDropdown(MyModule.DropdownSetting, "Dropdown Title", "Dropdown Description", SomeEnum.SomeValue)
+CreateDropdown(MyModule.DropdownSetting, "Dropdown Title", "Dropdown Description", [new DropdownItem("Item Title", "item_id"), new DropdownItem("Another Item Title", "item_id_2")], new DropdownItem("Item Title", "item_id"))
 ```
 Dropdowns take the setting lookup, display title, display description, and the default value. The default value also tells the setting which enum to use to populate the dropdown.
 
-Backing type: `SomeEnum`
+Dropdowns also take a list of DropdownItems, and a default DropdownItem. DropdownItems contain a title and an ID. You CANNOT use this a dynamically populated dropdown list.
+This type of dropdown is used for items that you know beforehand, like timezones.
+The `item_id` is what's stored in the module's setting's file, so don't change these.
+
+Backing type: `SomeEnum`/`string`
 
 ### DateTime
 ```csharp
