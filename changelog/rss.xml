@@ -4,10 +4,156 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Fri, 15 Nov 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Dec 2024 16:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2024.1208.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2024.1208.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2024.1208.0</guid>
+            <pubDate>Sun, 08 Dec 2024 16:00:00 GMT</pubDate>
+            <description><![CDATA[After over a year of work, V2 is finally here. A lot has changed, so brace yourself for a read!]]></description>
+            <content:encoded><![CDATA[<p>After over a year of work, V2 is finally here. A lot has changed, so brace yourself for a read!</p>
+<p>As there has been many changes, and there are a lot of differences in what modules should be used now, take a read of the upgrade document <a href="https://volcanicarts.github.io/docs/v2/upgrading">here</a>.</p>
+<p>As always, if you need help, join the <a href="https://vrcosc.com/discord" target="_blank" rel="noopener noreferrer">Discord Server</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-changed">What's Changed?<a href="https://volcanicarts.github.io/changelog/2024.1208.0#whats-changed" class="hash-link" aria-label="Direct link to What's Changed?" title="Direct link to What's Changed?">​</a></h2>
+<ul>
+<li>UI framework<!-- -->
+<ul>
+<li>V2 is written in WPF, meaning that it's now written in a proper desktop framework that Windows supports</li>
+<li>This enables for clearer text, faster UI, lower memory usage, lower storage usage, lower CPU usage, and NO GPU usage!</li>
+<li>This also allows for opening multiple windows so that the UI can be less cramped</li>
+</ul>
+</li>
+<li>OSCQuery<!-- -->
+<ul>
+<li>VRCOSC now supports connecting to VRChat via OSCQuery</li>
+<li>If you don't know what OSCQuery is, that's fine! It just means less port errors if you're running other apps</li>
+<li>If you were previously using the router, you now shouldn't need it</li>
+</ul>
+</li>
+<li>Profiles<!-- -->
+<ul>
+<li>Everything you do in the app, aside from global settings, is now inside a profile</li>
+<li>This means you can now make different profiles for different things</li>
+<li>Profiles are able to be copied if needed</li>
+<li>Profiles are also able to be linked to avatars, meaning if you change into an avatar the linked profile will be changed to, automating profile switching!</li>
+</ul>
+</li>
+<li>Modules<!-- -->
+<ul>
+<li>The SDK has been completely revamped to be more stable and resilient</li>
+<li>Modules are now installed directly from GitHub, and the official modules aren't packaged with the app. This allows for modules to be updated without the app updating</li>
+<li>Anyone can now publish a module package on GitHub and have it appear inside the app for everyone to use!</li>
+<li>Modules have had a massive facelift with clearer UI for their settings and parameters</li>
+<li>You can now import/export configs for easier sharing, and for putting alongside prefabs so installing them even easier</li>
+<li>Compatible prefabs are also linked</li>
+<li>Where applicable, there are also links to the docs for certain modules where extra information is useful</li>
+<li>Parameters are also now able to be disabled, if you don't want to see certain parameters</li>
+</ul>
+</li>
+<li>Run View<!-- -->
+<ul>
+<li>The run view has had a massive upgrade with several notable features</li>
+<li>The first tab, runtime, allows module developers to create custom UI to be placed on the run view for users to use. These are meant to be for settings that can be dynamically populated during runtime</li>
+<li>The second tab, avatar, is the incoming and outgoing parameter list that was in V1</li>
+<li>The third tab, chatbox, is a preview of the ChatBox when the timeline is active, meaning you don't have to go into VRChat to see if things are working</li>
+<li>The chatbox tab also allows you to type live text into the ChatBox to override the timeline</li>
+</ul>
+</li>
+<li>ChatBox V4<!-- -->
+<ul>
+<li>ChatBox V4, also now just the ChatBox Animation System, is an upgraded version of ChatBox V3</li>
+<li>The timeline now allows you to reorder clips by dragging them between layers</li>
+<li>Module developers can now add dynamic states (ones that aren't available when the app starts), meaning for things like the Counter module, different states and events per counter!</li>
+<li>States and events have had a facelift, allowing for custom settings per state and event. Things like showing the typing indicator, some background tricks to "hide" it, and more to come!</li>
+<li>The biggest change has been to how variables are referenced. They're now in a list, where you use <code>{i}</code> in the textbox to reference them, where <code>i</code> is the number next to the variable</li>
+<li>Variables are now instanced, meaning the module provides some raw data, and you choose how it's formatted</li>
+<li>TickerTape is no longer a module, as every variable can ticker tape!</li>
+<li>There's also some custom variables that don't require a module to work. If you think you know of something that would be useful, suggest it</li>
+<li>You'll also see the clips and states/events outline in yellow. This is to show you which clip and state/event is currently active</li>
+</ul>
+</li>
+<li>Speech To Text<!-- -->
+<ul>
+<li>The speech engine is now global rather than being per module, and has changed from VOSK to Whisper</li>
+<li>Whisper has many upsides, being that it's faster, more accurate, has punctuation, and uses less resources</li>
+<li>Since it's global, you need to go into the app's settings and install a model</li>
+<li>In the settings you can also mess with the different sliders to get recognition to work better for you. The default settings should be fine for most users</li>
+<li>If you have a Vulkan-capable GPU, it will also be used where possible to speed up recognition. It won't use it if VRChat is taking up all your GPU though!</li>
+</ul>
+</li>
+<li>SteamVR<!-- -->
+<ul>
+<li>SteamVR integration has been given an upgrade, allowing modules to reference specific roles for trackers rather than having a list</li>
+<li>This requires users to go into the app's settings and assign roles to all the devices that have connected to their SteamVR instance</li>
+</ul>
+</li>
+</ul>
+<p>Along with everything above there's countless smaller changes, improvements, and QoL features!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you">Thank You!<a href="https://volcanicarts.github.io/changelog/2024.1208.0#thank-you" class="hash-link" aria-label="Direct link to Thank You!" title="Direct link to Thank You!">​</a></h2>
+<p>Thank you to everyone that's supported V2's development over the past year. It's been a lot of effort to get things right, and I'm very excited for the future of VRCOSC.</p>
+<p>A big thank you to the beta testers who were daily-driving V2 and reporting bugs, and a massive thank you to the whole community who've still been using VRCOSC!</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2024.1208.0-v2]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2024.1208.0-v2</link>
+            <guid>https://VolcanicArts.github.io/changelog/2024.1208.0-v2</guid>
+            <pubDate>Sun, 08 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This changelog is purely for people who want to see what the difference between the main release and the previous V2 beta release.]]></description>
+            <content:encoded><![CDATA[<p>This changelog is purely for people who want to see what the difference between the main release and the <a href="https://volcanicarts.github.io/changelog/2024.1115.0-v2">previous</a> V2 beta release.</p>
+<p>If you want to see the full changelog for what's changed between V1 and V2, go <a href="https://volcanicarts.github.io/changelog/2024.1208.0">here</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.1208.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App">​</a></h2>
+<ul>
+<li>Force a package refresh before manually installing just in case a package has updated</li>
+<li>Fix Whisper crashing if the app still tries to process audio data if a a Whisper model isn't installed</li>
+<li>Fix Whisper crashing if the recognition becomes unstable</li>
+<li>Improve PackageManager UI performance</li>
+<li>Fix clip element variable ordering sometimes being wrong on reorder and remove</li>
+<li>Restrict timeline editing when editing a clip (for now?)</li>
+<li>Changed the default state name check of a clip state to be a default name check<!-- -->
+<ul>
+<li>This means you can name a state "Default" and it will remove the name, but the lookup for the state can be specific just in case you may want to add more states in the future</li>
+</ul>
+</li>
+<li>Fix droppable areas sometimes generating wrong</li>
+<li>Fix profile dropdown not changing when the profile is automatically switched by the current avatar</li>
+<li>Fix profile automatically switching sometimes not working</li>
+<li>Changed it so that received parameters aren't handled if they aren't enabled</li>
+<li>Close all windows when a package change occurs, ensuring everything is serialised</li>
+<li>Improve WindowManager to correctly manage windows based on a comparer</li>
+<li>Changed prefab window to show links to open instead of instant downloads</li>
+<li>Set default view to modules</li>
+<li>Fix clearing the ChatBox timeline not deselecting the current clip</li>
+<li>Fix pasting a clip sometimes failing causing an invisible clip</li>
+<li>Added more validation to parameters and wildcards</li>
+<li>Allow profiles to be copied</li>
+<li>Upgraded all remaining window handling to use the WindowManager</li>
+<li>Added more helper text in various places</li>
+<li>Added more links to the docs in various places</li>
+<li>Changed all windows to spawn on the screen their parent window is on, and in the center of the screen</li>
+<li>Moved the 'Live Text' feature of the ChatBox to its runtime tab rather than the timeline</li>
+<li>Added the ability to have dropdown lists of items instead of just enums for module settings</li>
+<li>Add some hint buttons to various features</li>
+<li>Add first time install window</li>
+<li>Add information view</li>
+<li>Altered some setting lookups</li>
+<li>Fixed minimal background sometimes breaking with large ChatBoxes</li>
+<li>Made start in tray more resilient</li>
+<li>Improved KeybindPicker to allow for multiple regular keys</li>
+<li>Improved KeybindPicker to fix not detecting keys correctly when Alt was held down</li>
+<li>Guarded against crashes when the official modules aren't available</li>
+<li>Ensured the first time setup window isn't closed when the official modules are installed in first time setup</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.1208.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules">​</a></h2>
+<ul>
+<li>Fixed the default state of SpeechToText not being set</li>
+<li>Fixed some non-standard titles and descriptions in various modules</li>
+<li>Added the ability for AFK Detection to minimise/maximise the VRChat window when you change AFK state</li>
+<li>Changed Hardware Stats to provide all data in GB</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2024.1115.0-v2]]></title>
             <link>https://VolcanicArts.github.io/changelog/2024.1115.0-v2</link>
