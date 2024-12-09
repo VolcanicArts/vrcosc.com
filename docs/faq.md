@@ -58,6 +58,8 @@ Also ensure that you have the `Show desktop overlay when using media keys` setti
 
 If both are true, try reinstalling Spotify.
 
+If the ChatBox seems delayed when using Spotify, restart/reinstall Spotify and it will fix itself.
+
 ### My HardwareStats usage is different from Task Manager {#hardware-stats-values}
 Task Manager rounds values. The library VRCOSC uses for gathering hardware statistics is more accurate.
 
