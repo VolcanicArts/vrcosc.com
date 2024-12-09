@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2024-12-08T16:00:00.000Z</updated>
+    <updated>2024-12-09T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2024.1209.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2024.1209.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2024.1209.0"/>
+        <updated>2024-12-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[App]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.1209.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App">​</a></h2>
+<ul>
+<li>Fixed parameters with wildcards not working</li>
+<li>Added startup view</li>
+<li>Fixed router not saving properly</li>
+<li>Fixed crash when attempting to backup V1 files that are invalid</li>
+<li>Fixed clip edit window not spawning in the center of the screen</li>
+<li>Fixed not being able to open settings/parameters/prefabs for the same module at the same time</li>
+<li>Added a popup to automatically setup the speech engine if using a module that requires it</li>
+<li>Fixed a crash when the chosen input audio source provides invalid data</li>
+<li>Fixed a crash when the user doesn't have a Whisper model installed</li>
+<li>Fixed some UI inconsistencies</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.1209.0#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules">​</a></h2>
+<ul>
+<li>Added mode to PiShock module log</li>
+<li>Changed all prefab links to the V2 links where applicable</li>
+<li>Added indexes to the shocker group list</li>
+<li>Alter max duration and intensity logic of PiShock to replicate V1's behaviour</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2024.1208.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2024.1208.0</id>
@@ -57,8 +84,8 @@
 <li>The run view has had a massive upgrade with several notable features</li>
 <li>The first tab, runtime, allows module developers to create custom UI to be placed on the run view for users to use. These are meant to be for settings that can be dynamically populated during runtime</li>
 <li>The second tab, avatar, is the incoming and outgoing parameter list that was in V1</li>
-<li>The third tab, chatbox, is a preview of the ChatBox when the timeline is active, meaning you don't have to go into VRChat to see if things are working</li>
-<li>The chatbox tab also allows you to type live text into the ChatBox to override the timeline</li>
+<li>The third tab, ChatBox, is a preview of the ChatBox when the timeline is active, meaning you don't have to go into VRChat to see if things are working</li>
+<li>The ChatBox tab also allows you to type live text into the ChatBox to override the timeline</li>
 </ul>
 </li>
 <li>ChatBox V4<!-- -->
