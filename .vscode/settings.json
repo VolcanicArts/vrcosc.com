@@ -3,6 +3,7 @@
         "heartrate",
         "keybinds",
         "unmute",
+        "VOSK",
         "vrcosc"
     ]
 }
