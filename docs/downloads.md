@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+description: Download links for the app and prefabs
 ---
 
 # Downloads
