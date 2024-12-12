@@ -46,11 +46,11 @@ This has been removed as there is now a built-in ChatBox variable to handle this
 Clock is now called DateTime and has more parameters. The `12/24` setting now controls the parameters. Adjusting 12/24 visuals for the ChatBox requires using `hh` or `HH` in the `Now` variable's formatting.
 
 ### PiShock
-For the prefabs that were using specific parameters (`VRCOSC/PiShock/Shock/0`) but were using the global durations and intensity (`VRCOSC/PiShock/Duration`). This will not work anymore.
+For the prefabs that were using wildcard parameters (`VRCOSC/PiShock/Shock/0`) but were using the global durations and intensity (`VRCOSC/PiShock/Duration`). This will not work anymore.
 
-The global duration and intensity parameters work only work the global shock, vibrate, and beep parameters now.
+The global duration and intensity parameters only work the global shock, vibrate, and beep parameters now.
 
-If you want to use the specific parameters for shock, vibrate, and beep, you need to use the specific parameters of duration and intensity.
+If you want to use the wildcard parameters for shock, vibrate, and beep, you need to use the wildcard parameters of duration and intensity.
 
 ## Persistence
 Your persistence will be lost, but using a module that has persistence, like the counter module, will generate a persistence file inside your chosen profile.
