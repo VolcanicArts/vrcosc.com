@@ -88,7 +88,7 @@ For example, if we tick the Media and Clock module, the only states that will oc
 This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you need.
 
 ### Show Relevant Elements Only
-If any module you have ticked in the `Select Modules` section is disabled on the module listing view, the states and events that contain that module will be filtered out by the `Show Relevant Elements Only` button. Unticking this will show you all the generated states and events, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
+If any module you have ticked in the `Select Modules` section is disabled on the module listing view, the states and events that contain that module will be filtered out by the `Filter By Enabled Modules` button. Unticking this will show you the generated states and events for all the selected modules, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
 
 ### Validation
 Clips are evaluated for their validity at the Timeline's current time. The following steps are done to evaluate a clip:

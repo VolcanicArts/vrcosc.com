@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Heartrate Display
-description: Set up simple heartrate display
+description: Set up a simple heartrate display
 ---
 
 1. Go into the module tab and enable your chosen heartrate module (Pulsoid/HypeRate)

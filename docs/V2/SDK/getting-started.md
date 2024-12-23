@@ -39,11 +39,11 @@ Next, right click on your project's csproj file and click edit. Replace the cont
 </PropertyGroup>
 
 <ItemGroup>
-    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2024.1208.0" />
+    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2024.1223.0" />
 </ItemGroup>
 
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;%25appdata%25\vrcosc\packages\local\$(TargetName).dll&quot;"/>
+    <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;%25appdata%25\VRCOSC\packages\local\$(TargetName).dll&quot;"/>
 </Target>
 ```
 
