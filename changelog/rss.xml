@@ -4,10 +4,72 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Mon, 23 Dec 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Feb 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2025.212.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2025.212.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2025.212.0</guid>
+            <pubDate>Wed, 12 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="app">App<a href="https://volcanicarts.github.io/changelog/2025.212.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App">​</a></h2>
+<ul>
+<li>Added support for Dollies<!-- -->
+<ul>
+<li>Dollies are currently in the VRChat open-beta</li>
+<li>A new Dolly view has been added where you can control the Dolly from outside of VRChat</li>
+<li>You can also save, load, and import Dolly files</li>
+<li>This Dolly view is profiled, so you can have different profiles for different camera operators</li>
+</ul>
+</li>
+<li>Overhauled package management<!-- -->
+<ul>
+<li>Packages are now checked in parallel, decreasing app load times</li>
+<li>Packages are now installed in parallel, decreasing install times</li>
+</ul>
+</li>
+<li>Overhauled connection system<!-- -->
+<ul>
+<li>There are now 3 connection modes. Local, LAN, and custom</li>
+<li>99% of people will only ever need to use Local</li>
+<li>LAN is for when you want to connect to VRChat on a different device</li>
+<li>Custom is for setting up custom send and receive addresses and ports</li>
+<li>Documentation can be found here: <a href="http://localhost:3000/docs/v2/connecting" target="_blank" rel="noopener noreferrer">http://localhost:3000/docs/v2/connecting</a></li>
+</ul>
+</li>
+<li>Fixed an audio processor crash when processing</li>
+<li>Fixed some issues around module settings</li>
+<li>Fixed Windows DPI scaling positioning windows incorrectly</li>
+<li>Added file backing-up when changing versions</li>
+<li>Added the ability for the speech engine to be disabled</li>
+<li>Fixed parameter types not displaying</li>
+<li>Fixed repo forks not being included in package view</li>
+<li>Fixed audio capture not being started in share mode</li>
+<li>Fixed regex characters in parameters not being escaped properly</li>
+<li>Fixed WindowsMediaProvider sometimes giving a NaN or Infinite duration depending on livestream sources</li>
+<li>Added hardware names to HardwareStatsProvider</li>
+<li>Fixed audio controller not working when using a passthrough like Voicemeeter</li>
+<li>Changed the package info overlay to a package info window</li>
+<li>Added tooltips to all major buttons and information</li>
+<li>Fixed child windows not being positioned in relation to their parent</li>
+<li>Added ability to wait for a parameter response to stop feedback loops</li>
+<li>Fixed modules not being stopped properly before changing profiles</li>
+<li>Fixed registered parameters not properly parsing wildcards</li>
+<li>Changed avatar config to use ParameterType</li>
+<li>Moved router, startup, and debug views into the settings tab</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2025.212.0#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules">​</a></h2>
+<ul>
+<li>Added a timezone dropdown to DateTime for the parameters</li>
+<li>Ensured time remaining can never be negative in Media</li>
+<li>Reworked PiShock module to fix rounding errors and speed up voice recognition</li>
+<li>Added CPU and GPU names to HardwareStats</li>
+<li>Renamed ClientEvents to ClientInfo and added new parameters</li>
+<li>Fixed Media sometimes feeding back into itself causing a source to pause right after playing</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2024.1223.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2024.1223.0</link>
