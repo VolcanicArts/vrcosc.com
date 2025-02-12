@@ -17,6 +17,10 @@ VRCOSC's speech engine is global, meaning you can implement `ISpeechHandler` and
 ## Client Events Handler
 VRCOSC scans VRChat's logs for certain events, meaning you can implement `IVRCClientEventHandler`.
 
-`OnWorldExit` occurs when the user leaves their current instance.
+`OnInstanceLeft` occurs when the user leaves their current instance.
 
-`OnWorldEnter` occurs when the user finishes joining the new instance.
+`OnInstanceJoin` occurs when the user finishes joining the new instance.
+
+`OnUserLeft` occurs when a remote user leaves the current instance.
+
+`OnUserJoined` occurs when a remote user joins the current instance.
