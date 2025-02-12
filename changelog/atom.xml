@@ -35,7 +35,7 @@
 <li>99% of people will only ever need to use Local</li>
 <li>LAN is for when you want to connect to VRChat on a different device</li>
 <li>Custom is for setting up custom send and receive addresses and ports</li>
-<li>Documentation can be found here: <a href="http://localhost:3000/docs/v2/connecting" target="_blank" rel="noopener noreferrer">http://localhost:3000/docs/v2/connecting</a></li>
+<li>Documentation can be found here: <a href="https://vrcosc.com/docs/v2/connecting" target="_blank" rel="noopener noreferrer">https://vrcosc.com/docs/v2/connecting</a></li>
 </ul>
 </li>
 <li>Fixed an audio processor crash when processing</li>
