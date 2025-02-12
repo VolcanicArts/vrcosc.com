@@ -29,17 +29,17 @@ Right click on the project and go into the properties. Inside the Application ta
 Next, right click on your project's csproj file and click edit. Replace the contents with:
 ```xml
 <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>latestmajor</LangVersion>
-    <WindowsSdkPackageVersion>10.0.22621.52</WindowsSdkPackageVersion>
+    <WindowsSdkPackageVersion>10.0.26100.1</WindowsSdkPackageVersion>
 </PropertyGroup>
 
 <ItemGroup>
-    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2024.1223.0" />
+    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2025.212.0" />
 </ItemGroup>
 
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
