@@ -22,19 +22,16 @@ As such, multiple modules can go into an assembly, and multiple assemblies can g
 It's recommended to make multiple packages if you want to truly separate assemblies into different installs for users.
 
 ### 1 - Creating a Project {#creating-a-project}
-First, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
+Firstly, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
 
-Right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page.
+Secondly, right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page. You'll know if you did this correctly if you don't see the package title as `UNKNOWN`.
 
 Next, right click on your project's csproj file and click edit. Replace the contents with:
 ```xml
 <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <LangVersion>latestmajor</LangVersion>
     <WindowsSdkPackageVersion>10.0.26100.1</WindowsSdkPackageVersion>
 </PropertyGroup>
 
@@ -42,6 +39,7 @@ Next, right click on your project's csproj file and click edit. Replace the cont
     <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2025.212.0" />
 </ItemGroup>
 
+<!--> This is a post build event that copies your module assembly to the local package directory for VRCOSC <-->
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;%25appdata%25\VRCOSC\packages\local\$(TargetName).dll&quot;"/>
 </Target>
@@ -50,12 +48,14 @@ Next, right click on your project's csproj file and click edit. Replace the cont
 The specific windows build of .NET 8.0 and the SDK is required for VRCOSC's SDK due to certain Windows integrations, and for people building on slightly different versions of Windows.
 Any changes to these requirements will be pinged about, so make sure if you're making a module to be in the Discord server.
 
-The SDK for the modules has been installed for you.
+:::info
 
-The target will automatically copy the built DLL into the local packages folder. This allows you to build your modules and then reload them using the Debug page in the app without having to manually move the built DLL.
+If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well.
 
-### 2 - Making a Module {#making-a-module}
-In your project, create a new CS file and call it `TestModule`. We'll use this name for now, but it can be whatever you like. Just keep in mind that this name should be unique and I recommend ending the class name in `Module` just for cleanliness, but as VRCOSC now works using packages this is less of an issue now.
+:::
+
+### 2 - Creating a Module {#creating-a-module}
+In your project create a new CS file and call it your module's name. We'll use `TestModule` as the name for now, but it can be whatever you like. Just keep in mind that this name should be unique and we recommend ending the class name in `Module` just for cleanliness. As VRCOSC now works using packages which have an ID, the name of the module is less of a concern now.
 
 At the very least you need the 3 attributes listed below. They indicate the display title, display description, and type of module you're making. You also need the class to extend the `Module` class from the SDK.
 ```csharp
@@ -71,15 +71,14 @@ Now that this is done, a module with no functionality has been created which can
 
 :::danger
 
-The module's name is used as its ID. Internally `TestModule` gets turned into `testmodule`. Do not change the class name else it will break anything that the user has saved.
+Internally `TestModule` gets turned into `testmodule`, and this ID is used to save and load the user's settings. Do not change the class name!
 
 :::
 
 ### 3 - Exporting {#exporting}
-Build your project. If VRCOSC is already open you can reload the modules to load your test module by going into the app's settings, Advanced, and turning on Debug Mode. You'll now see a new debug tab has appeared which has a button to reload the modules. Clicking this should result in your module appearing on the module listing page.
+Build your project. If VRCOSC is already open you can reload the modules to load your test module by going into the app's debug settings and clicking the reload modules from disk button. This should result in your module appearing in the module list.
 
 ### 4 - Publishing {#publishing}
-
 To publish a module and have it appear in the app's package list, tag your repo with `vrcosc-package`.
 
 Next, add a file called `vrcosc.json` to the root of your main branch with this template:
@@ -90,6 +89,7 @@ Next, add a file called `vrcosc.json` to the root of your main branch with this 
     "cover_image_url": "https://some.image/url"
 }
 ```
+
 - `package_id` is usually something along the lines of `yourname.modulepackagename`. For example, the official modules are `volcanicarts.vrcosc.officialmodules`.
 - `display_name` is what will be shown to the user instead of your repository's name.
 - `cover_image_url` is a cover image for the information overlay.
@@ -100,12 +100,24 @@ Next, add a file called `vrcosc.json` to the root of your main branch with this 
 
 :::
 
-Finally, make a new release with a semver-compatible tag (for example, 1.0.0), then go to your project's folder and into `bin/Debug/net8.0-windows10.0.22621.0`. You should find there's a DLL file in there called `MyTestModules.dll`.
+Finally, make a new release with a semver-compatible tag (for example, 1.0.0), then go to your project's folder and into `bin/Debug/net8.0-windows10.0.26100.0`. You should find there's a DLL file in there called `MyTestModules.dll`.
 This DLL file is what needs to be in the release's assets.
 
-It can take up to 24 hours for the package list to refresh for all users. Users can manually refresh the package list at any time using the refresh button.
+The files that are considered for download are any DLL files or any ZIP files from the release.
 
-The files that are considered for download are *any* DLL files OR *any* ZIP files from the release that the user has picked, so if you need dependencies that aren't packaged with the SDK, or need specific versions of dependencies that are, you can add those to the release as well and VRCOSC will handle creating an isolated environment for the whole package to load into. Using a ZIP allows you to package any runtime resources your modules might need.
+:::tip
 
-### 5 - Extra Dependencies {#extra-dependencies}
-If your module requires a dependency that isn't present in the app, all extra DLLs will need to be moved into the local folder as well. VRCOSC will automatically handle creating an isolated environment to load them up in (which also handles the case where you need a different version of a dependency that's already in the app). On the publishing page there is more detail on how to handle dependencies like this when publish your module package.
+If you're just publishing a single DLL, putting just the DLL in the release is fine. If you're publishing with other DLLs for dependencies, packing as a ZIP is recommended.
+
+:::
+
+:::info
+
+Keep in mind that it can take up to 24 hours for the package list to refresh for all users automatically. If you publish a release you can advise your users to refresh the package list manually.
+
+:::
+
+### 5 - What's Next? {#whats-next}
+Check out some of the other pages in the SDK category! They're ordered in a way to allow you to get an understanding of how modules should be designed.
+
+Feel free to reach out on the Discord server by getting the Development role after joining!

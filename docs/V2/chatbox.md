@@ -5,7 +5,7 @@ description: Understand how to use the ChatBox system
 
 # ChatBox
 
-The ChatBox system is essentially an animation system for VRChat's ChatBox . It provides an extensive feature-set to let you customise the way the ChatBox looks in-game from any module that has support for the ChatBox. Below is an explanation of how the different features work. Please reach out on the [Discord Server](https://discord.gg/vj4brHyvT5) if you need more help or feel this documentation could be more detailed.
+The ChatBox system is essentially an animation system for VRChat's ChatBox . It provides an extensive feature-set to let you customise the way the ChatBox looks in-game from any module that has support for the ChatBox. Below is an explanation of how the different features work. Please reach out on the [Discord Server](https://vrcosc.com/discord) if you need more help or feel this documentation could be more detailed.
 
 :::info
 
@@ -15,7 +15,7 @@ On the run page in the ChatBox tab, you can pop-out a preview of the ChatBox so 
 
 :::warning
 
-Always take frequent backups of your ChatBox configs if you have complicated setups!
+Take frequent backups of your ChatBox configs if you have complicated setups! VRCOSC will make backups between versions but it's good to have other copies.
 
 :::
 
@@ -31,7 +31,7 @@ When changing the length of the timeline to be less than it currently is, clips 
 - Clip - A single part of a Layer that is linked to modules
 
 ## Useful Links
-For formatting variables that use DateTime, use anything in the `Format specifier` column of this table: https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings.
+For formatting variables that use DateTime, use anything in the `Format Specifier` column of [this table](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).
 
 ## Management
 The top left of ChatBox page contains buttons for importing and exporting a config, as well as clearing the timeline.
@@ -58,7 +58,7 @@ There are also some built-in variables that are always available to use:
 - Focused Window - This is the window you're currently focused on
 - Timer - This displays the time difference between now and when the timer is set to
 
-If you have any ideas for more built-in variables, please let me know in the [Discord Server](https://discord.gg/vj4brHyvT5).
+If you have any ideas for more built-in variables, please let me know in the [Discord Server](https://vrcosc.com/discord).
 
 ### States and Events
 Each state and event has a checkbox in the top left. This indicates whether you want to handle that state/event.
@@ -87,7 +87,7 @@ For example, if we tick the Media and Clock module, the only states that will oc
 
 This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you need.
 
-### Show Relevant Elements Only
+### Filter By Enabled Modules
 If any module you have ticked in the `Select Modules` section is disabled on the module listing view, the states and events that contain that module will be filtered out by the `Filter By Enabled Modules` button. Unticking this will show you the generated states and events for all the selected modules, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
 
 ### Validation

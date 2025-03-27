@@ -5,19 +5,23 @@ description: Using the router
 
 # Router
 
-:::warning
+The router allows you to route apps that don't use OSCQuery through VRCOSC to stop port binding issues, or route apps from different devices into VRChat.
 
-The router should mostly be useless now, but has been left in for backwards compatibility. VRCOSC, VRCFT, and OGB, are all compatible with OSCQuery.
-The router should only be used when you have 2 or more non-OSCQuery apps that are receiving from VRChat.
+Apps that are on the same computer as VRChat should have their sending port left on 9000 to reduce latency.
+
+### Creating A Router Instance
+1. The left textbox is a label, so this could be the name of the app you're routing.
+2. Send mode sends all data received from VRChat to the specified address. Receive mode sends all received data from the specified address to VRChat.
+3. The right textbox is the IP and port you're sending to or listening on.
+
+:::info
+
+When you're routing apps into VRChat using receive mode you'll most likely need to set the address to the LAN IP of your computer. This can be found in the app's debug settings.
 
 :::
 
-The router allows you to route apps that don't use OSCQuery through VRCOSC to stop port binding issues.
+:::warning
 
-To use the router, you need to choose an new receiving/listening port for the app you'd like to route. Any number above 9001 is a good bet so start with 9002 and increment.
+When listening for data from a different device using receive mode VRCOSC will need to be run as administrator.
 
-Leave the sending port on the app you're routing alone. All apps should still always send to port 9000.
-
-Next, create a router instance.
-The left textbox is a label, so this could be the name of the app you're routing.
-The right textbox is the IP and port you're routing to, which is where VRCOSC will forward all data coming from VRChat. In this case it will always be `127.0.0.1` for the IP and whatever receiving port you chose for the app you're routing. So the final entry would be `127.0.0.1:9002`.
+:::

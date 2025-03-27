@@ -4,7 +4,7 @@ description: Upgrading from V1
 ---
 
 # Upgrading From V1
-All your V1 files have been placed in a backup folder, located at `%appdata%/vrcosc/v1-backup`. None of these files are compatible with V2, but are backed up as a reference for you to pull data from.
+All your V1 files have been placed in a backup folder, located at `%appdata%/vrcosc/backups/v1`. None of these files are compatible with V2, but are backed up as a reference for you to pull data from.
 
 All modules have had a facelift and should make setting up more complex modules easier. For example, the Counter module now has separate windows for each counter, with more customisation options.
 
@@ -22,10 +22,8 @@ This has been removed in favour of the Keybinds module.
 
 If you'd like to replicate the Discord module's functionality you can either use the new prefab, or:
 
-- Setup custom mute and deafen keybinds in Discord (as this allows them to be used without Discord being focused)
-- Add mute and deafen keybinds to the Keybinds module, and give them the `VRCOSC/Discord/Mute` and `VRCOSC/Discord/Deafen` respectively
-
-Your buttons on your radial menu should now work. Changing the keybinds mode allows you to hold keybinds down when the parameters are true, rather than pressing and releasing the keys, so play around with them to create custom radios!
+1. Setup custom mute and deafen keybinds in Discord (as this allows them to be used without Discord being focused)
+2. Add mute and deafen keybinds to the Keybinds module, and give them the `VRCOSC/Discord/Mute` and `VRCOSC/Discord/Deafen` parameters respectively, set up as `When ParameterName Bool Becomes Equal To True Then Press`
 
 ### Ticker Tape
 This has been removed as every variable in the ChatBox can now ticker tape, truncate, and control its case.
@@ -68,8 +66,8 @@ V2 uses OSCQuery, as well as every other popular 3rd party app, so the router is
 If you have a scenario that you think requires the router, please ask about it in the [Discord Server](https://vrcosc.com/discord). You likely don't need to use it.
 
 ## Speech
-The speech detection has been moved out of the modules and into the app's settings. To set it up, click the `Auto Install Model` button and leave everything else as default.
+The speech detection has been moved out of the modules and into the app's settings. To set it up choose a model in the app's speech settings and leave everything else as default.
 
 You should find that the new speech detection is a lot more accurate, has punctuation, and is faster than before. This is because the engine has changed from VOSK to Whisper.
 
-If you find that speech detection is spotty, or sometimes wrong, increase the `Microphone Volume Adjustment`, or decrease the `Noise Level Cutoff`.
+If you find that speech detection is spotty, or sometimes wrong, increase the `Volume Adjustment` or decrease the `Activation Threshold`.

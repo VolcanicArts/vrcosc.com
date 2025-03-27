@@ -4,7 +4,7 @@ description: Using module persistence
 ---
 
 # Persistence
-Persistence is where you can save the values of properties of your module so that a user can have persistent data. An example use-case of this is the Counter module.
+Persistence is where you can save the values of properties of your module so that a user can have persistent data. An example use-case of this is the [Counter](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Counter/CounterModule.cs#L19) module.
 
 To enable persistence you define the `[ModulePersistent(string serialisedName)]` on any property. This takes in a serialised name to allow you to rename the property without it affecting the serialisation. Persistent properties can be public or private, but must have `{ get; set; }` to function correctly.
 

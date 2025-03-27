@@ -10,7 +10,7 @@ It's important to understand the flow of how data is used for the ChatBox to mak
 
 Static elements (ones that have Enums for lookups) are not allowed to change during the lifetime of the module. These elements are defined and are guaranteed to not be modified.
 
-Dynamic elements (ones that have strings for lookups) are allowed to change during the lifetime of the module. An example use case of this is the Counter module where I'm defining a new event and 2 variables for each counter instance. The lookups of these instances are a unique GUID followed by `_changed` or `_value`. This GUID is also saved alongside the counter settings for the module, as when the module calls `OnPostLoad` it can then go through the counter instances to recreate the dynamic elements that each requires. Since these GUIDs are saved as the lookup for the elements in the user's ChatBox file, if this last step wasn't done the ChatBox would error out because of missing data, so it's very important to be consistent with where and how you're creating dynamic elements.
+Dynamic elements (ones that have strings for lookups) are allowed to change during the lifetime of the module. An example use case of this is the [Counter](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Counter/CounterModule.cs#L32) module where I'm defining a new event and 2 variables for each counter instance. The lookups of these instances are a unique GUID followed by `_changed` or `_value`. This GUID is also saved alongside the counter settings for the module, as when the module calls `OnPostLoad` it can then go through the counter instances to recreate the dynamic elements that each requires. Since these GUIDs are saved as the lookup for the elements in the user's ChatBox file, if this last step wasn't done the ChatBox would error out because of missing data, so it's very important to be consistent with where and how you're creating dynamic elements.
 
 ## Defining elements
 To define a state, event, or variable, inside `OnPostLoad` you can call their respective methods.
@@ -35,7 +35,7 @@ CreateState(string lookup, string displayName, string defaultFormat = "", IEnume
 
 :::info
 
-You can use a lookup of `Default` and a display name of `Default` to force VRCOSC to not show the display name. This is best used when you only need a single state.
+You can use a display name of `Default` to force VRCOSC to not show the display name. This is best used when you only need a single state.
 
 :::
 

@@ -33,7 +33,7 @@ const config = {
           blogTitle: 'Changelog',
           blogDescription: 'Release notes',
           showReadingTime: false,
-          postsPerPage: 1000,
+          postsPerPage: 50,
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'Releases',
           onUntruncatedBlogPosts: 'ignore'

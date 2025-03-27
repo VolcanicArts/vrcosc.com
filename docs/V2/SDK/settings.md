@@ -39,13 +39,11 @@ Backing type: `int`/`float` (depending on which slider you enter)
 Note: Dropdowns only accept enums as settings are required to be static. If you need to populate a dynamic list, look at the runtime page.
 ```csharp
 CreateDropdown(MyModule.DropdownSetting, "Dropdown Title", "Dropdown Description", SomeEnum.SomeValue)
-CreateDropdown(MyModule.DropdownSetting, "Dropdown Title", "Dropdown Description", [new DropdownItem("Item Title", "item_id"), new DropdownItem("Another Item Title", "item_id_2")], new DropdownItem("Item Title", "item_id"))
+CreateDropdown(MyModule.DropdownSetting, "Dropdown Title", "Dropdown Description", items, items[0], nameof(Item.Title), nameof(Item.Id))
 ```
 Dropdowns take the setting lookup, display title, display description, and the default value. The default value also tells the setting which enum to use to populate the dropdown.
 
-Dropdowns also take a list of DropdownItems, and a default DropdownItem. DropdownItems contain a title and an ID. You CANNOT use this a dynamically populated dropdown list.
-This type of dropdown is used for items that you know beforehand, like timezones.
-The `item_id` is what's stored in the module's setting's file, so don't change these.
+Dropdowns can also take a list of items, along with the default selection, and the title and ID fields. A good example of this is the [DateTime](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Datetime/DateTimeModule.cs#L25) module fetching timezones.
 
 Backing type: `SomeEnum`/`string`
 
@@ -94,7 +92,7 @@ CreateGroup("My New Group", MyModule.ToggleSetting, MyModule.SliderIntSetting);
 ```
 These are only visual and allow for organisation.
 
-## Retrieving Settings
+## Reading Settings
 There are 2 methods you can use to get a setting. One to get the setting, and one to get the setting value. Getting the setting value is a shorthand for getting the setting. You mostly won't need to access the setting directly, but it's useful for when you're making custom settings and need to access anything inside it.
 
 ```csharp
@@ -104,3 +102,16 @@ GetSettingValue<bool>(MyModule.ToggleSetting);
 Most of the time you'll be using the bottom method, where this retrieves the backing value of the setting directly. To access the value, use the backing type that is listed for the setting
 
 The raw value of the setting, if allowed, can be converted. For example, if you have a textbox string list you can either do `GetSettingValue<IEnumerable<string>>()` or `GetSettingValue<List<string>>()`. Both work exactly the same and is completely up to your preference. 
+
+## Writing Settings
+To set a setting's value manually, you can now call `SetSettingValue(lookup, value)`. This will only work with settings that have a single value. If you require adding to a list setting, use `GetSetting` to retrieve the setting first and then manage the list.
+
+## Custom Window
+If you don't want to use the auto-generated settings window and would rather create something custom, you can use the attribute `[ModuleSettingsWindow(type)]`. Pass the type of the window that you want to be used instead.
+
+Your window must:
+- Be of type `Window`
+- Extend `IManagedWindow` where the comparer is your module
+- Take in your module in the constructor
+
+Settings windows will be loaded whenever the user clicks on the settings button, and kept loaded into memory. Anything you want to do on first load should be done in the `SourceInitialised` event. The `Loaded` event is ran each time the window is opened.

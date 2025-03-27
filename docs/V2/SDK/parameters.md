@@ -50,7 +50,7 @@ This uses the `MediaParameter` Enum to send to a registered parameter. Behind th
 SendParameter("MyNormalParameter", false);
 ```
 
-For the above, you can send directly to a parameter using its name. This is not customisable by the user and should be used sparingly when you want to drive a parameter you know will never change.
+For the above, you can send directly to a parameter using its name. This is not customisable by the user and should be used sparingly when you want to send to a parameter you know will never change name.
 
 ## Receiving Parameters
 To receive a parameter, there are 2 methods to override:
@@ -73,9 +73,11 @@ This listens for registered parameters. Registered parameters, once again, have 
 ```csharp
 protected override void OnAnyParameterReceived(ReceivedParameter parameter)
 {
-    if (parameter.Name == "MyNormalParameter")
+    switch (parameter.Name)
     {
-        Console.WriteLine($"MyNormalParameter's value is {parameter.GetValue<bool>()}")
+        case "MyNormalParameter":
+            Log($"MyNormalParameter's value is {parameter.GetValue<bool>()}")
+            break;
     }
 }
 ```
@@ -92,23 +94,39 @@ To extract the wildcard, you can call `parameter.GetWildcard<T>(position)`.
 
 :::info
 
-To keep consistency, wildcards only support the string, int, and float types
+To keep consistency, wildcards only support the string, int, and float types.
 
 :::
 
+## Waiting
+```csharp
+SendParameterAndWait(MyParameters.SomeParameter, true, true)
+```
+
+`SendParameterAndWait` allows you to send a parameter, and if that parameter is present on the user's avatar, wait for the response. This is useful for when you're wanting to use the same parameter for multiple bits of data, but want to make sure that the avatar has handled the data before sending the parameter again.
+
+Setting the third field to true, which is the block events field, will block `OnRegisteredParameterReceived` from being called with that parameter until a response has been sent from VRChat.
+This is useful for when you don't want loopbacks in your parameters.
+
+A good example of how this is used is in the [Media](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Media/MediaModule.cs#L178) module.
+We don't want the initial setting of the parameters going out to loopback into the module and change the state of Windows media, so we ignore the loopback update from VRChat when sending those parameters out.
+
 ## OSCQuery
-OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in game.
+OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in-game.
 
 ```csharp
-FindParameterType(MyParameters.SomeParameter);
-FindParameterValue(MyParameters.SomeParameter);
+FindParameter(MyParameters.SomeParameter);
+FindParameter("SomeParameterName");
 ```
-Finding a parameter by using the methods with lookups will attempt to find the type or value using the parameter name that the user may have edited.
-
-```csharp
-FindParameterType("SomeParameterName");
-FindParameterValue("SomeParameterName");
-```
-Finding a parameter by using the methods with strings will attempt to find the type or value using the parameter name that's been passed.
 
 If the parameter doesn't exist or OSCQuery isn't working for VRChat, null will be returned.
+
+## VRCFury
+
+:::warning
+
+This feature is a fail-safe and for advanced users. It's still recommended to set the parameters that VRCOSC is using to global. You can mark the parameters as global in a Full Controller by adding a `*` in the first instance of a global parameters list in the advanced settings of the Full Controller.
+
+:::
+
+VRCOSC will automatically handle VRCFury prefixes for registered parameters. If VRCOSC detects `VF65_MyParameter` it will treat it as if `MyParameter` has arrived. This is important to understand as if there are multiple `MyParameter`s it will trigger the same registered parameter. Sometimes this can be useful for prefabs that control modules like Media.

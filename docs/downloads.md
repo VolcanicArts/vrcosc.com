@@ -9,7 +9,7 @@ description: Download links for the app and prefabs
 To download the app, go to the [latest release](https://github.com/VolcanicArts/VRCOSC/releases/latest) and download `VRCOSCSetup.exe`.
 Once installed, the app will automatically update to the latest version.
 
-:::warning
+:::danger
 
 Do not continue to run the setup exe after it's installed. You may accidentally downgrade the app which will cause errors.
 
