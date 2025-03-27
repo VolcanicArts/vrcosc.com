@@ -114,4 +114,4 @@ Your window must:
 - Extend `IManagedWindow` where the comparer is your module
 - Take in your module in the constructor
 
-Settings windows will be loaded whenever the user clicks on the settings button, and kept loaded into memory. Anything you want to do on first load should be done in the `SourceInitialised` event. The `Loaded` event is ran each time the window is opened.
+Settings windows will be loaded whenever the user clicks on the settings button. The settings window is remade each time the settings is opened by the user, so anything you want cached should be kept in your module and referenced by your custom settings window.
