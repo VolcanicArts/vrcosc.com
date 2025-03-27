@@ -2,11 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2025-02-12T00:00:00.000Z</updated>
+    <updated>2025-03-27T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2025.327.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2025.327.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2025.327.0"/>
+        <updated>2025-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[App]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="app">App<a href="https://volcanicarts.github.io/changelog/2025.327.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App">​</a></h2>
+<ul>
+<li>Rewrote settings view<!-- -->
+<ul>
+<li>All the settings sections have had a UI overhaul</li>
+<li>The speech view now have a way of installing multiple models and to debug if your microphone is working</li>
+<li>The debug view now has more debug options and the module debug log viewable</li>
+</ul>
+</li>
+<li>Fixed switching themes needing a restart of the app</li>
+<li>Fixed module packages not being able to import native DLLs</li>
+<li>Reverted forks of packages being allowed in the package listing<!-- -->
+<ul>
+<li>This caused duplicates of packages to appear if the vrcosc.json file wasn't changed</li>
+</ul>
+</li>
+<li>Fixed a package manager case when a package only has pre-releases and auto-update was attempted</li>
+<li>Changed the updater to only run after 10 mins has passed<!-- -->
+<ul>
+<li>This should improve start-up times for those that restart the app often</li>
+</ul>
+</li>
+<li>Fixed a crash when switching update channels to a channel with no releases</li>
+<li>Added a receiving mode to the router for those that want to route other apps into VRChat</li>
+<li>Fixed default VRChat parameter errors being shown to the user<!-- -->
+<ul>
+<li>Sometimes they're wrong on a public avatar, so we'll just ignore them now</li>
+</ul>
+</li>
+<li>Added the ability for modules to define a custom settings window</li>
+<li>Added the ability for developers to set setting values</li>
+<li>Changed some module methods to public for use from other classes</li>
+<li>Fixed an issue where changing an int textbox to a slider didn't convert properly</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2025.212.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2025.212.0</id>
@@ -35,7 +76,7 @@
 <li>99% of people will only ever need to use Local</li>
 <li>LAN is for when you want to connect to VRChat on a different device</li>
 <li>Custom is for setting up custom send and receive addresses and ports</li>
-<li>Documentation can be found here: <a href="https://vrcosc.com/docs/v2/connecting" target="_blank" rel="noopener noreferrer">https://vrcosc.com/docs/v2/connecting</a></li>
+<li>Documentation can be found <a href="https://volcanicarts.github.io/docs/v2/connecting">here</a></li>
 </ul>
 </li>
 <li>Fixed an audio processor crash when processing</li>
@@ -238,7 +279,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.1208.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App">​</a></h2>
 <ul>
 <li>Force a package refresh before manually installing just in case a package has updated</li>
-<li>Fix Whisper crashing if the app still tries to process audio data if a a Whisper model isn't installed</li>
+<li>Fix Whisper crashing if the app still tries to process audio data if a Whisper model isn't installed</li>
 <li>Fix Whisper crashing if the recognition becomes unstable</li>
 <li>Improve PackageManager UI performance</li>
 <li>Fix clip element variable ordering sometimes being wrong on reorder and remove</li>
@@ -574,7 +615,7 @@ Quite a few things in this release have had a rework, and while I've tested them
 <li>Added missing built-in avatar parameters to Player</li>
 <li>Improved ProgressClipVariable rendering logic</li>
 <li>Fixed app crashing if an incorrect Whisper model path was provided</li>
-<li>Fixed VRCFury prefixes not being handled correctly (<a href="https://vrcosc.com/docs/V2/SDK/extras#vrcfury-parameters" target="_blank" rel="noopener noreferrer">https://vrcosc.com/docs/V2/SDK/extras#vrcfury-parameters</a>)</li>
+<li>Fixed VRCFury prefixes not being handled correctly. <a href="https://volcanicarts.github.io/docs/v2/sdk/parameters#vrcfury">Docs Here</a></li>
 <li>Fixed clips not noticing when the minimal background setting is changed while the ChatBox is running</li>
 <li>Fixed Standable trackers being included in the SteamVR Stats info</li>
 <li>Fixed the ChatBox disappearing if the text stayed the same for over 30 seconds</li>
