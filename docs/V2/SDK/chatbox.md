@@ -73,3 +73,18 @@ The list of types that are available in the SDK are:
 - String
 - DateTime
 - TimeSpan
+
+## Managing States
+To get your module to work with the ChatBox you must at the very least call `ChangeState` in `OnModuleStart`. This sets the state of the module and allows the ChatBox to begin validating any clips containing your module.
+
+Once this is done, you're free to change the state anywhere else.
+
+States get reset between module starts, so there's no clean up that needs to be done.
+
+## Triggering Events
+You can trigger an event by calling `TriggerEvent`. Events always override any state that the module is currently in, but it's up to the user to decide if events should override each other, so feel free to trigger events whenever there's an update to something and you have an event that follows it.
+
+## Writing Variables
+To write to a variable, you can call `SetVariableValue`. This should take in the same type as when you created the variable.
+
+Variable values get reset between module starts, so there's no clean up that needs to be done.

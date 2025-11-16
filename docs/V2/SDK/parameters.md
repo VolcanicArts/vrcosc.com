@@ -111,6 +111,12 @@ This is useful for when you don't want loopbacks in your parameters.
 A good example of how this is used is in the [Media](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Media/MediaModule.cs#L178) module.
 We don't want the initial setting of the parameters going out to loopback into the module and change the state of Windows media, so we ignore the loopback update from VRChat when sending those parameters out.
 
+:::info
+
+When sending parameters over OSC, VRChat will send back 2 parameter updates. This can break SendParameterAndWait depending on how it's being used.
+
+:::
+
 ## OSCQuery
 OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in-game.
 

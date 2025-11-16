@@ -17,13 +17,14 @@ Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
 Data: `%localappdata%Low\VRChat\VRChat`
 
 ## Connection Issues {#connection-issues}
-1. Ensuring OSC is enabled through your action menu: Options -> OSC -> Enable
-2. Ensuring you have added nothing to the router and the Connection Mode in the behaviour settings is set to Local
-3. Turning off your VPN
-4. Restarting VRCOSC
-5. Restarting VRChat
-6. Restarting your computer
-7. Ensuring Windows hasn't assigned extra network adapters in the network settings
+1. Ensuring you have ran the modules on the run screen
+2. Ensuring OSC is enabled through your action menu: Options -> OSC -> Enable
+3. Ensuring you have added nothing to the router and the Connection Mode in the behaviour settings is set to Local
+4. Turning off your VPN
+5. Restarting VRCOSC
+6. Restarting VRChat
+7. Restarting your computer
+8. Ensuring Windows hasn't assigned extra network adapters in the network settings
 
 ## Installation Issues {#installation-issues}
 1. Reinstall [.NET8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and re-running the setup exe
@@ -32,7 +33,7 @@ Data: `%localappdata%Low\VRChat\VRChat`
 4. Deleting `%appdata%/VRCOSC` and re-running the setup exe
 5. Deleting `%localappdata%/VRCOSC` and re-running the setup exe
 6. Re-download the setup exe with Chrome
-7. Run CMD as admin. Navigate to the setup exe. Run the file
+7. Running CMD as admin, navigating to the setup exe, and running the setup exe
 
 ## ChatBox Issues {#chatbox-issues}
 
