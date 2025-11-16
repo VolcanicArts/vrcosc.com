@@ -1,0 +1,9 @@
+{
+    "label": "Pulse",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "description": "Documentation on Pulse, VRCOSC's node-based programming language"
+    }
+}
+  
