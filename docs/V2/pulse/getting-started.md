@@ -39,6 +39,7 @@ In short, connect things the way that makes sense, and it will run the way you e
 - Connecting any value output to a string value input will automatically insert a ToString node.
 - Connecting any value output to any value input, if a cast is possible, will insert a Cast node.
 - Fire While True, Fire While False, and Fire On Interval can only run as fast as the update speed of Pulse, which is 100hz.
+- Typing in an equation to any number-accepting textbox will have the textbox evaluate the result. For example `8*2` will result in the text being `16`.
 
 ### Controls
 Here are the mouse and keyboard shortcuts for Pulse:
