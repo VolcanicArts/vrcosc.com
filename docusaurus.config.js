@@ -10,13 +10,12 @@ const config = {
   projectName: 'vrcosc.com',
   trailingSlash: false,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'en',
     locales: ['en']
   },
   future: {
-    experimental_faster: true
+    v4: true
   },
   presets: [
     [
