@@ -2,11 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2025-11-20T00:00:00.000Z</updated>
+    <updated>2025-11-23T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2025.1123.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2025.1123.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2025.1123.0"/>
+        <updated>2025-11-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[App]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2025.1123.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed first time install window exception</li>
+<li class="">Fixed creating value output nodes from variable value inputs throwing an error</li>
+<li class="">Fixed more WindowsMediaProvider errors</li>
+<li class="">Removed knuckles grip click detection<!-- -->
+<ul>
+<li class="">Knuckles controllers don't technically have a grip click and SteamVR triggers haptic feedback when gripping if any app is expecting it</li>
+</ul>
+</li>
+<li class="">Fixed package manager not auto-installing all latest module releases</li>
+<li class="">Fixed file picker throwing a task caught exception instead of clarifying the error</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2025.1123.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Added pressing left ctrl while trying to move a group will now force a selection to be started</li>
+<li class="">Added StringParse node to parse strings into a value</li>
+<li class="">Added Clamp01 node as a shortcut for the Clamp node</li>
+<li class="">Added more string constant nodes</li>
+<li class="">Added path nodes for directory and file handling</li>
+<li class="">Added negate node</li>
+<li class="">Fixed memory stack for Impulse nodes</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2025.1120.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2025.1120.0</id>
