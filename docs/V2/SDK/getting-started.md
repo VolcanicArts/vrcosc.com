@@ -7,7 +7,7 @@ description: Create and build a module project
 
 :::info
 
-This guide is written with Visual Studio 2022 in mind. Please have an up-to-date copy of Visual Studio 2022 with the `.NET desktop development` module installed, and .NET 8.0's SDK installed which can be found [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+This guide is written with Visual Studio 2026 in mind. Please have an up-to-date copy of Visual Studio 2026 with the `.NET desktop development` module installed, and .NET 10.0's SDK installed which can be found [here](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 :::
 
@@ -22,21 +22,21 @@ As such, multiple modules can go into an assembly, and multiple assemblies can g
 It's recommended to make multiple packages if you want to truly separate assemblies into different installs for users.
 
 ### 1 - Creating a Project {#creating-a-project}
-Firstly, create a new class library and select .NET 8.0 as the framework. If you do not see .NET 8.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
+Firstly, create a new class library and select .NET 10.0 as the framework. If you do not see .NET 10.0, you need to update Visual Studio. For reference, I'll name the project `MyTestModules`.
 
 Secondly, right click on the project and go into the properties. Inside the Application tab click the button named Assembly Information. Find the `Title` field and edit that. This `Title` field is what shows as the module package title on the module listing page. You'll know if you did this correctly if you don't see the package title as `UNKNOWN`.
 
 Next, right click on your project's csproj file and click edit. Replace the contents with:
 ```xml
 <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <WindowsSdkPackageVersion>10.0.26100.1</WindowsSdkPackageVersion>
 </PropertyGroup>
 
 <ItemGroup>
-    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2025.212.0" />
+    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2025.1120.0" />
 </ItemGroup>
 
 <!--> This is a post build event that copies your module assembly to the local package directory for VRCOSC <-->
@@ -45,7 +45,7 @@ Next, right click on your project's csproj file and click edit. Replace the cont
 </Target>
 ```
 
-The specific windows build of .NET 8.0 and the SDK is required for VRCOSC's SDK due to certain Windows integrations, and for people building on slightly different versions of Windows.
+The specific windows build of .NET 10.0 and the SDK is required for VRCOSC's SDK due to certain Windows integrations, and for people building on slightly different versions of Windows.
 Any changes to these requirements will be pinged about, so make sure if you're making a module to be in the Discord server.
 
 :::info
@@ -100,7 +100,7 @@ Next, add a file called `vrcosc.json` to the root of your main branch with this 
 
 :::
 
-Finally, make a new release with a semver-compatible tag (for example, 1.0.0), then go to your project's folder and into `bin/Debug/net8.0-windows10.0.26100.0`. You should find there's a DLL file in there called `MyTestModules.dll`.
+Finally, make a new release with a semver-compatible tag (for example, 1.0.0), then go to your project's folder and into `bin/Debug/net10.0-windows10.0.26100.0`. You should find there's a DLL file in there called `MyTestModules.dll`.
 This DLL file is what needs to be in the release's assets.
 
 The files that are considered for download are any DLL files or any ZIP files from the release.
