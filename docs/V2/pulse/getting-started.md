@@ -52,6 +52,7 @@ Here are the mouse and keyboard shortcuts for Pulse:
 - Left click dragging on a flow input, and while still holding left click, right clicking, will create a call node.
     - This allows you to manually execute a flow for testing.
 - Pressing space will take you back to the center of the graph.
+- Holding left ctrl while trying to grab a group will instead start a selection.
 
 ### Variables
 Variables allow you to store information between flows, and optionally store the information between module runs or VRCOSC restarts.
