@@ -4,10 +4,43 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Sun, 23 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Nov 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2025.1127.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2025.1127.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2025.1127.0</guid>
+            <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2025.1127.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Added support for the system button on VR controllers<!-- -->
+<ul>
+<li class="">The system button click can be reserved by SteamVR and may not function</li>
+<li class="">Only Knuckles and Quest controllers have support currently</li>
+</ul>
+</li>
+<li class="">Fixed some Windows 11 compatibility issues with the file picker</li>
+<li class="">Fixed mute toggle and mute set not working for users with less than 66 FPS</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2025.1127.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Added Controller System node for the system button on VR controllers</li>
+<li class="">Fixed Delay node not continuing when the delay was less than 1</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2025.1127.0#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed ClientInfo not working in the ChatBox</li>
+<li class="">Improved PiShock data gathering and logging<!-- -->
+<ul>
+<li class="">PiShock will now get all the initial values of the parameters if available</li>
+<li class="">More logging has been added to inform about what it's trying to do</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2025.1123.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2025.1123.0</link>
