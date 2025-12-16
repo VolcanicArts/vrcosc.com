@@ -2,11 +2,111 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2025-11-27T00:00:00.000Z</updated>
+    <updated>2025-12-16T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2025.1216.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2025.1216.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2025.1216.0"/>
+        <updated>2025-12-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This update brings initial Twitch event and action support, camera control, Pulse additions and fixes, and some app fixes!]]></summary>
+        <content type="html"><![CDATA[<p>This update brings initial Twitch event and action support, camera control, Pulse additions and fixes, and some app fixes!</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2025.1216.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed audio engine initialisation errors</li>
+<li class="">Added support for user camera control</li>
+<li class="">Fixed PiShockProvider throwing an error when multiple shockers had the same sharecodes</li>
+<li class="">Added TriggerModuleNode to the Module SDK<!-- -->
+<ul>
+<li class="">Allows for triggering any IModuleNodeEventHandler node with some data from a module</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2025.1216.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Added nodes to receive and control user camera values</li>
+<li class="">Added ContextStoreWrite and ContextStoreSource<!-- -->
+<ul>
+<li class="">This is useful for when you want to store some data for later in a flow without needing giant connections</li>
+</ul>
+</li>
+<li class="">Added Gamepad support<!-- -->
+<ul>
+<li class="">Any Gamepad (xbox, ps, etc..) that Windows supports is now available through the Gamepad nodes</li>
+<li class="">This is addressable by index, of which should always be 0 if you have a single Gamepad plugged in</li>
+</ul>
+</li>
+<li class="">Added Toggle Parameter node<!-- -->
+<ul>
+<li class="">A very common flow is to toggle a parameter. This node is a shortcut to toggle between values</li>
+<li class="">The default on values are the maximum values that VRChat's syncing allows. (true, 255, and 1.0)</li>
+<li class="">The default off values are the default values of the types. (false, 0, 0.0)</li>
+</ul>
+</li>
+<li class="">Added EmptyList and EmptyDictionary nodes</li>
+<li class="">Added Content value input to HTTP POST node</li>
+<li class="">Added FireOnChangeEnumerable node<!-- -->
+<ul>
+<li class="">This will fire when any value inside an enumerable changes, or if the length of the enumerable changes</li>
+</ul>
+</li>
+<li class="">Added NodeNoCancel attribute for trigger nodes<!-- -->
+<ul>
+<li class="">This disallows the trigger node to be cancelled when being triggered again</li>
+<li class="">This is useful for trigger nodes that are for API events and should be fire and forget</li>
+</ul>
+</li>
+<li class="">Added active update node order offset<!-- -->
+<ul>
+<li class="">This should resolve issues with flashing values due to order inconsistency</li>
+<li class="">The order is ParameterSource -&gt; VariableSource -&gt; All other active update nodes -&gt; DriveVariable -&gt; DriveParameter</li>
+</ul>
+</li>
+<li class="">Removed FloatingPointToNumber node<!-- -->
+<ul>
+<li class="">It still exists for compatibility, but is no longer needed as casting works correctly now</li>
+</ul>
+</li>
+<li class="">Removed JsonChildValue, JsonChildObject, and JsonChildArray<!-- -->
+<ul>
+<li class="">They still exist for compatibility, but have been replaced with JsonObjectGetValue</li>
+</ul>
+</li>
+<li class="">Fixed a bunch of flow calculations<!-- -->
+<ul>
+<li class="">FireWhileTrue, FireWhileFalse, and FireOnInterval should be much more stable</li>
+<li class="">FireWhileTrue and FireWhileFalse will now respect flow cancellation correctly</li>
+<li class="">Cancelling a flow source now cancels sub-flows</li>
+<li class="">Fixed active update nodes not starting a flow task resulting in the fixed update loop being blocked</li>
+<li class="">Fixed some stack overflows when nodes are connected to each other</li>
+</ul>
+</li>
+<li class="">Fixed cast node generation</li>
+<li class="">Fixed dictionary element add and key remove not continuing when the dictionary input was null</li>
+<li class="">Fixed nullable value inputs breaking user input node creation</li>
+<li class="">Fixed JsonObjectToDictionary node failing when converting to types JsonArray or JsonObject</li>
+<li class="">Fixed JsonArrayToEnumerable node failing when converting to type JsonObject</li>
+<li class="">Changed the Node attribute definition to allow module nodes to have sub-paths</li>
+<li class="">Changed Parameter source nodes to update on the fixed update loop<!-- -->
+<ul>
+<li class="">This should resolve issues with flashing values due to timing inconsistencies</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2025.1216.0#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Added Twitch module<!-- -->
+<ul>
+<li class="">This is a purely Pulse module</li>
+<li class="">Not everything from the API has been added, just the events and actions that seem useful</li>
+<li class="">More can be added in the future!</li>
+</ul>
+</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2025.1127.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2025.1127.0</id>
