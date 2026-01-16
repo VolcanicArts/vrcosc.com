@@ -4,10 +4,57 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Tue, 16 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 16 Jan 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.116.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.116.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.116.0</guid>
+            <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.116.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Added a setting to allow users to change the OSCQuery target client name<!-- -->
+<ul>
+<li class="">This is for people who want to use VRCOSC with ChilloutVR, as they support the same standard of parameters that VRChat does</li>
+<li class="">This is not an indication of official ChilloutVR support</li>
+</ul>
+</li>
+<li class="">Fixed PiShockProvider sometimes having "multiple shockers with the same sharecode" error</li>
+<li class="">Added VRChat's desktop FPS and exposed the VRChatClient class to the SDK</li>
+<li class="">Fixed deleting a ChatBox clip not removing it from the UI</li>
+<li class="">Added a filter to the run screen's avatar parameter tab</li>
+<li class="">Fixed clip variable dragging for people on Windows 11</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2026.116.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Changed FireIfX cancellation behaviour to only cancel the flow if the condition is met</li>
+<li class="">Fixed PhysBoneParameterSource node not working for float parameters</li>
+<li class="">Added Minimum and Maximum numeric nodes</li>
+<li class="">Collapsed various nodes</li>
+<li class="">Fixed DictionaryKeyToValue node throwing an exception if the key isn't found</li>
+<li class="">Fixed DictionaryAdd node throwing an exception if adding failed</li>
+<li class="">Fixed SoundPlayer type defaulting to the system library</li>
+<li class="">Fixed SpeechSource node not updating trigger nodes</li>
+<li class="">Fixed value-only nodes updating when they shouldn't be</li>
+<li class="">Fixed UserCameraSetAperture node name</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2026.116.0#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Optimise PiShock's calls and guarded against several errors</li>
+<li class="">Fixed PiShock's account URL being changed and leading to a 404 page</li>
+<li class="">Added FPS to ClientInfo</li>
+<li class="">Fixed instance count ChatBox variable not updating in ClientInfo</li>
+<li class="">Added KAT module<!-- -->
+<ul>
+<li class="">This allows users to send text using KillFrenzyAvatarText</li>
+<li class="">This is only available in Pulse</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2025.1216.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2025.1216.0</link>
