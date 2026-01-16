@@ -36,7 +36,7 @@ Next, right click on your project's csproj file and click edit. Replace the cont
 </PropertyGroup>
 
 <ItemGroup>
-    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2025.1120.0" />
+    <PackageReference Include="VolcanicArts.VRCOSC.SDK" Version="2026.116.0" />
 </ItemGroup>
 
 <!--> This is a post build event that copies your module assembly to the local package directory for VRCOSC <-->
