@@ -44,6 +44,7 @@
 <ul>
 <li class="">Optimise PiShock's calls and guarded against several errors</li>
 <li class="">Fixed PiShock's account URL being changed and leading to a 404 page</li>
+<li class="">Added ability for a Counter instance to be reset when the day rolls over instead of when the modules restart</li>
 <li class="">Added FPS to ClientInfo</li>
 <li class="">Fixed instance count ChatBox variable not updating in ClientInfo</li>
 <li class="">Added KAT module<!-- -->
