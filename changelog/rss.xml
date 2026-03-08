@@ -4,10 +4,40 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Fri, 16 Jan 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.308.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.308.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.308.0</guid>
+            <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.308.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Rewrote PiShockProvider for stability</li>
+<li class="">Fixed some WindowsMediaProvider race conditions</li>
+<li class="">Fixed log reader not working for users with different date formats</li>
+<li class="">Reworked avatar and parameter caching</li>
+<li class="">Changed FindCurrentAvatar to return the current avatar config</li>
+<li class="">Fixed invalid graph and preset files attempting to be loaded</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2026.308.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Added support for gamepad vibration triggering</li>
+<li class="">Added Regex support</li>
+<li class="">Changed OnKeybindPressed node to instead be a Keybind source<!-- -->
+<ul>
+<li class="">You can now use FireOnTrue, FireWhileTrue, and FireOnFalse for detecting when a key is pressed, held, and released respectively</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2026.308.0#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Updated Media module with WindowsMediaProvider changes</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2026.116.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2026.116.0</link>
