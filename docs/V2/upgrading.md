@@ -1,6 +1,5 @@
 ---
-sidebar_position: 0
-sidebar_class_name: hidden
+sidebar_position: 1000
 description: Upgrading from V1
 ---
 

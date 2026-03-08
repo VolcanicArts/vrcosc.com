@@ -27,7 +27,7 @@ Data: `%localappdata%Low\VRChat\VRChat`
 8. Ensuring Windows hasn't assigned extra network adapters in the network settings
 
 ## Installation Issues {#installation-issues}
-1. Reinstall [.NET8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and re-running the setup exe
+1. Reinstall [.NET10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and re-running the setup exe
 2. Ensuring you're not using OneDrive as your desktop
 3. Disable any third-party anti-viruses and re-running the setup exe
 4. Deleting `%appdata%/VRCOSC` and re-running the setup exe

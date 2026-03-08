@@ -101,24 +101,25 @@ To keep consistency, wildcards only support the string, int, and float types.
 ## Waiting
 ```csharp
 SendParameterAndWait(MyParameters.SomeParameter, true, true)
+SendParameterAndWait("SomeParameterName", true, true)
 ```
 
 `SendParameterAndWait` allows you to send a parameter, and if that parameter is present on the user's avatar, wait for the response. This is useful for when you're wanting to use the same parameter for multiple bits of data, but want to make sure that the avatar has handled the data before sending the parameter again.
 
-Setting the third field to true, which is the block events field, will block `OnRegisteredParameterReceived` from being called with that parameter until a response has been sent from VRChat.
+Setting the third field to true, which is the block events field, will block `OnRegisteredParameterReceived` from being called with that parameter until a response has been sent from VRChat if you've requested to wait for a registered parameter, and block `OnAnyParameterReceived` if you've requested a non-registered parameter.
 This is useful for when you don't want loopbacks in your parameters.
 
-A good example of how this is used is in the [Media](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Media/MediaModule.cs#L178) module.
+A good example of how this is used is in the [Media](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/Media/MediaModule.cs) module.
 We don't want the initial setting of the parameters going out to loopback into the module and change the state of Windows media, so we ignore the loopback update from VRChat when sending those parameters out.
 
-:::info
+:::warning
 
-When sending parameters over OSC, VRChat will send back 2 parameter updates. This can break SendParameterAndWait depending on how it's being used.
+When sending parameters over OSC, VRChat will sometimes send back 2 parameter updates. This can break SendParameterAndWait depending on how it's being used.
 
 :::
 
-## OSCQuery
-OSCQuery lets you retrieve parameter types and values, allowing you to check types and values without the parameter ever having to change in-game.
+## Retrieve Parameters
+You can retrieve parameter types and values of any parameter as long as you know the name by calling `FindParameter`, allowing you to check types and values without the parameter ever having to change in-game.
 
 ```csharp
 FindParameter(MyParameters.SomeParameter);
@@ -126,13 +127,3 @@ FindParameter("SomeParameterName");
 ```
 
 If the parameter doesn't exist or OSCQuery isn't working for VRChat, null will be returned.
-
-## VRCFury
-
-:::warning
-
-This feature is a fail-safe and for advanced users. It's still recommended to set the parameters that VRCOSC is using to global. You can mark the parameters as global in a Full Controller by adding a `*` in the first instance of a global parameters list in the advanced settings of the Full Controller.
-
-:::
-
-VRCOSC will automatically handle VRCFury prefixes for registered parameters. If VRCOSC detects `VF65_MyParameter` it will treat it as if `MyParameter` has arrived. This is important to understand as if there are multiple `MyParameter`s it will trigger the same registered parameter. Sometimes this can be useful for prefabs that control modules like Media.

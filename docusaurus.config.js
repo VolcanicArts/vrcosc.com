@@ -2,7 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 const config = {
   title: 'VRCOSC',
-  tagline: 'Modular OSC program creator, toolkit, router, and distributor for VRChat',
+  tagline: 'A modular node-programming language, program creator, animation system, toolkit, router, and debugger made for VRChat',
   favicon: 'img/favicon.ico',
   url: 'https://VolcanicArts.github.io',
   baseUrl: '/',
@@ -32,7 +32,7 @@ const config = {
           blogTitle: 'Changelog',
           blogDescription: 'Release notes',
           showReadingTime: false,
-          postsPerPage: 50,
+          postsPerPage: 1,
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'Releases',
           onUntruncatedBlogPosts: 'ignore'
