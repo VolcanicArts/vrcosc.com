@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkvrcosc_com=globalThis.webpackChunkvrcosc_com||[]).push([[9159],{7344(e){e.exports=JSON.parse('{"metadata":{"permalink":"/changelog/page/13","page":13,"postsPerPage":1,"totalPages":19,"totalCount":19,"previousPage":"/changelog/page/12","nextPage":"/changelog/page/14","blogDescription":"Release notes","blogTitle":"Changelog"}}')}}]);

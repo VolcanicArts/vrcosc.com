@@ -4,10 +4,23 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Sun, 08 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 12 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.312.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.312.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.312.0</guid>
+            <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.312.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Added workaround for a VRChat OSCQuery bug where a parameter could have a value but no type</li>
+<li class="">Changed PiShockProvider to use the new API for sharecode claiming</li>
+<li class="">Fixed issues with package management</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2026.308.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2026.308.0</link>
