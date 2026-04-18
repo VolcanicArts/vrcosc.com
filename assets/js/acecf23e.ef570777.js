@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkvrcosc_com=self.webpackChunkvrcosc_com||[]).push([["3220"],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/changelog","blogTitle":"Changelog","authorsListPath":"/changelog/authors"}')}}]);
