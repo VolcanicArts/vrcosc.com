@@ -5,10 +5,10 @@ description: Understand how to connect VRCOSC to VRChat
 
 # Connecting
 
-## Local {#local}
+## Local {/* #local */}
 If you're running VRCOSC and VRChat on the same computer you should leave VRCOSC on default settings.
 
-## LAN {#lan}
+## LAN {/* #lan */}
 If you're running VRCOSC and VRChat on different devices, change the connection mode to `LAN`.
 
 :::warning
@@ -29,7 +29,7 @@ You may need to disable your firewall on the computer that VRCOSC is on to allow
 
 :::
 
-## Custom {#custom}
+## Custom {/* #custom */}
 If you're wanting to send and receive data to custom endpoints, change the connection mode to `Custom`.
 
 The outgoing endpoint should be the IP and port of the target device.

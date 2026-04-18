@@ -4,37 +4,38 @@ description: Getting started with Pulse
 ---
 
 # Getting Started
-Pulse is VRCOSC's custom node-based programming language. It allows you to do custom behaviour for any of the supported modules, or a variety of things including, but not limited to, playing audio, reading/writing files, and complex maths.
+Pulse is VRCOSC's in-house node-based programming language. It allows you to do custom behaviour for any of the supported modules, or a variety of things including but not limited to: Twitch intergration, PiShock integration, playing audio, reading/writing files, and complex maths.
 
-### Graphs
+### Graphs {/* #graphs */}
 Pulse is made up of graphs. Each graph contains nodes and variables.
 
 Graphs can be moved around using the middle mouse button.
 
 Selections can be made by left click dragging over nodes.
 
-### Presets
+### Presets {/* #presets */}
 Presets are subsets of graphs designed for sharing. A preset can be made by selecting multiple nodes and selecting Save As Preset in the context menu
 
-### Flows
+### Flows {/* #flows */}
 Everything you do in Pulse will be made up of some combination of event or Fire node. Fire nodes take in conditions and then fire when that condition is met.
 
-- Fire On True - Fires when the condition updates and becomes true.
-- Fire On False - Fires when the condition updates and becomes false.
-- Fire If True - Fires when the condition updates and is true.
-- Fire If False - Fires when the condition updates and is false.
-- Fire While True - Fires while the condition is true, at the delay given in milliseconds.
-- Fire While False - Fires while the condition is false, at the delay given in milliseconds.
-- Fire On Interval - Fires at the delay given in milliseconds.
-- Fire On Change - Fires when the input updates and has changed.
+- Fire On True - Fires when `Condition` updates and becomes true.
+- Fire On False - Fires when `Condition` updates and becomes false.
+- Fire If True - Fires when `Condition` updates and is true.
+- Fire If False - Fires when `Condition` updates and is false.
+- Fire While True - Fires while `Condition` is true, at the given `Milliseconds`.
+- Fire While False - Fires while `Condition` is false, at the given `Milliseconds`.
+- Fire On Interval - Fires every given `Milliseconds`.
+- Fire On Change - Fires when `Value` updates and has changed.
+- Fire On Burst - Fires when `Condition` updates and becomes true `Count` number of times in a given `Milliseconds` range.
 
 Whenever a fire node triggers, it creates a flow. This flow can then be connected to other flow nodes to trigger them in an order.
 
-Nodes that don't have flow inputs or outputs are processed explicitly, where if a flow node is triggered it will then backtrack the inputs it needs to calculate the input values.
+Nodes that don't have flow inputs or outputs are processed implicitly, where if a flow node is triggered it will then backtrack the inputs it needs to calculate the input values.
 
 In short, connect things the way that makes sense, and it will run the way you expect.
 
-### Special Behaviour
+### Special Behaviour {/* #special-behaviour */}
 - All value inputs have default values, most of the time that is the default value of the type. If you have inputs that need the default value you don't need to add a default constant value output node.
 - Connecting any value output to a string value input will automatically insert a ToString node.
 - Connecting any value output to any value input, if a cast is possible, will insert a Cast node.
@@ -44,7 +45,7 @@ In short, connect things the way that makes sense, and it will run the way you e
     - For example, if you have FireOnTrue followed by a Delay of 2 seconds, but the condition changes to true every 1 second, the delay will never complete as FireOnTrue cancels its previous flow
     - This is very useful for when you want to delay or wait until other conditions to do things in certain orders
 
-### Controls
+### Controls {/* #controls */}
 Here are the mouse and keyboard shortcuts for Pulse:
 
 - Left click dragging on a value input, and while still holding left click, right clicking, will create a constant value output of the input type if possible.
@@ -57,12 +58,12 @@ Here are the mouse and keyboard shortcuts for Pulse:
 - Pressing space will take you back to the center of the graph.
 - Holding left ctrl while trying to grab a group will instead start a selection.
 
-### Variables
+### Variables {/* #variables */}
 Variables allow you to store information between flows, and optionally store the information between module runs or VRCOSC restarts.
 
-Variables have source, reference, write, drive nodes associated with them. Nodes are available for indirect drive and indirect write using the reference node instead.
+Variables have source, reference, write, and drive nodes associated with them. Nodes are available for indirect drive and indirect write using the variable reference instead.
 
-### Making Your First Flow
+### Making Your First Flow {/* #making-your-first-flow */}
 To start out with Pulse, let's learn how to create a toggle that will change your avatar.
 
 ![Change Avatar Example](/img/pulse/example-change-avatar.png)

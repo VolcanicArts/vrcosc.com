@@ -5,7 +5,7 @@ description: Download links for the app and prefabs
 
 # Downloads
 
-## App {#app}
+## App {/* #app */}
 To download the app, go to the [latest release](https://github.com/VolcanicArts/VRCOSC/releases/latest) and download `VRCOSCSetup.exe`.
 Once installed, the app will automatically update to the latest version.
 
@@ -15,7 +15,7 @@ Do not continue to run the setup exe after it's installed. You may accidentally 
 
 :::
 
-## Prefabs {#prefabs}
+## Prefabs {/* #prefabs */}
 To download the prefabs, click on one of the following links:
 - [Controls](/prefabs/VRCOSC-Controls.unitypackage) - Meta-controls for changing runtime settings of the app.
 - [Discord](/prefabs/VRCOSC-Discord.unitypackage) - A simple implementation of using the keybinds module to control Discord mute/deafen.

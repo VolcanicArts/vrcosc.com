@@ -10,6 +10,9 @@ const config = {
   projectName: 'vrcosc.com',
   trailingSlash: false,
   onBrokenLinks: 'throw',
+  future: {
+    faster: true
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en']
