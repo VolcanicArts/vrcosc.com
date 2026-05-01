@@ -2,11 +2,70 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2026-04-18T00:00:00.000Z</updated>
+    <updated>2026-05-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2026.501.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2026.501.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2026.501.0"/>
+        <updated>2026-05-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[App]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.501.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Reworked the log reader<!-- -->
+<ul>
+<li class="">More information is now available</li>
+<li class="">The most notable changes include full information about the current instance</li>
+</ul>
+</li>
+<li class="">Reworked data storage<!-- -->
+<ul>
+<li class=""><code>GetClient()</code> in the module SDK returns <code>VRChatClient</code>. Previously this was dedicated only to the open state of VRChat</li>
+<li class=""><code>VRChatClient</code> now contains the currently logged-in user, the current avatar, and the current instance</li>
+<li class="">Added support for VRChat's avatar scaling controls to the new <code>Avatar</code> class</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sdk">SDK<a href="https://volcanicarts.github.io/changelog/2026.501.0#sdk" class="hash-link" aria-label="Direct link to SDK" title="Direct link to SDK" translate="no">​</a></h2>
+<ul>
+<li class=""><code>GetPlayer()</code> is obsolete. Use <code>GetClient().Player</code></li>
+<li class=""><code>GetInstance()</code> is obsolete. Use <code>GetClient().Instance</code></li>
+<li class=""><code>FindCurrentAvatar()</code> is obsolete. Use <code>GetClient().Avatar</code></li>
+<li class=""><code>OnAvatarChange(AvatarConfig)</code> has been changed to <code>OnAvatarChange(Avatar)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2026.501.0#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Reworked HTTP nodes<!-- -->
+<ul>
+<li class="">All HTTP methods are now supported along with inputs and outputs that would be useful</li>
+</ul>
+</li>
+<li class="">Reworked JSON nodes<!-- -->
+<ul>
+<li class="">All the JSON nodes have been reworked</li>
+<li class=""><a href="https://en.wikipedia.org/wiki/JSONPath" target="_blank" rel="noopener noreferrer" class="">JSON Path</a> is now supported</li>
+</ul>
+</li>
+<li class="">Reworked VRChat-specific nodes<!-- -->
+<ul>
+<li class=""><code>Avatar</code>, <code>Instance</code>, <code>World</code>, <code>User</code>, and <code>ParameterDefinition</code> now have pack and unpack nodes where applicable. This allows you to, for example, check if a specific user is in your current instance</li>
+<li class=""><code>VRChatStateSource</code> node has been added as a quick way of getting the app's internal state of what VRChat currently has applied</li>
+</ul>
+</li>
+<li class="">Reworked and added more enumerable nodes</li>
+<li class="">Added support for sourcing VRChat's avatar scaling, and setting VRChat's avatar scale</li>
+<li class="">Added <code>DateTime Parse</code> node</li>
+<li class="">Fixed some nodes not respecting base class indexing</li>
+<li class="">Marked <code>VRChatIsOpen</code> node as hidden. Use <code>VRChatStateSource</code> node instead</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2026.501.0#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Updated to latest SDK</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2026.418.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2026.418.0</id>
@@ -73,7 +132,7 @@
 </li>
 <li class="">Marked <code>To Bool</code> as hidden<!-- -->
 <ul>
-<li class="">This checked if a value was greater than 0, which can be does with the <code>Greater Than</code> node</li>
+<li class="">This checked if a value was greater than 0, which can be done with the <code>Greater Than</code> node</li>
 </ul>
 </li>
 <li class="">Small performance improvements and optimisations</li>
@@ -1015,48 +1074,6 @@ Quite a few things in this release have had a rework, and while I've tested them
 <li class="">Moved float threshold to being per counter and added an int threshold for Counter</li>
 <li class="">Added milestones to Counter</li>
 <li class="">Added outgoing parameters to Stopwatch</li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2024.724.0-v2]]></title>
-        <id>https://VolcanicArts.github.io/changelog/2024.724.0-v2</id>
-        <link href="https://VolcanicArts.github.io/changelog/2024.724.0-v2"/>
-        <updated>2024-07-24T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The app should feel a little snappier to open and do tasks as I've changed the build to use ready-to-run. Let me know if this borks anything.]]></summary>
-        <content type="html"><![CDATA[<p>The app should feel a little snappier to open and do tasks as I've changed the build to use ready-to-run. Let me know if this borks anything.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.724.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
-<ul>
-<li class="">Added the ability to retrieve built-in avatar parameters on module start and avatar change<!-- -->
-<ul>
-<li class="">This means the parameters are no longer nullable</li>
-</ul>
-</li>
-<li class="">Added axes player movement to Player</li>
-<li class="">Added missing built-in avatar parameters to Player</li>
-<li class="">Improved ProgressClipVariable rendering logic</li>
-<li class="">Fixed app crashing if an incorrect Whisper model path was provided</li>
-<li class="">Fixed VRCFury prefixes not being handled correctly</li>
-<li class="">Fixed clips not noticing when the minimal background setting is changed while the ChatBox is running</li>
-<li class="">Fixed Standable trackers being included in the SteamVR Stats info</li>
-<li class="">Fixed the ChatBox disappearing if the text stayed the same for over 30 seconds</li>
-<li class="">Fixed any Heartrate module not stopping correctly if the websocket was already disconnected</li>
-<li class="">Fixed importing module configs breaking the app while modules were running</li>
-<li class="">Fixed importing module configs breaking the ChatBox and putting it into a weird state</li>
-<li class="">Fixed VRChatLogReader crashing when stopping modules if there's no log file</li>
-<li class="">Fixed Repeater sometimes crashing in certain scenarios</li>
-<li class="">Fixed the memory usage for integrated GPUs being infinity</li>
-<li class="">Removed the Map method from the Module class in exchange for using the Interpolation class</li>
-<li class="">Removed FontAwesome5 in exchange for FontAwesome6</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.724.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules" translate="no">​</a></h2>
-<ul>
-<li class="">Added Stopwatch module</li>
-<li class="">Added Leash module<!-- -->
-<ul>
-<li class="">This does work with the OSCLeash prefab if you change the parameter names to match</li>
-<li class="">Currently doesn't support the Y axis or turning as this was just a test</li>
-</ul>
-</li>
 </ul>]]></content>
     </entry>
 </feed>
