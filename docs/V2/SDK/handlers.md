@@ -15,14 +15,18 @@ VRCOSC's speech engine is global, meaning you can implement `ISpeechHandler` and
 `OnFinalSpeechResult` occurs when the user has stopped talking and a final more accurate recognition is done.
 
 ## Client Events Handler
-VRCOSC scans VRChat's logs for certain events, meaning you can implement `IVRCClientEventHandler`.
+VRCOSC scans VRChat's logs for certain events, meaning you can implement `IVRCClientEventHandler` and handle them.
 
-`OnInstanceLeft` occurs when the user leaves their current instance.
+`UserAuthenticatedClientEvent` occurs when the client logs the user in.
 
-`OnInstanceJoin` occurs when the user finishes joining the new instance.
+`AvatarPreChangeClientEvent` occurs when the user selects a new avatar and begins changing into it.
 
-`OnUserLeft` occurs when a remote user leaves the current instance.
+`InstanceLeftClientEvent` occurs when the user leaves selects a new instance and has left the current one.
 
-`OnUserJoined` occurs when a remote user joins the current instance.
+`InstanceJoinedClientEvent` occurs when the client has joined a new instance and begun loading into it.
+
+`UserLeftClientEvent` occurs when a remote user leaves the current instance.
+
+`UserJoinedClientEvent` occurs when a remote user joins the current instance.
 
 All events are passed with their relevant data and the time at which the log occurred. The whole log file is scanned once on start to allow modules to backfill data if needed (see the instance user count of [ClientInfo](https://github.com/VolcanicArts/VRCOSC-Modules/blob/main/VRCOSC.Modules/ClientInfo/ClientInfoModule.cs#L62)). Make sure to ignore any logs from the past if you only need new data.
