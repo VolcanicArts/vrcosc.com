@@ -4,96 +4,246 @@ description: Getting started with Pulse
 ---
 
 # Getting Started
-Pulse is VRCOSC's in-house node-based programming language. It allows you to do custom behaviour for any of the supported modules, or a variety of things including but not limited to: Twitch intergration, PiShock integration, playing audio, reading/writing files, and complex maths.
 
-### Graphs {/* #graphs */}
-Pulse is made up of graphs. Each graph contains nodes and variables.
+Pulse is VRCOSC's in-house visual programming language that uses a node-based interface.
 
-Graphs can be moved around using the middle mouse button.
+## What can you do with Pulse?
 
-Selections can be made by left click dragging over nodes.
+- Custom responses to avatar parameter changes
+- Integration with external services (Twitch, PiShock, etc.)
+- Audio playback
+- File reading and writing
+- Complex mathematics
+- Regex matching
+- HTTP requests
+- Custom behaviour for any supported VRCOSC module
 
-### Presets {/* #presets */}
-Presets are subsets of graphs designed for sharing. A preset can be made by selecting multiple nodes and selecting Save As Preset in the context menu
+---
+
+## Understanding the Interface {/* #interface */}
+
+### The Graph
+
+Your workspace in Pulse is called a **graph**. Each graph contains:
+- **Nodes** - Individual building blocks that perform specific actions or calculations
+- **Variables** - Storage locations for data (visible on the right-hand side)
+- **Groups** - Named groups of nodes
+
+**Saving:** Pulse automatically saves your graphs. You don't need to manually save your work.
+
+### Creating Nodes
+
+Right-click anywhere on the graph to open the node creation menu. Navigate through the categorized menus to find the node you need. For example:
+- `Create Node -> Flow -> Fire On True`
+- `Create Node -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
+
+---
+
+## Core Concepts {/* #concepts */}
+
+### Nodes {/* #nodes */}
+
+**Nodes** are the fundamental building blocks of Pulse. Each node performs a specific function, such as:
+- Exposing values as sources
+- Performing calculations
+- Triggering actions
+- Storing or retrieving data
+
+Nodes have **inputs** and **outputs**:
+- **Value inputs/outputs** - Carry data (numbers, text, booleans, etc.)
+- **Flow inputs/outputs** - Control the order of execution
+
+### How Nodes Execute {/* #how-nodes-execute */}
+
+Pulse uses an intelligent execution model:
+
+**Value-only nodes** (nodes without flow connections) execute implicitly when needed. When a flow or trigger node needs a value, Pulse automatically backtracks through the connected value nodes and executes them in the correct order to calculate the required input.
+
+**Flow nodes** execute explicitly when triggered. You connect flow outputs to flow inputs to define the order of operations.
+
+In short: **connect things the way that makes sense, and it will run the way you expect**.
+
+### Pulse's Update Loop {/* #update-loop */}
+
+Pulse runs at a fixed update speed of **100hz** (every 10 milliseconds). This is the maximum rate at which:
+- Fire While True, Fire While False, and Fire On Interval can trigger
+- Sources can update and propagate changes
+- Drives can update and write the current value
 
 ### Flows {/* #flows */}
-Everything you do in Pulse will be made up of some combination of event or Fire node. Fire nodes take in conditions and then fire when that condition is met.
 
-- Fire On True - Fires when `Condition` updates and becomes true.
-- Fire On False - Fires when `Condition` updates and becomes false.
-- Fire If True - Fires when `Condition` updates and is true.
-- Fire If False - Fires when `Condition` updates and is false.
-- Fire While True - Fires while `Condition` is true, at the given `Milliseconds`.
-- Fire While False - Fires while `Condition` is false, at the given `Milliseconds`.
-- Fire On Interval - Fires every given `Milliseconds`.
-- Fire On Change - Fires when `Value` updates and has changed.
-- Fire On Burst - Fires when `Condition` updates and becomes true `Count` number of times in a given `Milliseconds` range.
+A **flow** is a chain of execution that starts from a trigger and continues through connected nodes. Think of it like a domino effect; When one node triggers, it executes the next node in the chain.
 
-Whenever a fire node triggers, it creates a flow. This flow can then be connected to other flow nodes to trigger them in an order.
+Everything you do in Pulse will start with some kind of trigger node, usually a **Fire On True** node.
 
-Nodes that don't have flow inputs or outputs are processed implicitly, where if a flow node is triggered it will then backtrack the inputs it needs to calculate the input values.
+### Fire Nodes {/* #fire-nodes */}
 
-In short, connect things the way that makes sense, and it will run the way you expect.
+Fire nodes are trigger nodes that watch for specific conditions and create flows when those conditions are met.
 
-### Special Behaviour {/* #special-behaviour */}
-- All value inputs have default values, most of the time that is the default value of the type. If you have inputs that need the default value you don't need to add a default constant value output node.
-- Connecting any value output to a string value input will automatically insert a ToString node.
-- Connecting any value output to any value input, if a cast is possible, will insert a Cast node.
-- Fire While True, Fire While False, and Fire On Interval can only run as fast as the update speed of Pulse, which is 100hz.
-- Typing in an equation to any number-accepting textbox will have the textbox evaluate the result. For example `8*2` will result in the text being `16`.
-- Some fire nodes have cancellation behaviour
-    - For example, if you have FireOnTrue followed by a Delay of 2 seconds, but the condition changes to true every 1 second, the delay will never complete as FireOnTrue cancels its previous flow
-    - This is very useful for when you want to delay or wait until other conditions to do things in certain orders
+#### Condition-Based Fire Nodes
+These respond to changes in a boolean (true/false) condition:
 
-### Controls {/* #controls */}
-Here are the mouse and keyboard shortcuts for Pulse:
+- **Fire On True** - Triggers once when `Condition` changes from false to true
+- **Fire On False** - Triggers once when `Condition` changes from true to false
+- **Fire If True** - Triggers whenever `Condition` updates and is currently true
+- **Fire If False** - Triggers whenever `Condition` updates and is currently false
+- **Fire While True** - Continuously triggers at the given `Milliseconds` interval while `Condition` remains true
+- **Fire While False** - Continuously triggers at the given `Milliseconds` interval while `Condition` remains false
+- **Fire On Burst** - Triggers when `Condition` becomes true `Count` number of times within a given `Milliseconds` timeframe
 
-- Left click dragging on a value input, and while still holding left click, right clicking, will create a constant value output of the input type if possible.
-    - Most of the time this will be a textbox for entering text, or numbers, but there are specialised inputs too.
-    - The types that are currently supported for inputs are string, any number, bool, and Keybind.
-- Left click dragging on a value output, and while still holding left click, right clicking, will create a display node that displays the value of the value output.
-    - Note that this only works for nodes that are connected without a flow. If you want to see the value outputs of a flow node you need to insert a Passthrough Display node instead.
-- Left click dragging on a flow input, and while still holding left click, right clicking, will create a call node.
-    - This allows you to manually execute a flow for testing.
-- Pressing space will take you back to the center of the graph.
-- Holding left ctrl while trying to grab a group will instead start a selection.
+#### Other Fire Nodes
+
+- **Fire On Interval** - Triggers repeatedly every given `Milliseconds`
+- **Fire On Change** - Triggers when `Value` updates and has changed from its previous value
+
+#### Flow Cancellation Behaviour
+
+Fire nodes have **cancellation behaviour** by default. This means if the fire node triggers again before the previous flow completes, it will cancel the previous flow.
+
+**Example:** If you have Fire On True followed by a Delay of 2 seconds, but the condition becomes true again every 1 second, the delay will never complete because Fire On True cancels its previous flow each time it triggers.
+
+This is useful when you want to track the state of a value and ensure it transitions from one state to another (e.g., from low to high to back to low).
+
+**Note:** Some fire nodes, like API event nodes with single flow outputs, have this behaviour explicitly turned off since they aren't reactive to value inputs.
 
 ### Variables {/* #variables */}
-Variables allow you to store information between flows, and optionally store the information between module runs or VRCOSC restarts.
 
-Variables have source, reference, write, and drive nodes associated with them. Nodes are available for indirect drive and indirect write using the variable reference instead.
+**Variables** allow you to store information between flows. You can access variables from the right-hand side panel of your graph.
 
-### Making Your First Flow {/* #making-your-first-flow */}
-To start out with Pulse, let's learn how to create a toggle that will change your avatar.
+**Persistence:**
+- By default, variables store data only during the current session
+- Mark a variable as **persistent** to save its value between module runs or VRCOSC restarts
+- Persistent variables can only store value types and lists/dictionaries containing value types
+
+**Variable Node Types:**
+
+Variables have several associated nodes. These are created by **right-clicking on the variable itself** in the right-hand panel:
+
+- **Source** - Continuously output the variable's current value, updating any connected trigger nodes when the value changes
+- **Reference** - Output a reference to the variable that can be used with indirect operations
+- **Write** - Write a new value to the variable
+- **Drive** - Continuously update the variable with a value (similar to write, but ongoing)
+
+The **Indirect Write Variable** node can be found in the node creation menu and writes to a variable using a variable reference (useful when the target variable is determined dynamically).
+
+---
+
+## Special Behaviours {/* #behaviours */}
+
+Pulse includes several helpful automatic behaviours to make graph creation smoother:
+
+### Default Values
+All value inputs have default values (typically the default for that type, like `0` for numbers or `false` for booleans). You don't need to connect a constant value node if the default is what you want.
+
+### Automatic Type Conversion
+- Connecting any value output to a **string input** automatically inserts a **ToString node**
+- Connecting incompatible types automatically inserts a **Cast node** if a conversion is possible
+- Some type conversions don't require a cast node at all (e.g., `List<int>` to `IEnumerable<int>`, or `Controller` to `TrackedDevice`). When types extend each other, Pulse blends the two type colors from output to input without inserting a node
+
+### Math Expression Evaluation
+Typing an equation into any number-accepting textbox will evaluate the result. For example, typing `8*2` will result in the text becoming `16`.
+
+### Error Handling
+Errors are handled silently in Pulse for value computation. If errors are needing to be handled, the node will follow the OnSuccess/OnFail pattern.
+
+---
+
+## Mouse and Keyboard Shortcuts {/* #shortcuts */}
+
+### Quick Node Creation
+
+- **Left drag from a value input + right click** - Creates a constant value output node
+  - Supported types: string, numbers, booleans, Enums, and Keybind
+  - For multi-line string input, use the RichTextBox node found in the Utility category
+
+- **Left drag from a value output + right click** - Creates a display node showing the output value
+  - Only works for non-flow nodes
+  - For flow nodes, use a **Passthrough Display** node instead - flow nodes only have value outputs within the context of their flows, so they need to be displayed differently
+
+- **Left drag from a flow input + right click** - Creates a call node
+  - Allows you to manually trigger a flow for testing
+
+- Use **Ctrl+C** and **Ctrl+V** for copy and pasting selections
+
+- Use **Delete** for deleting selections
+
+### Navigation
+
+- **Space** - Return to the center of the graph
+- **Middle mouse button** - Pan around the graph
+- **Left click drag** - Select multiple nodes
+    - To select nodes within a group hold **Left Ctrl** while trying to grab a group to start a selection instead
+
+---
+
+## Your First Flow: Avatar Change Toggle {/* #your-first-flow */}
+
+Let's create a simple flow that changes your avatar when you toggle a parameter to true.
 
 ![Change Avatar Example](/img/pulse/example-change-avatar.png)
 
-1. Add in a Bool Parameter Source node: `Create Node -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`.
+### Step 1: Add a Parameter Source
 
-This parameter source now outputs the value of the parameter on your avatar.
+Right-click and navigate to: `Create Node -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
 
-2. Add in a Fire On True node: `Create Node -> Flow -> Fire On True`.
+**Why:** This parameter source exposes the avatar parameter's value so we can connect it to trigger nodes.
 
-Fire On True, as explained above, fires when the condition becomes true.
+### Step 2: Add a Fire On True Node
 
-3. Connect the Bool Parameter Source's value output to the condition of the Fire On True.
+Right-click and navigate to: `Create Node -> Flow -> Fire On True`
 
-Connecting these values together now means that the Fire On True will create a flow whenever the parameter becomes true.
+**Why:** We only want to change avatars when the parameter becomes true, not every time it updates.
 
-4. Add in a Change Avatar node: `Create Node -> VRChat -> Player -> Actions -> Change Avatar`.
+### Step 3: Connect the Parameter to the Fire On True Node
 
-This node takes in the avatar ID that you want to change into, and a flow input for connecting to a flow producing, or flow continuing, node.
+Click and drag from the **value output** of the Bool Parameter Source to the **Condition input** of the Fire On True node.
 
-5. Connect the flow output of the Fire On True node to the flow input of the Change Avatar node.
+**Why:** This tells the Fire On True node to watch the parameter value and trigger when it becomes true.
 
-This now means that whenever the Fire On True node produces a flow, it will then execute the Change Avatar node.
+### Step 4: Add a Change Avatar Node
 
-6. Left click drag from the value input of the Change Avatar node, and while still holding left click, right click.
+Right-click and navigate to: `Create Node -> VRChat -> Player -> Actions -> Change Avatar`
 
-This creates a value input of type string, allowing you to have a constant value output.
+**Why:** This is the action we want to perform when the parameter becomes true.
 
-7. Enter any avatar ID into the textbox.
+### Step 5: Connect the Flow
 
-And you're done! You've now made a flow that changes your avatar whenever you set a parameter to true.
+Click and drag from the **flow output** (right side) of the Fire On True node to the **flow input** (left side) of the Change Avatar node.
 
-This is a very simple example designed to explain the basics of Pulse, but there's a lot more you can do. Make sure to check out the presets the community has created, or experiment and create your own!
+**Why:** This creates the execution chain; When Fire On True triggers, it will execute the Change Avatar node.
+
+### Step 6: Add Your Avatar ID
+
+**Left click drag** from the Avatar ID value input on the Change Avatar node and then **right click**.
+
+This creates a constant string value input. Enter your avatar ID into the textbox.
+
+**Finding Avatar IDs:** You can find avatar IDs through the VRChat website or using VRCX.
+
+### Done!
+
+You've created your first Pulse flow! Whenever you set your chosen avatar parameter to true, your avatar will automatically change.
+
+---
+
+## What's Next? {/* #whats-next */}
+
+### Explore Presets
+
+**Presets** are sharable subsets of graphs created by the community. You can:
+- Browse existing presets to see what's possible
+- Import presets to add functionality to your graphs
+- Create your own presets by selecting nodes and choosing **Save As Preset** in the context menu
+
+**Note:** When you spawn a preset that contains references to variables, Pulse will create new variable instances for that preset to use. This ensures the references never break and each preset instance works independently.
+
+### Experiment
+
+The best way to learn Pulse is to experiment. Try:
+- Combining different Fire nodes with various actions
+- Using variables to create stateful behaviours
+- Exploring the different VRCOSC modules that have Pulse nodes available
+
+### Join the Community
+
+Check out what others have created and share your own creations in the [Discord](https://vrcosc.com/discord) server. The more you explore, the more you'll discover what's possible with Pulse!

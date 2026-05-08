@@ -100,8 +100,8 @@ To keep consistency, wildcards only support the string, int, and float types.
 
 ## Waiting
 ```csharp
-SendParameterAndWait(MyParameters.SomeParameter, true, true)
-SendParameterAndWait("SomeParameterName", true, true)
+SendParameterAndWait(MyParameters.SomeParameter, 0.5f, true)
+SendParameterAndWait("SomeParameterName", 0.5f, true)
 ```
 
 `SendParameterAndWait` allows you to send a parameter, and if that parameter is present on the user's avatar, wait for the response. This is useful for when you're wanting to use the same parameter for multiple bits of data, but want to make sure that the avatar has handled the data before sending the parameter again.
