@@ -5,57 +5,52 @@ description: Understand how to connect VRCOSC to VRChat
 
 # Connecting
 
+VRCOSC can connect to VRChat in three ways depending on your setup. Choose the connection mode that matches your network configuration.
+
 ## Local {/* #local */}
-If you're running VRCOSC and VRChat on the same computer you should leave VRCOSC on default settings.
+
+**Use this if:** VRChat and VRCOSC are running on the same computer.
 
 ## LAN {/* #lan */}
-If you're running VRCOSC and VRChat on different devices, change the connection mode to `LAN`.
 
-:::warning
+**Use this if:** VRChat and VRCOSC are on different devices on the same network.
 
-VRCOSC must be ran as administrator to allow it to host OSCQuery on LAN.
+1. In VRCOSC settings, change the connection mode to `LAN`
+2. Run VRCOSC as administrator
+3. Start both VRCOSC and VRChat
+
+:::info
+
+Your computer's LAN IP is shown in VRCOSC's debug settings.
 
 :::
 
 :::warning
 
-OSCQuery (which some modules require) is disabled in this mode as VRChat doesn't host OSCQuery as LAN-accessible.
-
-:::
-
-:::warning
-
-You may need to disable your firewall on the computer that VRCOSC is on to allow VRChat to find VRCOSC after both VRChat and VRCOSC have opened and VRCOSC's modules are attempting to run. This is entirely dependent on Windows and your firewall rules. Once VRChat is connected you can enable your firewall again.
+OSCQuery is disabled in LAN mode since VRChat doesn't expose it across the network.
 
 :::
 
 ## Custom {/* #custom */}
-If you're wanting to send and receive data to custom endpoints, change the connection mode to `Custom`.
 
-The outgoing endpoint should be the IP and port of the target device.
+**Use this if:** You need to send/receive data to custom endpoints or non-standard networks.
 
-The incoming endpoint should be the IP and port of the computer VRCOSC is running on.
+1. In VRCOSC settings, change the connection mode to `Custom`
+
+2. Setup:
+    - **Outgoing endpoint:** The IP address and port of the device receiving data (typically your VRChat machine)
+    - **Incoming endpoint:** The IP address and port of the VRCOSC computer
+
+3. Run VRCOSC as administrator
 
 :::info
 
-The computer that VRCOSC is running on's LAN IP can be found in the debug settings.
+Your computer's LAN IP is shown in VRCOSC's debug settings.
 
 :::
 
 :::warning
 
-VRCOSC must be ran as administrator to allow it to host OSCQuery on custom endpoints.
-
-:::
-
-:::warning
-
-OSCQuery (which some modules require) is disabled in this mode as VRChat doesn't host OSCQuery as LAN-accessible.
-
-:::
-
-:::warning
-
-You may need to disable your firewall on the computer that VRCOSC is on to allow VRChat to find VRCOSC after both VRChat and VRCOSC have opened and VRCOSC's modules are attempting to run. This is entirely dependent on Windows and your firewall rules. Once VRChat is connected you can enable your firewall again.
+OSCQuery is disabled in Custom mode.
 
 :::

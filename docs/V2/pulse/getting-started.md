@@ -34,8 +34,8 @@ Your workspace in Pulse is called a **graph**. Each graph contains:
 ### Creating Nodes
 
 Right-click anywhere on the graph to open the node creation menu. Navigate through the categorized menus to find the node you need. For example:
-- `Create Node -> Flow -> Fire On True`
-- `Create Node -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
+- `Add Node -> Flow -> Fire On True`
+- `Add Node -> VRChat -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
 
 ---
 
@@ -55,7 +55,7 @@ Nodes have **inputs** and **outputs**:
 
 ### How Nodes Execute {/* #how-nodes-execute */}
 
-Pulse uses an intelligent execution model:
+Pulse uses an implicit execution model:
 
 **Value-only nodes** (nodes without flow connections) execute implicitly when needed. When a flow or trigger node needs a value, Pulse automatically backtracks through the connected value nodes and executes them in the correct order to calculate the required input.
 
@@ -87,13 +87,13 @@ These respond to changes in a boolean (true/false) condition:
 - **Fire On False** - Triggers once when `Condition` changes from true to false
 - **Fire If True** - Triggers whenever `Condition` updates and is currently true
 - **Fire If False** - Triggers whenever `Condition` updates and is currently false
-- **Fire While True** - Continuously triggers at the given `Milliseconds` interval while `Condition` remains true
-- **Fire While False** - Continuously triggers at the given `Milliseconds` interval while `Condition` remains false
-- **Fire On Burst** - Triggers when `Condition` becomes true `Count` number of times within a given `Milliseconds` timeframe
+- **Fire While True** - Continuously triggers at the given `Delay (ms)` interval while `Condition` remains true
+- **Fire While False** - Continuously triggers at the given `Delay (ms)` interval while `Condition` remains false
+- **Fire On Burst** - Triggers when `Condition` becomes true `Count` number of times within a given `Duration (ms)` timeframe
 
 #### Other Fire Nodes
 
-- **Fire On Interval** - Triggers repeatedly every given `Milliseconds`
+- **Fire On Interval** - Triggers repeatedly every given `Delay (ms)`
 - **Fire On Change** - Triggers when `Value` updates and has changed from its previous value
 
 #### Flow Cancellation Behaviour
@@ -126,6 +126,14 @@ Variables have several associated nodes. These are created by **right-clicking o
 
 The **Indirect Write Variable** node can be found in the node creation menu and writes to a variable using a variable reference (useful when the target variable is determined dynamically).
 
+### Transforms
+Transforms are written as standard right-hand rotation space using intrinsic YXZ Euler rotations (Yaw → Pitch → Roll). This matches Unity.
+
+For a mental model of the transforms relative to facing your screen:
+- X+ = Right
+- Y+ = Up
+- Z+ = Forward (towards you out of the screen)
+
 ---
 
 ## Special Behaviours {/* #behaviours */}
@@ -138,10 +146,10 @@ All value inputs have default values (typically the default for that type, like 
 ### Automatic Type Conversion
 - Connecting any value output to a **string input** automatically inserts a **ToString node**
 - Connecting incompatible types automatically inserts a **Cast node** if a conversion is possible
-- Some type conversions don't require a cast node at all (e.g., `List<int>` to `IEnumerable<int>`, or `Controller` to `TrackedDevice`). When types extend each other, Pulse blends the two type colors from output to input without inserting a node
+- Some type conversions don't require a cast node at all (e.g., `List<int>` to `IEnumerable<int>`, or `Controller` to `TrackedDevice`). When types extend each other, Pulse blends the two type colours from output to input without inserting a node
 
 ### Math Expression Evaluation
-Typing an equation into any number-accepting textbox will evaluate the result. For example, typing `8*2` will result in the text becoming `16`.
+Typing an equation into any numeric textbox will evaluate the result. For example, typing `8*2` will result in the text becoming `16`.
 
 ### Error Handling
 Errors are handled silently in Pulse for value computation. If errors are needing to be handled, the node will follow the OnSuccess/OnFail pattern.
@@ -152,20 +160,24 @@ Errors are handled silently in Pulse for value computation. If errors are needin
 
 ### Quick Node Creation
 
-- **Left drag from a value input + right click** - Creates a constant value output node
-  - Supported types: string, numbers, booleans, Enums, and Keybind
-  - For multi-line string input, use the RichTextBox node found in the Utility category
+- **Drag from a value input + right click** - Creates a constant value output node
+  - Supported types: `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, `string`, `bool`, `Enum`, `Keybind`, `DateTime`, `TimeSpan`, `Color`, and `ColorHSL`
 
-- **Left drag from a value output + right click** - Creates a display node showing the output value
+- **Drag from a value output + right click** - Creates a display node showing the output value
   - Only works for non-flow nodes
   - For flow nodes, use a **Passthrough Display** node instead - flow nodes only have value outputs within the context of their flows, so they need to be displayed differently
 
-- **Left drag from a flow input + right click** - Creates a call node
+- **Drag from a flow input + right click** - Creates a call node
   - Allows you to manually trigger a flow for testing
+
+- **Drag from a flow output + right click** - Creates a flow display
+  - Allows you to see when a flow reaches this node
 
 - Use **Ctrl+C** and **Ctrl+V** for copy and pasting selections
 
 - Use **Delete** for deleting selections
+
+- Hold **Ctrl** when dragging a group to instead start a selection
 
 ### Navigation
 
@@ -184,13 +196,13 @@ Let's create a simple flow that changes your avatar when you toggle a parameter 
 
 ### Step 1: Add a Parameter Source
 
-Right-click and navigate to: `Create Node -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
+Right-click and navigate to: `Add Node -> VRChat -> Parameters -> Receive -> Parameter Source -> Parameter Source (Bool)`
 
 **Why:** This parameter source exposes the avatar parameter's value so we can connect it to trigger nodes.
 
 ### Step 2: Add a Fire On True Node
 
-Right-click and navigate to: `Create Node -> Flow -> Fire On True`
+Right-click and navigate to: `Add Node -> Flow -> Fire On True`
 
 **Why:** We only want to change avatars when the parameter becomes true, not every time it updates.
 
@@ -202,7 +214,7 @@ Click and drag from the **value output** of the Bool Parameter Source to the **C
 
 ### Step 4: Add a Change Avatar Node
 
-Right-click and navigate to: `Create Node -> VRChat -> Player -> Actions -> Change Avatar`
+Right-click and navigate to: `Add Node -> VRChat -> Player -> Actions -> Change Avatar`
 
 **Why:** This is the action we want to perform when the parameter becomes true.
 
@@ -214,9 +226,7 @@ Click and drag from the **flow output** (right side) of the Fire On True node to
 
 ### Step 6: Add Your Avatar ID
 
-**Left click drag** from the Avatar ID value input on the Change Avatar node and then **right click**.
-
-This creates a constant string value input. Enter your avatar ID into the textbox.
+Add your avatar Id into the `Avatar Id` field of the `Change Avatar` node's value input
 
 **Finding Avatar IDs:** You can find avatar IDs through the VRChat website or using VRCX.
 

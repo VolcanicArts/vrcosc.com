@@ -5,102 +5,188 @@ description: Understand how to use the ChatBox system
 
 # ChatBox
 
-The ChatBox system is essentially an animation system for VRChat's ChatBox . It provides an extensive feature-set to let you customise the way the ChatBox looks in-game from any module that has support for the ChatBox. Below is an explanation of how the different features work. Please reach out on the [Discord Server](https://vrcosc.com/discord) if you need more help or feel this documentation could be more detailed.
+The ChatBox system is an animation system for VRChat's ChatBox. It lets you control how the ChatBox looks in-game by linking multiple modules, creating clips on a timeline, and defining what text displays based on module states and events.
 
 :::info
 
-On the run page in the ChatBox tab, you can pop-out a preview of the ChatBox so you can edit the timeline while seeing realtime changes without having to have VRChat open.
+Pop out a live preview of the ChatBox on the **Run** page's **ChatBox** tab while editing. This lets you see real-time changes without opening VRChat.
 
 :::
 
 :::warning
 
-Take frequent backups of your ChatBox configs if you have complicated setups! VRCOSC will make backups between versions but it's good to have other copies.
+Take frequent backups of your ChatBox configs if you have complicated setups! Changing timeline length can delete clips unexpectedly. If the new length is less than a clip's start time, that clip will be deleted.
 
 :::
+
+## Core Concepts
+
+**Timeline**  
+A 60-second loop (adjustable) where all animation happens. Updates evaluate every 1.5 seconds by default (VRChat's setting).
+
+**Layers**  
+32 independent stacks in the Timeline. Each layer can hold multiple clips. Higher layers take priority. If a clip is invalid on Layer 1, the system checks Layer 2, then Layer 3, etc. If no valid clips exist on any layer, the ChatBox clears.
+
+**Clips**  
+Individual segments on a layer that display text during a specific time window. Clips are linked to one or more modules and display text only when those modules meet the conditions you've defined.
+
+**States and Events**  
+- **States**: Persistent conditions (e.g., "Media is Playing"). The ChatBox shows this state's text for as long as the state is active.
+- **Events**: Temporary occurrences (e.g., "Song changed"). Events display for a duration you set, then the state takes over. Events always override states.
+
+---
+
+## Timeline and Layers
+
+### Managing the Timeline
+
+The **Management** section (top left) has buttons to:
+- **Import/Export**: Save and load complete ChatBox configs
+- **Clear Timeline**: Wipe all clips
+
+### Timeline Length
+
+The default timeline is 60 seconds, looping infinitely. Adjust the length on the left side of the timeline.
 
 :::warning
 
-When changing the length of the timeline to be less than it currently is, clips will shrink to fit to the new length. If the new length is less than the start time of a clip the clip will be deleted!
+Shortening the timeline deletes any clips that no longer fit
 
 :::
 
-## Keywords
-- Timeline - The bottom half of the screen where all Clips are kept
-- Layer - A single part of the Timeline. 32 layers are stacked make the Timeline
-- Clip - A single part of a Layer that is linked to modules
+### Creating and Editing Clips
 
-## Useful Links
-For formatting variables that use DateTime, use anything in the `Format Specifier` column of [this table](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).
+**Right-click a layer** to add a new clip.  
+**Right-click a clip** to delete it.  
+**Drag clip ends** to resize.  
+**Drag clip middle horizontally** to move it on its layer.  
+**Drag clip middle to another layer** to move it vertically between layers.
 
-## Management
-The top left of ChatBox page contains buttons for importing and exporting a config, as well as clearing the timeline.
-
-## Live Text
-When the modules are running, and you want to type something in the ChatBox, you cannot do it from in-game. VRCOSC takes control of the ChatBox.
-Instead, use the `Live Text:` area in the ChatBox tab of the run view.
-
-## Controls
-Right clicking any layer will give you the option to add a clip to it. Right clicking any clip will give you the option to delete it. You can resize a clip by dragging either end, and can move a clip by dragging anywhere in the middle. You can move a clip between layers by dragging from the middle of a clip into any empty space in a layer. This clip will resize if needed.
-
-## Timings
-The Timeline lasts 60 seconds by default, whereby every 60 seconds the Timeline will loop back to the start. Clips that are present on the timeline are snapped in intervals of 1 second. You can adjust the length using the control on the left side of the page.
+---
 
 ## Clips
-Clips are a way of managing the text of the ChatBox at a certain point in time, based on the evaluation of linked modules' states and events. For example, if I create a Clip on the top layer and tick the Media module, the Clip is now registered as following the states and events for the Media module.
 
-### Built-In
-With no modules linked, a Clip will have a default state that lets you write text so you don't have to link a random module.
+All clips are snapped to 1-second intervals.
 
-There are also some built-in variables that are always available to use:
-- Custom Text - This is for writing custom text that allows you to also use the functionality of variables
-- File Reader - This reads the text of a file each ChatBox update
-- Focused Window - This is the window you're currently focused on
-- Timer - This displays the time difference between now and when the timer is set to
+### Built-In Variables
 
-If you have any ideas for more built-in variables, please let me know in the [Discord Server](https://vrcosc.com/discord).
+With no modules linked, a clip has a **Default State** that lets you write custom text. Several variables are always available:
+
+- **Custom Text** - Write custom text with variable support (see [Variables](#variables) section)
+- **File Reader** - Reads and displays text from a file each update
+- **Focused Window** - Shows the name of your currently focused window
+- **Timer** - Displays the time difference between now and a set time
+
+(Have ideas for more? Let us know on [Discord](https://vrcosc.com/discord).)
 
 ### States and Events
-Each state and event has a checkbox in the top left. This indicates whether you want to handle that state/event.
 
-Using our example from earlier, if we only tick the `Media (Playing)` state, and leave the `Media (Paused)` state unticked, that means that for this Clip to be valid the Media module must be in the `Playing` state. If it is, the format is used and sent to the ChatBox. If the Media module is in the `Paused` state, the ChatBox is cleared as the Paused state is unticked and there are no other valid clips.
+When you link a module to a clip, you can enable specific states and events:
 
-Events take priority over states. If an event occurs, even if there is a valid state, the event will display for the time set by you. The behaviour of how events prioritise between themselves is controlled by the event behaviour. Override means that if there is already an event occurring, the new event will take over. Queue means that if there is already an event occurring, the new event will wait for the current event to end. Ignore means that if there is already an event occurring, the new event will not be handled.
+**States**: Persistent conditions of the module. To display this clip's text, the module must be in one of the enabled states.
 
-There are also several other settings that are present for both states and events:
-- Show Typing Indicator will mean that when that state or event is active it will show the typing animation next to the ChatBox in-game.
-- Use Minimal Background will use some character tricks to remove the background from the ChatBox in-game. This can make large ChatBoxes less intrusive.
+**Events**: Temporary triggers. When enabled, the event displays its text when triggered, overriding any active state.
+
+**Event Behavior** controls priority:
+- **Override** - New event replaces the current event
+- **Queue** - New event waits for the current event to finish
+- **Ignore** - New event is discarded if an event is already playing
+
+**Additional State/Event Options**:
+- **Show Typing Indicator** - Displays the typing animation next to the ChatBox in-game
+- **Use Minimal Background** - Uses character tricks to minimize the ChatBox background
 
 ### Variables
-Variables are instances, which allow you to customise how the variable is formatted. To add a variable to a state or event, drag the variable you want from the right sidebar onto the `Drop Variable` area of the state or event. The way to reference a variable in the format is to use `{0}`, where the number corresponds to the 0th-based placement in the variable list. For example, if I had 2 variables and I wanted to reference the 2nd variable, I'd put `{1}` in the format.
 
-To customise a variable instance, click on the cog button. Depending on the type of variable (bool, int, float, string, DateTime, TimeSpan), you will see different options. Some options will be available in all instances, however, as they're part of the base variable implementation. This means that there is no more ChatBox Text or Ticker Tape modules. Every variable can ticker tape. There are also specific settings for things like `DateTime` which means you can format the time however you like.
+Variables let you insert dynamic data into your clip's text. To add one:
 
-### Multi-module Clips
-All Clips are allowed to have multiple modules linked to them. This is what allows for multiple modules' states and events to be handled and their variables to be put into the same Clip.
+1. **Drag a variable** from the right sidebar into the clip's variable area
+2. **Reference it in your text** using `{0}`, `{1}`, etc., based on its position (0-indexed)
 
-When multiple modules are linked to a Clip, states are compounded together to give you control over what to show in the Clip no matter what state any of the associated modules are in.
+Example: `Now playing: {0}`
 
-For example, if we tick the Media and Clock module, the only states that will occur are:
-- Media (Playing) & Clock
-- Media (Paused) & Clock
+If you drag the Media module's "Current Track" variable into position 0, this displays "Now playing: [song title]".
 
-This is because Clock only has a single default state, so 2 * 1 = 2. This does mean that the number of states and events can grow very quickly the more modules you add, so only link the modules you need.
+**Customizing Variables**:  
+Click the gear icon on any variable to customize it. Options vary by type. All variables come with default options, some types have extra.
+
+### Multi-Module Clips
+
+A single clip can link multiple modules. When you do:
+
+1. **States combine** - Only the state combinations that exist across all linked modules are shown. For example, linking Media (2 states: Playing, Paused) + Clock (1 state) = 2 possible combinations, not 4.
+2. **Events coexist** - All events from linked modules can trigger, controlled by their event behavior settings.
+
+:::warning
+
+Linking many modules to one clip creates exponential state combinations. Only link the modules you need.
+
+:::
 
 ### Filter By Enabled Modules
-If any module you have ticked in the `Select Modules` section is disabled on the module listing view, the states and events that contain that module will be filtered out by the `Filter By Enabled Modules` button. Unticking this will show you the generated states and events for all the selected modules, however it's recommended to keep this ticked as it shows you how the Clip will behave when it's running based on the enabled modules on the module listing page.
 
-### Validation
-Clips are evaluated for their validity at the Timeline's current time. The following steps are done to evaluate a clip:
-- Is the Clip Enabled?
-- Is the Clip covering the Timeline's current time?
-- Is there currently a triggered event that is ticked **OR** are all the modules that are linked to a clip in a state that is ticked?
+If a module you've linked is **disabled** on the main module listing, tick **Filter By Enabled Modules** to hide its states/events. This shows you how the clip behaves at runtime based on your enabled modules.
 
-If a Clip is deemed invalid then the ChatBox will check the next layer down for a valid Clip. If no valid Clips are found, the ChatBox will be cleared.
+### Clip Validation
 
-This evaluation step is done based on the ChatBox Time Span setting in the settings screen. VRChat's default is every 1.5 seconds.
+Every 1.5 seconds, the timeline checks each clip for validity:
 
-### Testing
-Run the modules and the ChatBox system will start. In the ChatBox tab on the run view you can see a preview of the ChatBox. The preview won't respect some of the options due to technical limitations, and some of the Unicode icon sizes will be incorrect if many are used at once, but it's a good starting point if you don't want to have VRChat open. The preview is also able to be popped out into its own window so you can see it while making changes to the timeline.
+1. Is the clip enabled?
+2. Does the clip cover the current timeline time?
+3. **Is there an active, enabled event?** OR **Are all linked modules in enabled states?**
 
-The timeline's chosen clip will have a yellow border, and inside that clip the chosen state/event will also have a yellow border. This is to help with debugging which clips and which states/events are being chosen.
+If no valid clips exist on any layer, the ChatBox clears.
+
+---
+
+## Live Text Input
+
+When modules are running, VRCOSC controls the ChatBox. You **cannot** type in-game unless the Timeline is empty.
+Instead use the **Live Text** area in the **Run** page's **ChatBox** tab to type temporary text that displays immediately.
+
+---
+
+## Testing and Debugging
+
+### Live Preview
+
+In the **Run** page's **ChatBox** tab, you'll see a real-time preview of the ChatBox:
+- **Yellow border on clips** - The clip currently selected by the timeline
+- **Yellow border on states/events** - The state/event currently active
+
+Use this to debug which clips and states are being chosen without opening VRChat.
+
+**Pop out the preview** into a separate window to edit the timeline while watching changes live.
+
+### Limitations
+
+The preview may not perfectly match in-game due to rendering differences. Unicode icon sizing is inaccurate with many icons at once. It's a good starting point but always test in VRChat for final results.
+
+---
+
+## Troubleshooting
+
+**ChatBox is blank or not updating**
+- Is at least one clip enabled and covering the current timeline time?
+- Are the modules linked to that clip in a ticked state?
+- Check the yellow borders in the preview. Is a clip selected?
+
+**A clip isn't showing even though its module is active**
+- Make sure the specific state/event is ticked in the clip. Just linking a module isn't enough.
+- Check Filter By Enabled Modules. If the module is disabled on the module listing, its states won't appear.
+
+**Only one clip is showing when I have multiple on different layers**
+- Higher layers take priority. If Layer 1's clip is valid, Layer 2 is ignored.
+- Make sure Layer 1 clips are disabled or invalid during the time you want Layer 2 to show.
+
+---
+
+## Backup and Import/Export
+
+Backups are created automatically between VRCOSC versions, but you can manually export configs for extra safety:
+
+1. Go to **ChatBox** tab's **Management** (top left)
+2. Click **Export** to open your config's file location. Take a copy of this file.
+3. Click **Import** to load a previously saved config
+
+Repeat this regularly for complicated setups.

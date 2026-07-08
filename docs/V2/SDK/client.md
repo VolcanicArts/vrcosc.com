@@ -25,7 +25,7 @@ GetClient().IsOpen
 
 Returns a `bool` indicating whether VRChat is currently running and available.
 
-In most cases this will remain `true` for the lifetime of a module, but it can be useful for startup logic, reconnect handling, or modules that initialize before VRChat fully launches.
+In most cases this will remain `true` for the lifetime of a module (when the user as Auto-Start/Stop with VRChat enabled), but it can be useful for when modules initialize before VRChat fully launches.
 
 Example:
 
@@ -91,7 +91,7 @@ Movement values are typically expected to be within the range:
 
 Where:
 
-- `-1` represents full movement in one direction
+- `-1` represents full movement
 - `0` represents no input
 - `1` represents full movement in the opposite direction
 
@@ -215,7 +215,7 @@ Example:
 ```csharp
 foreach (var user in GetClient().Instance.Users)
 {
-    Logger.Info(user.Username);
+    LogDebug(user.Username);
 }
 ```
 
@@ -293,16 +293,16 @@ if (!client.IsOpen)
 
 if (client.IsLoggedIn)
 {
-    Logger.Info(client.User.Username);
+    LogDebug(client.User.Username);
 }
 
 if (client.IsInAvatar)
 {
-    Logger.Info(client.Avatar.Name);
+    LogDebug(client.Avatar.Name);
 }
 
 if (client.IsInInstance)
 {
-    Logger.Info(client.Instance.Users.Count);
+    LogDebug(client.Instance.Users.Count);
 }
 ```
