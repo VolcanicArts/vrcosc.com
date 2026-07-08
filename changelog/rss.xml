@@ -4,10 +4,21 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Thu, 02 Jul 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 08 Jul 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.708.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.708.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.708.0</guid>
+            <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.708.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Updated PiShockRequestHandler to the latest API</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2026.702.0-beta]]></title>
             <link>https://VolcanicArts.github.io/changelog/2026.702.0-beta</link>
@@ -1170,54 +1181,6 @@ I'll be doing extensive testing over the next few weeks to make sure everything 
 <ul>
 <li class="">Fixed PiShock module sometimes erroring</li>
 <li class="">Standardised SteamVRStats' identifiers</li>
-</ul>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2024.913.0-v2]]></title>
-            <link>https://VolcanicArts.github.io/changelog/2024.913.0-v2</link>
-            <guid>https://VolcanicArts.github.io/changelog/2024.913.0-v2</guid>
-            <pubDate>Fri, 13 Sep 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[A small release since I've not finished a lot of the large features I wanted to get out sooner, but since there's a few bugs I wanted to get these fixed as I'm away next week.]]></description>
-            <content:encoded><![CDATA[<p>A small release since I've not finished a lot of the large features I wanted to get out sooner, but since there's a few bugs I wanted to get these fixed as I'm away next week.
-Quite a few things in this release have had a rework, and while I've tested them they're usually hardware dependant, so give them a test and let me know if anything's wrong.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.913.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
-<ul>
-<li class="">Rewrote tracked device handler<!-- -->
-<ul>
-<li class="">This now allows users to assign roles to their tracked devices in the SteamVR tab of the settings, allowing modules to just grab, for example, the left foot.</li>
-</ul>
-</li>
-<li class="">Fixed Start with SteamVR not working<!-- -->
-<ul>
-<li class="">Let me know if this is still broken for some people. Fixing this depends on what's already been added to your SteamVR manifest lists</li>
-</ul>
-</li>
-<li class="">Fixed clip variables sometimes erroring in Unicode edge cases</li>
-<li class="">Handle deserialisation of object types better</li>
-<li class="">Changed runtime view to take in a type instead of an instance<!-- -->
-<ul>
-<li class="">You're now required to make the view have a constructor of (Module)</li>
-<li class="">You're now required to initialise the runtime view in OnPreLoad</li>
-</ul>
-</li>
-<li class="">Add more runtime validation</li>
-<li class="">Improved speech detection<!-- -->
-<ul>
-<li class="">This returns the partial and final results</li>
-<li class="">The silence threshold is currently set at 15% which should work fine as long as the microphone volume is at 100% which all VR headsets should be at</li>
-</ul>
-</li>
-<li class="">Added back light theme<!-- -->
-<ul>
-<li class="">For now this still requires an app restart to apply</li>
-</ul>
-</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.913.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules" translate="no">​</a></h2>
-<ul>
-<li class="">Clear parameter cache on avatar change for Counter to avoid parameters with the same name having different types</li>
-<li class="">Updated SteamVRStats to use the new role system</li>
-<li class="">Updated SpeechToText to new upgraded speech interface</li>
 </ul>]]></content:encoded>
         </item>
     </channel>
