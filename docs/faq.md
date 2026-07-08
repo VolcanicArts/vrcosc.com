@@ -22,7 +22,7 @@ Install: `C:\Program Files (x86)\Steam\steamapps\common\VRChat`
 
 Data: `%localappdata%Low\VRChat\VRChat`
 
-## Connection Issues {/* connection-issues */}
+## Connection Issues {/* #connection-issues */}
 1. Ensuring you have ran the modules on the run screen
 2. Ensuring OSC is enabled through your action menu: Options -> OSC -> Enable
 3. Ensuring you have added nothing to the router and the Connection Mode in the behaviour settings is set to `Local`
