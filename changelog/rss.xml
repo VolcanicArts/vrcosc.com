@@ -4,10 +4,22 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Wed, 08 Jul 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.807.0]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.807.0</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.807.0</guid>
+            <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.807.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed PiShockRequestFactory erroring when no shared shockers are found</li>
+<li class="">Fixed AudioManager greedily initialising audio devices causing compatibility issues</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2026.708.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2026.708.0</link>
@@ -16,7 +28,7 @@
             <description><![CDATA[App]]></description>
             <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.708.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
 <ul>
-<li class="">Updated PiShockRequestHandler to the latest API</li>
+<li class="">Updated PiShockRequestFactory to the latest API</li>
 </ul>]]></content:encoded>
         </item>
         <item>
@@ -1160,27 +1172,6 @@ I'll be doing extensive testing over the next few weeks to make sure everything 
 <li class="">If a parameter's value cannot be found, the equation will be aborted</li>
 </ul>
 </li>
-</ul>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2024.915.0-v2]]></title>
-            <link>https://VolcanicArts.github.io/changelog/2024.915.0-v2</link>
-            <guid>https://VolcanicArts.github.io/changelog/2024.915.0-v2</guid>
-            <pubDate>Sun, 15 Sep 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Hotfixes for the last release.]]></description>
-            <content:encoded><![CDATA[<p>Hotfixes for the last release.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.915.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
-<ul>
-<li class="">Fixed bugs with SteamVR device management</li>
-<li class="">Exposed noise level cutoff to speech settings</li>
-<li class="">Added more error handling to default VRChat parameters</li>
-<li class="">Clear the manual ChatBox text when the window is closed</li>
-<li class="">Allow for ChatBox validation bypassing when importing a config</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.915.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules" translate="no">​</a></h2>
-<ul>
-<li class="">Fixed PiShock module sometimes erroring</li>
-<li class="">Standardised SteamVRStats' identifiers</li>
 </ul>]]></content:encoded>
         </item>
     </channel>

@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://VolcanicArts.github.io/changelog</id>
     <title>VRCOSC Blog</title>
-    <updated>2026-07-08T00:00:00.000Z</updated>
+    <updated>2026-08-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://VolcanicArts.github.io/changelog"/>
     <subtitle>VRCOSC Blog</subtitle>
     <icon>https://VolcanicArts.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2026.807.0]]></title>
+        <id>https://VolcanicArts.github.io/changelog/2026.807.0</id>
+        <link href="https://VolcanicArts.github.io/changelog/2026.807.0"/>
+        <updated>2026-08-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[App]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.807.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed PiShockRequestFactory erroring when no shared shockers are found</li>
+<li class="">Fixed AudioManager greedily initialising audio devices causing compatibility issues</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2026.708.0]]></title>
         <id>https://VolcanicArts.github.io/changelog/2026.708.0</id>
@@ -15,7 +27,7 @@
         <summary type="html"><![CDATA[App]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.708.0#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
 <ul>
-<li class="">Updated PiShockRequestHandler to the latest API</li>
+<li class="">Updated PiShockRequestFactory to the latest API</li>
 </ul>]]></content>
     </entry>
     <entry>
@@ -1159,27 +1171,6 @@ I'll be doing extensive testing over the next few weeks to make sure everything 
 <li class="">If a parameter's value cannot be found, the equation will be aborted</li>
 </ul>
 </li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2024.915.0-v2]]></title>
-        <id>https://VolcanicArts.github.io/changelog/2024.915.0-v2</id>
-        <link href="https://VolcanicArts.github.io/changelog/2024.915.0-v2"/>
-        <updated>2024-09-15T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Hotfixes for the last release.]]></summary>
-        <content type="html"><![CDATA[<p>Hotfixes for the last release.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.915.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
-<ul>
-<li class="">Fixed bugs with SteamVR device management</li>
-<li class="">Exposed noise level cutoff to speech settings</li>
-<li class="">Added more error handling to default VRChat parameters</li>
-<li class="">Clear the manual ChatBox text when the window is closed</li>
-<li class="">Allow for ChatBox validation bypassing when importing a config</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.915.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules" translate="no">​</a></h2>
-<ul>
-<li class="">Fixed PiShock module sometimes erroring</li>
-<li class="">Standardised SteamVRStats' identifiers</li>
 </ul>]]></content>
     </entry>
 </feed>
