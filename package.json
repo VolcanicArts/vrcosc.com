@@ -41,5 +41,9 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "allowScripts": {
+    "@swc/core@1.16.2": true,
+    "core-js@3.50.0": true
   }
 }
