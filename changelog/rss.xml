@@ -4,10 +4,91 @@
         <title>VRCOSC Blog</title>
         <link>https://VolcanicArts.github.io/changelog</link>
         <description>VRCOSC Blog</description>
-        <lastBuildDate>Fri, 07 Aug 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 06 Sep 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[2026.906.0-beta]]></title>
+            <link>https://VolcanicArts.github.io/changelog/2026.906.0-beta</link>
+            <guid>https://VolcanicArts.github.io/changelog/2026.906.0-beta</guid>
+            <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[App]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2026.906.0-beta#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
+<ul>
+<li class="">Added title case option to clip variables</li>
+<li class="">Added ability for parameter names to be selected in the avatar tab on the run screen</li>
+<li class="">Changed the speech engine to initialise without any modules for Pulse to use<!-- -->
+<ul>
+<li class="">If you're not using the speech engine, make sure to disable it</li>
+</ul>
+</li>
+<li class="">Changed file picker dialog to hopefully resolve Windows 11 issues</li>
+<li class="">Rewrote GlobalKeyboardHook into GlobalInputHandler<!-- -->
+<ul>
+<li class="">Instead of using PInvoke and XInput which is Windows-specific, this now uses SDL and SharpHook to get keyboard, mouse, and gamepad inputs and outputs</li>
+<li class="">The Enable Global Keyboard Hook setting has been renamed to Enable Global Input Handler</li>
+</ul>
+</li>
+<li class="">Fixed PiShockRequestFactory erroring when no shared shockers are found</li>
+<li class="">Fixed AudioManager greedily initialising audio devices causing compatibility issues</li>
+<li class="">Fixed parameter sending without OSCQuery in use resulting in incorrect parameter names</li>
+<li class="">Fixed a Whisper VRAM leak</li>
+<li class="">Fixed NaN OSCQuery values breaking parameter retrieval</li>
+<li class="">Fixed GitHub outages throwing non-informative errors</li>
+<li class="">Fixed ChatBox and Node load ordering to fix profile switching breaking</li>
+<li class="">Fixed SteamVR lighthouse path detection sometimes breaking when a user has previously had SteamVR installed and OpenVR still exists</li>
+<li class="">Fixed ChatBox preview being coupled to the sending of OSC messages<!-- -->
+<ul>
+<li class="">This would affect parameter sending performance in the case of UI update degradation</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pulse">Pulse<a href="https://volcanicarts.github.io/changelog/2026.906.0-beta#pulse" class="hash-link" aria-label="Direct link to Pulse" title="Direct link to Pulse" translate="no">​</a></h2>
+<ul>
+<li class="">Added ability for <code>GlobalStore&lt;T&gt;</code> to have a default value</li>
+<li class="">Added <code>char</code> as a textbox type</li>
+<li class="">Added update icon to nodes that are on the graph update</li>
+<li class="">Added ability for IValueInputList to be read from a specific index<!-- -->
+<ul>
+<li class="">This should only be used in cases where an index is already known, like <code>Multiplex</code>, as it resolves the connection each time it's called</li>
+</ul>
+</li>
+<li class="">Added <code>ValueMap</code> node<!-- -->
+<ul>
+<li class="">This can be used in a similar to way to how C# value switch cases work</li>
+</ul>
+</li>
+<li class="">Added ability for groups to contain comments</li>
+<li class="">Added ability for presets to contain comments</li>
+<li class="">Added migration for presets</li>
+<li class="">Added <code>Contact Parameter Source</code> node</li>
+<li class="">Added <code>Include Empty</code> option for <code>String Join</code>
+<ul>
+<li class="">Disabling this will not include empty inputs in the string join</li>
+</ul>
+</li>
+<li class="">Added nodes related to mouse handling to reflect GlobalInputHandler addition</li>
+<li class="">Added gamepad nodes related to gamepad handling to reflect GlobalInputHandler addition</li>
+<li class="">Changed FireOnInterval to be on the continuous graph update</li>
+<li class="">Changed <code>RegexIsMatch</code> to not be continuous</li>
+<li class="">Changed <code>StringNullConstant</code> to generic <code>NullConstant</code> node</li>
+<li class="">Fixed timeout handling for HTTP nodes</li>
+<li class="">Fixed graph importing not generating a new ID resulting in linked graphs if the same graph was imported multiple times</li>
+<li class="">Fixed a graph crash if the UI is clicked before the graph UI is loaded</li>
+<li class="">Fixed nodes sometimes not triggering on various actions and value updates</li>
+<li class="">Fixed deleting nodes sometimes not triggering value updates</li>
+<li class="">Fixed node element variable size migration in cases where new elements have been added after the variably-sized element</li>
+<li class="">Fixed graph updates sometimes being blocked for specific node setups</li>
+<li class="">Various performance improvements</li>
+<li class="">Various UI improvements</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modules">Modules<a href="https://volcanicarts.github.io/changelog/2026.906.0-beta#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Fixed PiShock global group not being defaulted correctly when OSCQuery is not used</li>
+<li class="">Changed Media to keep the selected source if the source is no longer present to workaround some apps removing themselves when a track change occurs</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2026.807.0]]></title>
             <link>https://VolcanicArts.github.io/changelog/2026.807.0</link>
@@ -1118,60 +1199,6 @@ You may notice that things fail to load correctly in this version. Refresh your 
 <li class="">Fix PiShock response formatting</li>
 <li class="">Fixed float textboxes not allowing floats to be entered properly</li>
 <li class="">Fixed some titles and descriptions</li>
-</ul>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2024.1012.0-v2]]></title>
-            <link>https://VolcanicArts.github.io/changelog/2024.1012.0-v2</link>
-            <guid>https://VolcanicArts.github.io/changelog/2024.1012.0-v2</guid>
-            <pubDate>Sat, 12 Oct 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[This is a tentative release candidate to replace V1 with V2. If you have any suggestions, problems, or bugs, now is the time to report them.]]></description>
-            <content:encoded><![CDATA[<p>This is a tentative <strong>release candidate</strong> to replace V1 with V2. If you have any suggestions, problems, or bugs, now is the time to report them.
-All the V1 modules are now transferred over to V2, or have V2 counterparts in the form of other functionality or modules that have superseded them.
-I'll be doing extensive testing over the next few weeks to make sure everything is working, but for those of you that use the less-used modules, I'd be grateful to hear that things are working as expected.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="app">App<a href="https://volcanicarts.github.io/changelog/2024.1012.0-v2#app" class="hash-link" aria-label="Direct link to App" title="Direct link to App" translate="no">​</a></h2>
-<ul>
-<li class="">Speech To Text improvements<!-- -->
-<ul>
-<li class="">You can now specify a volume boost amount to help Whisper hear you when your mic is set to a lower level for other applications</li>
-<li class="">If you have a modern GPU that supports Vulkan, Whisper will now run using Vulkan to speed up recognition to near-instant recognition</li>
-<li class="">When you switch your microphone in the settings you no longer need to restart the modules</li>
-</ul>
-</li>
-<li class="">Updated parameter listing<!-- -->
-<ul>
-<li class="">Parameters can now be disabled for those of you that want to customise exactly which parameters get sent</li>
-<li class="">The formatting for the list now better handles small window sizes</li>
-</ul>
-</li>
-<li class="">ChatBox variable improvements<!-- -->
-<ul>
-<li class="">Int and Float variables can now do character mapping</li>
-<li class="">This allows you to do things like have a heartrate character get more aggressive the higher your heartrate goes</li>
-<li class="">Int variables have a minimum and maximum value. The list of characters (or words) gets linearly interpolated through</li>
-<li class="">Float variables are locked between 0 and 1. The list of characters (or words) gets linearly interpolated through</li>
-</ul>
-</li>
-<li class="">Added the Timer global variable to format a TimeSpan that counts to a specific DateTime</li>
-<li class="">Small graphics and formatting improvements</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-modules">Official Modules<a href="https://volcanicarts.github.io/changelog/2024.1012.0-v2#official-modules" class="hash-link" aria-label="Direct link to Official Modules" title="Direct link to Official Modules" translate="no">​</a></h2>
-<ul>
-<li class="">Added voice commands to PiShock</li>
-<li class="">Reworked how the max duration and intensity work for PiShock groups</li>
-<li class="">Removed Leash module<!-- -->
-<ul>
-<li class="">It may return at some point but I want the V2 release to be at parity with V1</li>
-</ul>
-</li>
-<li class="">Removed Timer module in favour of the new Timer global variable</li>
-<li class="">Added Voice Commands module</li>
-<li class="">Reworked Maths module to change how parameters are retrieved to allow parameters with slashes in their names<!-- -->
-<ul>
-<li class="">You now need to surround the parameter's name with <code>{}</code>, and it will be replaced with the parameter's literal value</li>
-<li class="">If a parameter's value cannot be found, the equation will be aborted</li>
-</ul>
-</li>
 </ul>]]></content:encoded>
         </item>
     </channel>
