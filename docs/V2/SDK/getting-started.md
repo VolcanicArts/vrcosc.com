@@ -32,7 +32,7 @@ Next, right click on your project's csproj file and click edit. Replace the cont
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
-    <WindowsSdkPackageVersion>10.0.26100.1</WindowsSdkPackageVersion>
+    <WindowsSdkPackageVersion>10.0.26100.56</WindowsSdkPackageVersion>
 </PropertyGroup>
 
 <ItemGroup>

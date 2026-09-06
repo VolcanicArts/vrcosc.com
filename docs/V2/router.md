@@ -7,7 +7,11 @@ description: Using the router
 
 The router helps manage connections for apps that don't use OSCQuery, preventing port conflicts and enabling routing from different devices into VRChat. This is especially useful for connecting external devices or applications that need to interact with VRChat’s data.
 
-**Tips for reducing latency:** Apps running on the same computer as VRChat should generally use port 9000 for sending data.
+:::tip
+
+Apps running on the same computer as VRChat should generally use port 9000 for sending data
+
+:::
 
 ## Creating a Router Instance
 
@@ -22,7 +26,7 @@ The router configuration has two key parts: a label and an address. Here's a bre
 
 When using **Receive Mode** to bring data *into* VRChat, you *must* use your computer's *local area network (LAN)* IP address. This is *not* your internet-facing IP address.
 
-Here’s how to find it:
+Your computer's LAN IP is present in the `Debug` tab in the app settings. However if this isn't working for you for some reason you can find it via the following methods.
 
 *   **Windows:** Open Command Prompt and type `ipconfig`. Look for "IPv4 Address" under your active network adapter (usually "Ethernet adapter Ethernet" or "Wireless LAN adapter Wi-Fi").
 *   **macOS:** Open Terminal and type `ifconfig | grep "inet "`.  Look for the IP address after `inet`.
